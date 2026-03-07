@@ -1,0 +1,105 @@
+table fact_ActivityLog
+	lineageTag: e56864f1-d690-4fc1-8bfd-0fa4f8e54f00
+
+	column 'Log ID'
+		dataType: int64
+		formatString: 0
+		lineageTag: 996e33ee-103f-41d8-b5e3-73c937b1a943
+		summarizeBy: count
+		sourceColumn: Log ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'User Id'
+		dataType: int64
+		formatString: 0
+		lineageTag: 17d30592-aa9f-4f6b-81fa-fbf87b8aeb7a
+		summarizeBy: none
+		sourceColumn: User Id
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Team id'
+		dataType: string
+		lineageTag: e0a80aef-32b6-4fee-a6a9-9dc327fe4e89
+		summarizeBy: none
+		sourceColumn: Team id
+
+		annotation SummarizationSetBy = Automatic
+
+	column Date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 6aca0321-839e-4432-9398-9203019ad2c2
+		summarizeBy: none
+		sourceColumn: Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Project ID'
+		dataType: int64
+		formatString: 0
+		lineageTag: 290017bb-4114-400b-b1cb-f5e4d41691ae
+		summarizeBy: none
+		sourceColumn: Project ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Task ID'
+		dataType: int64
+		formatString: 0
+		lineageTag: 4b57c091-7655-4b7c-8b21-9f3b8b922c04
+		summarizeBy: none
+		sourceColumn: Task ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Is Billable'
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 3cc8c4c1-2bf5-4e7e-bc23-12c6e172ae82
+		summarizeBy: none
+		sourceColumn: Is Billable
+
+		annotation SummarizationSetBy = Automatic
+
+	column Hours
+		dataType: double
+		lineageTag: 44d0fb1c-f719-4708-9d00-a0ca55498d70
+		summarizeBy: sum
+		sourceColumn: Hours
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition fact_ActivityLog = m
+		mode: import
+		queryGroup: Load
+		source = ```
+				let
+				
+				    WebconnectorLink = Web_app_url_factactivity,
+				    connectorkey     = Auth_Token,
+				
+				    Source = Web.Contents(
+				        WebconnectorLink,
+				        [
+				            Query = [ token = connectorkey ]
+				        ]
+				    ),
+				
+				    Csv = Csv.Document(Source, [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Out = Table.PromoteHeaders(Csv, [PromoteAllScalars = true]),
+				    #"Changed Type" = Table.TransformColumnTypes(Out,{{"Log ID", Int64.Type}, {"User Id", Int64.Type}, {"Date", type date}, {"Project ID", Int64.Type}, {"Task ID", Int64.Type}, {"Is Billable", type logical}, {"Hours", type number}}),
+				    #"Filtered Rows" = Table.SelectRows(#"Changed Type", each [Log ID] <> null and [Log ID] <> "")
+				in 
+				    #"Filtered Rows"
+				```
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,39 @@
+table EndDate
+	isHidden
+	lineageTag: 1a5e68ff-57d5-4ef1-9678-b04f3cc6f7ac
+
+	column EndDate
+		dataType: dateTime
+		isHidden
+		formatString: Long Date
+		lineageTag: ee352c78-6064-4e02-9ca4-c8881de10a60
+		summarizeBy: none
+		sourceColumn: EndDate
+
+		variation Variation
+			isDefault
+			relationship: cf02ed12-5d2f-46e2-ab59-23dd6faac40f
+			defaultHierarchy: LocalDateTable_37bd5a7e-25ba-480f-be7c-45562ccc9092.'Date Hierarchy'
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	partition EndDate = m
+		mode: import
+		queryGroup: Auth
+		source =
+				let
+				    Today = DateTime.Date(DateTime.LocalNow()),
+				    Yesterday = Date.AddDays(Today, -1)
+				in
+				    Today
+
+	changedProperty = IsHidden
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Date
+

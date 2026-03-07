@@ -1,0 +1,17 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
+  "name": "e5bb1c208281864b0c27",
+  "position": {
+    "x": 630,
+    "y": 242.5,
+    "z": 14000,
+    "height": 432.5,
+    "width": 611.25,
+    "tabOrder": 18000
+  },
+  "visualGroup": {
+    "displayName": "Overview View",
+    "groupMode": "ScaleMode"
+  },
+  "isHidden": true
+}

@@ -1,0 +1,39 @@
+table dim_refresh_date
+	isHidden
+	lineageTag: de59550e-4e1d-48cf-b1b5-e35c0a911a8d
+
+	column RefreshDate
+		dataType: dateTime
+		isHidden
+		formatString: General Date
+		lineageTag: 37f36430-77a5-42d0-8bed-6cb3c338fd24
+		summarizeBy: none
+		sourceColumn: RefreshDate
+
+		variation Variation
+			isDefault
+			relationship: 48678e0c-5888-4948-a388-504839ae341a
+			defaultHierarchy: LocalDateTable_c42d3fa4-c605-4571-b796-f31b7f6be701.'Date Hierarchy'
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_refresh_date = m
+		mode: import
+		queryGroup: Load
+		source =
+				let
+				    Source = DateTime.LocalNow(),
+				    #"Converted to Table" = #table(1, {{Source}}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Converted to Table",{{"Column1", "RefreshDate"}}),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Renamed Columns",{{"RefreshDate", type datetime}})
+				in
+				    #"Changed Type"
+
+	changedProperty = IsHidden
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

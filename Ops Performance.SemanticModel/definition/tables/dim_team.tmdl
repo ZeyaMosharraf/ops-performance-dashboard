@@ -1,0 +1,45 @@
+table dim_team
+	lineageTag: 3efdc9fa-9ff6-4773-8aae-8495f3c39bc1
+
+	column 'Team ID'
+		dataType: string
+		lineageTag: e61950d7-f38a-49ce-988b-5e9f572ab5b2
+		summarizeBy: none
+		sourceColumn: Team ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Team Name'
+		dataType: string
+		lineageTag: 8c113c91-bb95-477b-8439-9c2daf727183
+		summarizeBy: none
+		sourceColumn: Team Name
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_team = m
+		mode: import
+		queryGroup: Load
+		source = ```
+				let
+				
+				    WebconnectorLink = Web_app_url_dimteam,
+				    connectorkey     = Auth_Token,
+				
+				    Source = Web.Contents(
+				        WebconnectorLink,
+				        [
+				            Query = [ token = connectorkey ]
+				        ]
+				    ),
+				
+				    Csv = Csv.Document(Source, [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Out = Table.PromoteHeaders(Csv, [PromoteAllScalars = true])
+				in 
+				    Out
+				```
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

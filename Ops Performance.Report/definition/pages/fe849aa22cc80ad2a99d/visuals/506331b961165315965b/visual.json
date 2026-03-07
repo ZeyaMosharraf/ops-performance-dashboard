@@ -1,0 +1,32 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
+  "name": "506331b961165315965b",
+  "position": {
+    "x": 308.88888888888886,
+    "y": 67.777777777777771,
+    "z": 11000,
+    "height": 166.66666666666666,
+    "width": 221.11111111111114,
+    "tabOrder": 11000
+  },
+  "visualGroup": {
+    "displayName": "Total Project KPI",
+    "groupMode": "ScaleMode",
+    "objects": {
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "isHidden": true
+}

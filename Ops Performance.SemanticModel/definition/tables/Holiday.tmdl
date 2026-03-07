@@ -1,0 +1,62 @@
+table Holiday
+	lineageTag: 59dd3ece-2209-49b1-8819-a7a87e784cc6
+
+	column Date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: dea699a2-2f32-478b-b851-17e2ef662d0a
+		summarizeBy: none
+		sourceColumn: Date
+
+		variation Variation
+			isDefault
+			relationship: 4842d1e3-aeaf-409b-ad1c-4b9d97d05e61
+			defaultHierarchy: LocalDateTable_42f348f6-46f1-4381-9bc8-449375b1ca83.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Festival
+		dataType: string
+		lineageTag: 244a41b4-95f2-4e66-8a5f-ff4d37f55c8d
+		summarizeBy: none
+		sourceColumn: Festival
+
+		annotation SummarizationSetBy = Automatic
+
+	column Type
+		dataType: string
+		lineageTag: 41198638-fd10-4e46-a546-775f153ac0c7
+		summarizeBy: none
+		sourceColumn: Type
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Holiday = m
+		mode: import
+		source = ```
+				let
+				
+				    WebconnectorLink = Web_app_url_holiday,
+				    connectorkey     = Auth_Token,
+				
+				    Source = Web.Contents(
+				        WebconnectorLink,
+				        [
+				            Query = [ token = connectorkey ]
+				        ]
+				    ),
+				
+				    Csv = Csv.Document(Source, [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Out = Table.PromoteHeaders(Csv, [PromoteAllScalars = true]),
+				    #"Changed Type" = Table.TransformColumnTypes(Out,{{"Date", type date}}),
+				    #"Filtered Rows" = Table.SelectRows(#"Changed Type", each [Date] <> null and [Date] <> "")
+				in 
+				    #"Filtered Rows"
+				```
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,168 @@
+table dim_date
+	lineageTag: 8c71f9eb-bc5e-4dde-a14f-b65e9df5a9fb
+
+	column Date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 7f44c774-b2e9-4634-b457-3c7a84114240
+		summarizeBy: none
+		sourceColumn: Date
+
+		variation Variation
+			isDefault
+			relationship: 2692bbb9-8809-42e4-a155-c533071374f2
+			defaultHierarchy: LocalDateTable_e47f835f-83a5-4daa-bf05-6d7051c72da8.'Date Hierarchy'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Year
+		dataType: int64
+		formatString: 0
+		lineageTag: 03f8f590-6fcd-41bc-8f69-9aac005eb403
+		summarizeBy: sum
+		sourceColumn: Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column Day
+		dataType: int64
+		formatString: 0
+		lineageTag: beaee838-8037-484a-8686-d8e2f3fb88d7
+		summarizeBy: sum
+		sourceColumn: Day
+
+		annotation SummarizationSetBy = Automatic
+
+	column Month
+		dataType: int64
+		formatString: 0
+		lineageTag: 7918a811-d047-4f74-a149-f95fe4f91b9a
+		summarizeBy: sum
+		sourceColumn: Month
+
+		annotation SummarizationSetBy = Automatic
+
+	column Week
+		dataType: string
+		lineageTag: 3c34bf59-2b55-4bcd-b69f-aacf199f946f
+		summarizeBy: none
+		sourceColumn: Week
+		sortByColumn: YearWeekIndex
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsWeekday
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 1ce8e20a-9438-4644-a35e-dcd737afeb49
+		summarizeBy: none
+		sourceColumn: IsWeekday
+
+		annotation SummarizationSetBy = Automatic
+
+	column YearWeekIndex = YEAR('dim_date'[Date]) * 100 + WEEKNUM('dim_date'[Date], 2)
+		formatString: 0
+		lineageTag: f8d037b5-e3b9-456a-8a86-5dc827fa2b40
+		summarizeBy: sum
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Month Name'
+		dataType: string
+		lineageTag: 77b35691-4972-4649-a385-9e40d4bb64fc
+		summarizeBy: none
+		sourceColumn: Month Name
+		sortByColumn: Year
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column YearMonth = FORMAT([Date], "YYYY-MM")
+		lineageTag: ab6820be-9304-4661-acd7-24dd835d214f
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column MonthShortName = FORMAT ( 'dim_date'[Date], "MMM" ) & FORMAT( 'dim_date'[Date], "YY")
+		lineageTag: 4037a564-5797-42d2-a2c8-a60679db8d80
+		summarizeBy: none
+		sortByColumn: YearMonth
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column Festival
+		dataType: string
+		lineageTag: 89e58d69-6c13-41f6-a4b9-7879f7b1e14d
+		summarizeBy: none
+		sourceColumn: Festival
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Holiday Type'
+		dataType: string
+		lineageTag: 1811cc80-1044-41ca-8b3e-13f35b2e12a8
+		summarizeBy: none
+		sourceColumn: Holiday Type
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_date = m
+		mode: import
+		queryGroup: Load
+		source = ```
+				let
+				    CurrentYear = Date.Year(DateTime.LocalNow()),
+				    StartDate = StartDate,
+				    EndDate = EndDate,
+				    
+				    DateList = List.Dates(StartDate, Duration.Days(EndDate - StartDate) + 1, #duration(1, 0, 0, 0)),
+				    
+				    DateTable = Table.FromList(DateList, Splitter.SplitByNothing(), {"Date"}, null, ExtraValues.Error),
+				    
+				    TypedDateTable = Table.TransformColumnTypes(DateTable, {{"Date", type date}}),
+				    #"Duplicated Column" = Table.DuplicateColumn(TypedDateTable, "Date", "Date - Copy"),
+				    #"Renamed Columns1" = Table.RenameColumns(#"Duplicated Column",{{"Date - Copy", "Year"}}),
+				    #"Extracted Year" = Table.TransformColumns(#"Renamed Columns1",{{"Year", Date.Year, Int64.Type}}),
+				    #"Duplicated Column1" = Table.DuplicateColumn(#"Extracted Year", "Date", "Date - Copy"),
+				    #"Renamed Columns2" = Table.RenameColumns(#"Duplicated Column1",{{"Date - Copy", "Day"}}),
+				    #"Calculated Day of Week" = Table.TransformColumns(#"Renamed Columns2",{{"Day", Date.DayOfWeek, Int64.Type}}),
+				    #"Duplicated Column2" = Table.DuplicateColumn(#"Calculated Day of Week", "Date", "Date - Copy"),
+				    #"Extracted Month" = Table.TransformColumns(#"Duplicated Column2",{{"Date - Copy", Date.Month, Int64.Type}}),
+				    #"Renamed Columns3" = Table.RenameColumns(#"Extracted Month",{{"Date - Copy", "Month"}}),
+				    #"Added Custom" = Table.AddColumn(#"Renamed Columns3", "Custom", each let
+				        startdate = StartDate,
+				        daysBetween = Duration.Days([Date] - startdate),
+				        weekNumber = Number.IntegerDivide(daysBetween, 7) + 1,
+				        weekStart = Date.AddDays(startdate, (weekNumber - 1) * 7),
+				        weekEnd = Date.AddDays(weekStart, 6),
+				        monthAbbr = Date.ToText(weekStart, "MMM", "en-US")
+				    in
+				        "W" & Text.From(weekNumber) & " " & monthAbbr & " " & Text.From(Date.Day(weekStart)) & "-" & Text.From(Date.Day(weekEnd))),
+				    #"Renamed Columns4" = Table.RenameColumns(#"Added Custom",{{"Custom", "Week"}}),
+				    #"Added Custom1" = Table.AddColumn(#"Renamed Columns4", "IsWeekday", each if Date.DayOfWeek([Date], Day.Monday) < 5 then true else false),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Added Custom1",{{"IsWeekday", type logical}, {"Week", type text}}),
+				    #"Added Custom2" = Table.AddColumn(#"Changed Type", "Month.1", each Date.ToText([Date], "MMMM", "en-US")),
+				    #"Renamed Columns5" = Table.RenameColumns(#"Added Custom2",{{"Month.1", "Month Name"}}),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Renamed Columns5",{{"Month Name", type text}}),
+				    #"Merged Queries" = Table.NestedJoin(#"Changed Type1", {"Date"}, Holiday, {"Date"}, "Google Holiday", JoinKind.LeftOuter),
+				    #"Expanded Google Holiday" = Table.ExpandTableColumn(#"Merged Queries", "Google Holiday", {"Festival", "Type"}, {"Festival", "Type"}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Expanded Google Holiday",{{"Type", "Holiday Type"}})
+				in
+				    #"Renamed Columns"
+				```
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

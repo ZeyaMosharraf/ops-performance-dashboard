@@ -1,0 +1,677 @@
+table Measure
+	lineageTag: a33b6d6d-d00a-4a46-af88-bcea64f24cb9
+
+	measure 'Total Billable Hours' = CALCULATE(SUM(fact_ActivityLog[Hours]), fact_ActivityLog[Is Billable]= TRUE)
+		formatString: #,0
+		displayFolder: # Grand Totals
+		lineageTag: 0e8f40d2-a4e5-4197-8008-b5146bb8a956
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'Total Non Billable Hours' = CALCULATE(SUM(fact_ActivityLog[Hours]), fact_ActivityLog[Is Billable] = FALSE)
+		displayFolder: # Grand Totals
+		lineageTag: e6c573e7-830f-4755-82d1-017afd9f186d
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Utilization Billable %' = DIVIDE([Total Billable Hours], [Available Capacity])
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: # Grand Totals
+		lineageTag: e117835d-b23d-4dfe-baf0-c9d41d48023a
+
+	measure 'Total Project' = DISTINCTCOUNT(dim_project[Project Id])
+		formatString: 0
+		displayFolder: # Grand Totals
+		lineageTag: 2a8ec4ee-b9c0-46e2-96bc-4bb3e399ff5b
+
+	measure 'Project Age(Months)' = DATEDIFF(MIN(dim_project[Project Start Date]), TODAY(),MONTH)
+		formatString: 0
+		displayFolder: # Grand Totals
+		lineageTag: 8c5e2924-8b86-46d5-a14f-f391897ec00c
+
+	measure 'Project Lost' =
+			
+			VAR _project = CALCULATE(DISTINCTCOUNT(dim_project[Project Name]), dim_project[Project Status]= TRUE())
+			RETURN
+			COALESCE(_project, 0)
+		formatString: 0
+		displayFolder: # Grand Totals
+		lineageTag: 2fa69e1e-c078-40f1-8e55-27d66b70f1a0
+
+	measure 'Available Capacity' = ```
+			
+			VAR _totalusers = 
+			    CALCULATE(
+			        DISTINCTCOUNT(dim_users[User_ID])
+			    )
+			VAR _workingdays =
+			    (CALCULATE(
+			        DISTINCTCOUNT('dim_date'[Date]),
+			        'dim_date'[Holiday Type] <> "Fixed Leave",
+			        dim_date[IsWeekday] = TRUE()
+			    ))
+			RETURN _totalusers * _workingdays * 9
+			```
+		formatString: #,0
+		displayFolder: # Grand Totals
+		lineageTag: 53ce363f-31d8-4c59-b97f-e4dece5c7298
+
+	measure 'Projects Inactive' =
+			
+			VAR _inactiveproject = CALCULATE(DISTINCTCOUNT(dim_project[Project Id]), dim_project[Project Status] = TRUE)
+			RETURN
+			IF(ISBLANK(_inactiveproject), 0, _inactiveproject)
+		formatString: 0
+		displayFolder: # Grand Totals
+		lineageTag: 093f164a-f300-4bd3-b6a3-e6cc9a59a3be
+
+	measure 'Total Active User' = CALCULATE(DISTINCTCOUNT(dim_users[User_ID]), dim_users[Archived] = FALSE())
+		formatString: 0
+		displayFolder: # Grand Totals
+		lineageTag: 7f67cea8-61b6-45e2-a0d8-c3dcf31bba14
+
+	measure 'Budget Status' =
+			
+			VAR _budgetedHours = [Budget Hours]
+			
+			VAR _actualBillableHours = [Total Billable Hours]
+			
+			RETURN
+			    SWITCH(
+			        TRUE(),
+			        ISBLANK(_budgetedHours), BLANK(),
+			        _actualBillableHours > _budgetedHours, "Over-Budget",
+			        _actualBillableHours < _budgetedHours, "Under-Budget",
+			        _actualBillableHours = _budgetedHours, "On-Track"
+			    )
+		displayFolder: # Category
+		lineageTag: 32b786b6-c412-4574-9fe8-a3573912cad5
+
+	measure 'Project Name' =
+			// Label Bar Chart Project Name
+			VAR _Item = SELECTEDVALUE('dim_projec'[Project Name])
+			VAR _Value = FORMAT([Total Billable Hours], "#,##0")
+			VAR _Label = _Item & " | " & _Value
+			RETURN
+			_Label
+		displayFolder: # Label\Billabel Hour
+		lineageTag: ad04d2e7-706f-4963-bd6a-5db3e5c0a1e5
+
+	measure 'Projects Active' = CALCULATE(DISTINCTCOUNT(dim_project[Project Id]), dim_project[Project Status] = FALSE)
+		formatString: 0
+		displayFolder: # Grand Totals
+		lineageTag: 0b5cfe43-b074-4237-812a-b77957eed787
+
+	measure 'Rank Team Utilization Billabel' =
+			
+			RANKX(ALL('dim_team'[Team Name]), [Utilization Billable %])
+		formatString: 0
+		displayFolder: # Rank
+		lineageTag: cb6dd2fe-06b9-467a-b646-509fc2736ead
+
+	measure Zero = 0
+		formatString: 0
+		displayFolder: # Dummy
+		lineageTag: 117a52fe-0e80-4fda-aef0-635f04f5dfa8
+
+	measure 'Project By Billabel Hour' = ```
+			
+			VAR _Page = [# Pages Value]
+			VAR _Items = [# Items Value]
+			VAR _Item_Rank = [Rank Project Billabel Hour]
+			VAR _Filter =
+			FILTER(ALLSELECTED(dim_projec[Project Name]),
+			        _Item_Rank > (_Page - 1) * _Items
+			        && _Item_Rank <= (_Page) * _Items
+			)
+			VAR _itemshow = 
+			IF( SELECTEDVALUE(dim_projec[Project Name]) IN _Filter, 1,0)
+			RETURN
+			_itemshow
+			```
+		formatString: 0
+		displayFolder: # Pagination
+		lineageTag: 63435277-6398-49f7-a6f2-48b6407d2068
+
+	measure 'Rank Project Billabel Hour' =
+			
+			RANKX(ALL(dim_projec[Project Name]), [Total Billable Hours],,DESC)
+		formatString: 0
+		displayFolder: # Rank
+		lineageTag: c554cdba-8da4-4dd6-a3b9-3a2d6796501e
+
+	measure 'MoM Billable Hours (%)' =
+			
+			VAR _CurrentMonth = [CM Billabel Hours]
+			VAR _PreviousMonth = [PM Billable Hours]
+			RETURN
+			IF(
+			    NOT ISBLANK(_PreviousMonth),
+			    DIVIDE(_CurrentMonth - _PreviousMonth, _PreviousMonth)
+			)
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: # Growth
+		lineageTag: 1b91bf83-9b67-4c9a-8e83-d0c0e7a9092f
+
+	measure 'MoM Non Billabel Hours (%)' =
+			
+			VAR _CurrentMonth = [CM Non Billabel Hours]
+			VAR _PreviousMonth = [PM Non Billable Hours]
+			RETURN
+			IF(
+			    NOT ISBLANK(_PreviousMonth),
+			    DIVIDE(_CurrentMonth - _PreviousMonth, _PreviousMonth)
+			)
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: # Growth
+		lineageTag: 2b41102f-08f2-4d97-9857-22d7f66c6df4
+
+	measure 'MoM Utilization Hours (%)' =
+			
+			VAR _CurrentMonth = [CM Utilization Billable %]
+			VAR _PreviousMonth = [PM Utilization Billable Hours]
+			RETURN
+			IF(
+			    NOT ISBLANK(_PreviousMonth),
+			    DIVIDE(_CurrentMonth - _PreviousMonth, _PreviousMonth)
+			)
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: # Growth
+		lineageTag: 152c460a-1673-4839-9e05-304b5e3743de
+
+	measure Utilization = 1 - [Utilization Billable %]
+		displayFolder: # Visual Labels\Custom Calculations
+		lineageTag: ee964d3d-7ce5-4b75-ba1a-fab93a784133
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Utilization % MoM Arrow Label' =
+			
+			VAR ArrowUp = UNICHAR(9650)
+			VAR ArrowDown = UNICHAR(9660)
+			VAR Change = [MoM Utilization Hours (%)]
+			RETURN
+			IF(Change > 0,
+			     FORMAT(Change, "0.00%") & " " & ArrowUp,
+			     FORMAT(Change, "0.00%") & " " & ArrowDown
+			)
+		displayFolder: # Visual Labels\Arrow
+		lineageTag: bed1a021-5ab3-4d63-8179-991e1a25de29
+
+	measure 'MOM Utilization % Color' =
+			
+			IF([MoM Utilization Hours (%)] >= 0, "Green", "Red")
+		displayFolder: # Visual Labels\Color
+		lineageTag: bedb8a78-8660-4aed-abbc-744710b6ddcc
+
+	measure 'Utilization Color' = ```
+			
+			VAR Util = [Utilization Billable %] * 100
+			RETURN
+			    SWITCH(
+			        TRUE(),
+			        ISBLANK(Util), "#BFBFBF",             
+			        Util < 50, "#FF5C5C",                 -- 🔴 Red
+			        Util >= 50 && Util < 70, "#FFD966",   -- 🟡 Yellow
+			        Util >= 70, "#92D050",                -- 🟢 Green
+			        "#FFFFFF"                             
+			    )
+			```
+		displayFolder: # Visual Labels\Color
+		lineageTag: 49f76421-3e9f-4de8-8fb9-f6ceb6b53852
+
+	measure 'PM Non Billable Hours' =
+			
+			VAR SelectedDate =
+			    MAX('dim_date'[Date])
+			VAR FirstDayPrevMonth =
+			    DATE(YEAR(SelectedDate), MONTH(SelectedDate) - 1, 1)
+			VAR LastDayPrevMonth =
+			    EOMONTH(SelectedDate, -1)
+			RETURN
+			    CALCULATE(
+			        [Total Non Billable Hours],
+			        FILTER(
+			            ALL('dim_date'),
+			            'dim_date'[Date] >= FirstDayPrevMonth &&
+			            'dim_date'[Date] <= LastDayPrevMonth
+			        )
+			    )
+		displayFolder: # Previous Month
+		lineageTag: 5c1b42c8-fbf7-4dbc-9c46-5244d7bd6942
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'PM Billable Hours' =
+			
+			VAR SelectedDate =
+			    MAX('dim_date'[Date])
+			VAR FirstDayPrevMonth =
+			    DATE(YEAR(SelectedDate), MONTH(SelectedDate) - 1, 1)
+			VAR LastDayPrevMonth =
+			    EOMONTH(SelectedDate, -1)
+			RETURN
+			    CALCULATE(
+			        [Total Billable Hours],
+			        FILTER(
+			            ALL('dim_date'),
+			            'dim_date'[Date] >= FirstDayPrevMonth &&
+			            'dim_date'[Date] <= LastDayPrevMonth
+			        )
+			    )
+		formatString: #,0
+		displayFolder: # Previous Month
+		lineageTag: 893199c3-0818-456b-9b0b-b957dd66f275
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure 'Billabel Hours % MoM Arrow Label' =
+			
+			VAR ArrowUp = UNICHAR(9650)
+			VAR ArrowDown = UNICHAR(9660)
+			VAR Change = [MoM Billable Hours (%)]
+			RETURN
+			IF(Change > 0,
+			     FORMAT(Change, "0.00%") & " " & ArrowUp,
+			     FORMAT(Change, "0.00%") & " " & ArrowDown
+			)
+		displayFolder: # Visual Labels\Arrow
+		lineageTag: a9ae8a40-8256-4af2-a4e4-eae097c34d95
+
+	measure 'MOM Billabel Hours % Color' =
+			
+			IF([MoM Billable Hours (%)] >= 0, "Green", "Red")
+		displayFolder: # Visual Labels\Color
+		lineageTag: d619b16b-5f73-4587-9175-7d5264dd3bd8
+
+	measure 'MOM Non Billabel Hours % Color' =
+			
+			IF([MoM Non Billabel Hours (%)] >= 0, "Red", "Green")
+		displayFolder: # Visual Labels\Color
+		lineageTag: d41f18f4-3a5b-4633-915f-281c5e2bb40e
+
+	measure 'Non Billabel Hours % MoM Arrow Label' =
+			
+			VAR ArrowUp = UNICHAR(9650)
+			VAR ArrowDown = UNICHAR(9660)
+			VAR Change = [MoM Non Billabel Hours (%)]
+			RETURN
+			IF(Change > 0,
+			     FORMAT(Change, "0.00%") & " " & ArrowDown,
+			     FORMAT(Change, "0.00%") & " " & ArrowUp
+			)
+		displayFolder: # Visual Labels\Arrow
+		lineageTag: 3c492771-a572-4dbf-a8f6-984d95a16b9f
+
+	measure 'Total Leave' = ```
+			
+			VAR _leave = CALCULATE(
+			    COUNTROWS(fact_ActivityLog),
+			    FILTER(
+			        'dim_task',
+			        'dim_task'[Task Name] IN {
+			            "Sick leave", 
+			            "Birthday leave", 
+			            "Personal leave",
+			            "Annual leave"
+			        }
+			    )
+			)
+			RETURN
+			IF(ISBLANK(_leave), 0, _leave)
+			```
+		formatString: 0
+		displayFolder: # Grand Totals
+		lineageTag: 90da8931-a521-4d45-b6df-5e245661ed55
+
+	measure 'Total Billable (All Users)' =
+			
+			CALCULATE([Total Billable Hours],
+			    REMOVEFILTERS(dim_users
+			))
+		displayFolder: # Grand Totals
+		lineageTag: 43c01f46-7043-4579-ae1c-5eaf299d0076
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Contribution Employee %' = DIVIDE([Total Billable Hours],[Total Billable (All Users)])
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: # Grand Totals
+		lineageTag: 14556a92-c12b-47f4-b879-a7eea13f921a
+
+	measure 'Budget Spent %' = DIVIDE([Total Billable Hours], [Budget Hours])
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: # Grand Totals
+		lineageTag: 688fad3c-7ead-4796-a808-b307aef4079d
+
+	measure 'Sub Title Project' = FORMAT([Total Project], "#")
+		displayFolder: # Visual Labels\Custom Calculations
+		lineageTag: 275d8d49-4500-4fb8-9344-b18329ce4034
+
+	measure 'Budget Hours' =
+			
+			VAR RetainerHourly =
+			    CALCULATE(SUMX (
+			        SUMMARIZE (
+			            FILTER (
+			                ADDCOLUMNS (
+			                    fact_ActivityLog,
+			                    "PaymentType", RELATED ( dim_project[Payment Type]),
+			                    "churndate", RELATED ( dim_project[Churn Date]),
+			                    "startdate", RELATED(dim_date[Date])
+			                ),
+			                [PaymentType] IN { "Retainer" } &&
+			                (
+			                            ISBLANK([ChurnDate])
+			                            || [startdate] <= [ChurnDate]
+			                        )
+			            ),
+			            dim_project[Project Id],
+			            dim_date[YearMonth],
+			            "MonthlyBudget", MAX ( dim_project[Budget Hours] )
+			        ),
+			        [MonthlyBudget]
+			    ), REMOVEFILTERS(dim_users))
+			
+			VAR Fixed =
+			    CALCULATE(SUMX (
+			        SUMMARIZE (
+			            FILTER (
+			                ADDCOLUMNS (
+			                    fact_ActivityLog,
+			                    "PaymentType", RELATED ( dim_project[Payment Type] )
+			                ),
+			                [PaymentType] IN { "Fixed", "Hourly" }
+			            ),
+			            dim_project[Project Id],
+			            "ProjectBudget", MAX ( dim_project[Budget Hours] )
+			        ),
+			        [ProjectBudget]
+			    ), REMOVEFILTERS(dim_users))
+			
+			RETURN
+			RetainerHourly + Fixed
+		formatString: #,0
+		displayFolder: # Grand Totals
+		lineageTag: f34015bf-8bd8-4ceb-8a9c-7a4c5b33be3e
+
+	measure 'MoM Budget Hours (%)' =
+			
+			VAR _CurrentMonth = [CM Budget Hours]
+			VAR _PreviousMonth = [PM Budget Hours]
+			RETURN
+			IF(
+			    NOT ISBLANK(_PreviousMonth),
+			    DIVIDE(_CurrentMonth - _PreviousMonth, _PreviousMonth)
+			)
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: # Growth
+		lineageTag: dd258a1a-d87c-46b4-85ef-85f43004ff4c
+
+	measure 'PM Budget Hours' =
+			
+			VAR SelectedDate =
+			    MAX('dim_date'[Date])
+			VAR FirstDayPrevMonth =
+			    DATE(YEAR(SelectedDate), MONTH(SelectedDate) - 1, 1)
+			VAR LastDayPrevMonth =
+			    EOMONTH(SelectedDate, -1)
+			RETURN
+			    CALCULATE(
+			        [Budget Hours],
+			        FILTER(
+			            ALL('dim_date'),
+			            'dim_date'[Date] >= FirstDayPrevMonth &&
+			            'dim_date'[Date] <= LastDayPrevMonth
+			        )
+			    )
+		formatString: #,0
+		displayFolder: # Previous Month
+		lineageTag: 2f241c99-1047-4ae9-b073-8bfa98981879
+
+	measure 'Budget Hours % MoM Arrow Label' =
+			
+			VAR ArrowUp = UNICHAR(9650)
+			VAR ArrowDown = UNICHAR(9660)
+			VAR Change = [MoM Budget Hours (%)]
+			RETURN
+			IF(Change > 0,
+			     FORMAT(Change, "0.00%") & " " & ArrowUp,
+			     FORMAT(Change, "0.00%") & " " & ArrowDown
+			)
+		displayFolder: # Visual Labels\Arrow
+		lineageTag: b291a533-7bf6-41c3-8c17-f727960f6693
+
+	measure 'MOM Budget Hours % Color' =
+			
+			IF([MoM Budget Hours (%)] >= 0, "Green", "Red")
+		displayFolder: # Visual Labels\Color
+		lineageTag: 0c91bd7a-a486-4266-9f8e-1c86cdcc6f68
+
+	measure 'CM Budget Hours' =
+			
+			VAR SelectedDate = MAX('dim_date'[Date])
+			VAR FirstDayThisMonth = DATE(YEAR(SelectedDate), MONTH(SelectedDate), 1)
+			VAR LastDayThisMonth = EOMONTH(SelectedDate, 0)
+			
+			VAR _CurrentMonth =
+			    CALCULATE(
+			        [Budget Hours],
+			        FILTER(
+			            ALL('dim_date'),
+			            'dim_date'[Date] >= FirstDayThisMonth &&
+			            'dim_date'[Date] <= LastDayThisMonth
+			        )
+			    )
+			
+			RETURN
+			_CurrentMonth
+		formatString: 0
+		displayFolder: # Current Month
+		lineageTag: 2d68797a-214e-4209-b92c-b58220a71361
+
+	measure 'CM Billabel Hours' =
+			
+			VAR SelectedDate = MAX('dim_date'[Date])
+			VAR FirstDayThisMonth = DATE(YEAR(SelectedDate), MONTH(SelectedDate), 1)
+			VAR LastDayThisMonth = EOMONTH(SelectedDate, 0)
+			
+			VAR _CurrentMonth =
+			    CALCULATE(
+			        [Total Billable Hours],
+			        FILTER(
+			            ALL('dim_date'),
+			            'dim_date'[Date] >= FirstDayThisMonth &&
+			            'dim_date'[Date] <= LastDayThisMonth
+			        )
+			    )
+			
+			RETURN
+			_CurrentMonth
+		displayFolder: # Current Month
+		lineageTag: dae03b18-5377-42e2-9dc3-0e54933426ad
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'CM Non Billabel Hours' =
+			
+			VAR SelectedDate = MAX('dim_date'[Date])
+			VAR FirstDayThisMonth = DATE(YEAR(SelectedDate), MONTH(SelectedDate), 1)
+			VAR LastDayThisMonth = EOMONTH(SelectedDate, 0)
+			
+			VAR _CurrentMonth =
+			    CALCULATE(
+			        [Total Non Billable Hours],
+			        FILTER(
+			            ALL('dim_date'),
+			            'dim_date'[Date] >= FirstDayThisMonth &&
+			            'dim_date'[Date] <= LastDayThisMonth
+			        )
+			    )
+			
+			RETURN
+			_CurrentMonth
+		displayFolder: # Current Month
+		lineageTag: 84fcd842-9ec9-4b56-9e87-561b546c4a84
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'CM Utilization Billable %' =
+			
+			VAR SelectedDate = MAX('dim_date'[Date])
+			VAR FirstDayThisMonth = DATE(YEAR(SelectedDate), MONTH(SelectedDate), 1)
+			VAR LastDayThisMonth = EOMONTH(SelectedDate, 0)
+			
+			VAR _CurrentMonth =
+			    CALCULATE(
+			        [Utilization Billable %],
+			        FILTER(
+			            ALL('dim_date'),
+			            'dim_date'[Date] >= FirstDayThisMonth &&
+			            'dim_date'[Date] <= LastDayThisMonth
+			        )
+			    )
+			
+			RETURN
+			_CurrentMonth
+		displayFolder: # Current Month
+		lineageTag: 3a5e6aa0-eda6-4275-b6d4-358bda41d801
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'PM Utilization Billable Hours' =
+			
+			VAR SelectedDate =
+			    MAX('dim_date'[Date])
+			VAR FirstDayPrevMonth =
+			    DATE(YEAR(SelectedDate), MONTH(SelectedDate) - 1, 1)
+			VAR LastDayPrevMonth =
+			    EOMONTH(SelectedDate, -1)
+			RETURN
+			    CALCULATE(
+			        [Utilization Billable %],
+			        FILTER(
+			            ALL('dim_date'),
+			            'dim_date'[Date] >= FirstDayPrevMonth &&
+			            'dim_date'[Date] <= LastDayPrevMonth
+			        )
+			    )
+		displayFolder: # Previous Month
+		lineageTag: 1eea8509-6d55-40a1-97c7-cff102dbfcdc
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Label Project by Budget' =
+			// Label Bar Chart Project Name
+			VAR _Item = SELECTEDVALUE('dim_project'[Project Name])
+			VAR _Value = FORMAT([Budget Hours], "#,##0")
+			VAR _Label = _Item & " | " & _Value
+			RETURN
+			_Label
+		lineageTag: f31f01de-b3cc-4735-a960-433a8b1c6060
+
+	measure 'Budget spent % Color' = ```
+			
+			VAR _budget = [Budget Spent %] * 100 
+			RETURN
+			 SWITCH(
+			    TRUE(),
+			    _budget > 100, "#FF5C5C", 
+			    _budget >= 70 && _budget < 100, "#FFA500", 
+			    TRUE(), "#000000" 
+			)
+			```
+		lineageTag: 0e251e9b-8174-470e-a28a-fa9db4528a12
+
+	measure 'Color employee contribution' = ```
+			
+			VAR contro_employee = [Contribution Employee %] *100
+			RETURN
+			    SWITCH(
+			        TRUE(), 
+			        contro_employee = 100, "#000000",
+			        contro_employee < 20, "#FF4C4C",                 -- 🔴 Red
+			        contro_employee >= 20 && contro_employee < 50, "#FFC107",   -- 🟡 Yellow
+			        contro_employee >= 50, "#2ECC40"               -- 🟢 Green      
+			    )
+			```
+		lineageTag: 40b04ed9-48c9-4b00-901a-d5871920933d
+
+	measure 'Budget Hours (Retainers)' =
+			
+			
+			VAR RetainerHourly =
+			    CALCULATE(SUMX (
+			        SUMMARIZE (
+			            FILTER (
+			                ADDCOLUMNS (
+			                    fact_ActivityLog,
+			                    "PaymentType", RELATED ( dim_project[Payment Type]),
+			                    "churndate", RELATED (dim_project[Churn Date]),
+			                    "startdate", RELATED(dim_date[Date])
+			                ),
+			                [PaymentType] IN { "Retainer" } &&
+			                (
+			                            ISBLANK([ChurnDate])
+			                            || [startdate] <= [ChurnDate]
+			                        )
+			            ),
+			            dim_project[Project Id],
+			            dim_date[YearMonth],
+			            "MonthlyBudget", MAX ( dim_project[Budget Hours])
+			        ),
+			        [MonthlyBudget]
+			    ), REMOVEFILTERS(dim_users))
+			
+			VAR Fixed =
+			    CALCULATE(SUMX (
+			        SUMMARIZE (
+			            FILTER (
+			                ADDCOLUMNS (
+			                    fact_ActivityLog,
+			                    "PaymentType", RELATED ( dim_project[Payment Type] )
+			                ),
+			                [PaymentType] IN { "Fixed", "Hourly" }
+			            ),
+			            dim_project[Project Id],
+			            "ProjectBudget", MAX ( dim_project[Budget Hours] )
+			        ),
+			        [ProjectBudget]
+			    ), REMOVEFILTERS(dim_users))
+			
+			RETURN
+			RetainerHourly + Fixed
+		formatString: 0
+		lineageTag: 86e300e5-3be0-41f3-8813-c7a3b3e26799
+
+	measure 'Project Budget Status' = ```
+			
+			VAR _budgetedHours = [Budget Hours]
+			VAR _actualBillableHours =[Total Billable Hours]
+			
+			RETURN
+			    SWITCH(
+			        TRUE(),
+			        ISBLANK(_budgetedHours), "Others",
+			        _actualBillableHours > _budgetedHours, "Over-Budget",
+			        _actualBillableHours < _budgetedHours, "Under-Budget",
+			        _actualBillableHours = _budgetedHours, "On-Track"
+			    )
+			
+			```
+		lineageTag: cdf55253-6597-4501-b842-722647cd8d54
+
+	partition Measure = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Changed Type",{"Column1"})
+				in
+				    #"Removed Columns"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

@@ -1,0 +1,48 @@
+table '# Project'
+	lineageTag: ff0f9231-a267-4991-bbd9-a9a0430818c2
+
+	column Project
+		lineageTag: 25eaaec3-4b2d-4972-91bb-6ae600467154
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'Project Order'
+
+		relatedColumnDetails
+			groupByColumn: 'Project Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Project Fields'
+		isHidden
+		lineageTag: 8ed7b534-6cfd-4fd1-b15c-3213e49e43ea
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'Project Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Project Order'
+		isHidden
+		formatString: 0
+		lineageTag: 1deae64d-882c-471e-bb94-344245485960
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition '# Project' = calculated
+		mode: import
+		source =
+				{
+				    ("Projects Active", NAMEOF('Measure'[Projects Active]), 0),
+				    ("Project Lost", NAMEOF('Measure'[Project Lost]), 1)
+				}
+
+	annotation PBI_Id = 661439406514430b944528a80f212542
+

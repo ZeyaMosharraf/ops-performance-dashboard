@@ -1,0 +1,22 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/bookmarksMetadata/1.0.0/schema.json",
+  "items": [
+    {
+      "name": "64ea425a300e062ba9b5"
+    },
+    {
+      "name": "889ec213c1471011364c"
+    },
+    {
+      "name": "9ab50dc027101d5d0d5d"
+    },
+    {
+      "name": "10ebb8dc9847718c6ffc",
+      "displayName": "Operational view",
+      "children": [
+        "5a6da0e6ea703cc7e48b",
+        "b564f40e897bfb9c911c"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+table '# F Pages'
+	lineageTag: 4e520d88-3685-4e05-b1c5-a4234f5a46e8
+
+	measure '# Pages Value' = SELECTEDVALUE('# F Pages'[# Pages], 10)
+		formatString: 0
+		lineageTag: 45e25041-53ef-4b3f-ba0f-210b9c0972d0
+
+	column '# Pages'
+		formatString: 0
+		lineageTag: e2a04b8a-0011-44a0-803e-41c382ed014a
+		summarizeBy: none
+		sourceColumn: [Value]
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 0
+				}
+
+		annotation SummarizationSetBy = User
+
+	partition '# F Pages' = calculated
+		mode: import
+		source = GENERATESERIES(1, 50, 1)
+
+	annotation PBI_Id = 904f57cc4e704192afad0b210733074d
+

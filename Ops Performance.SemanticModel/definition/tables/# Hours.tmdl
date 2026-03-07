@@ -1,0 +1,48 @@
+table '# Hours'
+	lineageTag: 5324fb9f-a218-4742-85b6-d88c2a56e1c8
+
+	column Hours
+		lineageTag: 8f9a20b2-0081-4c0c-8af9-87c043b4f896
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'Hours Order'
+
+		relatedColumnDetails
+			groupByColumn: 'Hours Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Hours Fields'
+		isHidden
+		lineageTag: 38304d1f-bbae-4e3c-b9cc-a342cc811816
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'Hours Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Hours Order'
+		isHidden
+		formatString: 0
+		lineageTag: f50cc1fc-adda-46e0-8415-65e46ec11d05
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition '# Hours' = calculated
+		mode: import
+		source =
+				{
+				    ("Billable Hours", NAMEOF('Measure'[Total Billable Hours]), 0),
+				    ("Non Billable Hours", NAMEOF('Measure'[Total Non Billable Hours]), 1)
+				}
+
+	annotation PBI_Id = 67a5fcde9a654c52ae2a95e3bdf5aff5
+

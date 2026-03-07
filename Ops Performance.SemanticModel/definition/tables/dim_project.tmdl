@@ -1,0 +1,139 @@
+table dim_project
+	lineageTag: 54176677-5a28-4c7d-8975-9482aab6d65f
+
+	column 'Project Id'
+		dataType: int64
+		formatString: 0
+		lineageTag: b1782355-dc78-4751-973b-91f3deb88d70
+		summarizeBy: none
+		sourceColumn: Project Id
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Project Name'
+		dataType: string
+		lineageTag: 534ab910-a974-44f3-85ff-55e0fecb52fc
+		summarizeBy: none
+		sourceColumn: Project Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Team Assign'
+		dataType: string
+		lineageTag: ebc1fe1f-73f7-4d84-8459-53d9e661c106
+		summarizeBy: none
+		sourceColumn: Team Assign
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Project Priority'
+		dataType: string
+		lineageTag: af2910a0-d0a8-43cc-8291-fbdbcbee00e6
+		summarizeBy: none
+		sourceColumn: Project Priority
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Payment Type'
+		dataType: string
+		lineageTag: 07e535e3-9173-4e51-b3d4-d6317865a003
+		summarizeBy: none
+		sourceColumn: Payment Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Project Start Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 7678b47e-5cb8-48de-a0eb-603a669c9087
+		summarizeBy: none
+		sourceColumn: Project Start Date
+
+		variation Variation
+			isDefault
+			relationship: 70e7c4ab-9fbb-4cc0-bbad-60f0b0b428ff
+			defaultHierarchy: LocalDateTable_c40f3fba-e72e-428e-bca5-4ce629aa85cf.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Project Status'
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 0bfccf21-bbdd-442f-bcff-d3086b13b9d7
+		summarizeBy: none
+		sourceColumn: Project Status
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Churn Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: c4661fb9-c9fd-4d45-97e7-429d30f746e5
+		summarizeBy: none
+		sourceColumn: Churn Date
+
+		variation Variation
+			isDefault
+			relationship: 9c3f4939-346b-449a-9fc3-e8e2aa71e083
+			defaultHierarchy: LocalDateTable_3d95bc57-84fc-4245-8eff-0d3731e97d2f.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Budget Hours'
+		dataType: int64
+		formatString: 0
+		lineageTag: f445b0fe-9140-431d-809d-be442c1c242b
+		summarizeBy: sum
+		sourceColumn: Budget Hours
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Project Age Category' =
+			
+			VAR AgeInMonths = DATEDIFF(dim_project[Project Start Date], TODAY(), MONTH)
+			RETURN
+			SWITCH(
+			    TRUE(),
+			    AgeInMonths <= 3, "0-3 months",
+			    AgeInMonths <= 6, "3-6 months",
+			    AgeInMonths <= 12, "6-12 months",
+			    AgeInMonths <= 24, "12-24 months",
+			    AgeInMonths > 24, "24+ months"
+			)
+		lineageTag: 0e634fe7-42dd-4a20-a102-80fcbb519983
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_project = m
+		mode: import
+		queryGroup: Load
+		source = ```
+				let
+				
+				    WebconnectorLink = Web_app_url_dimproject,
+				    connectorkey     = Auth_Token,
+				
+				    Source = Web.Contents(
+				        WebconnectorLink,
+				        [
+				            Query = [ token = connectorkey ]
+				        ]
+				    ),
+				
+				    Csv = Csv.Document(Source, [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Out = Table.PromoteHeaders(Csv, [PromoteAllScalars = true]),
+				    #"Changed Type" = Table.TransformColumnTypes(Out,{{"Project Id", Int64.Type}, {"Project Start Date", type date}, {"Project Status", type logical}, {"Churn Date", type date}, {"Budget Hours", Int64.Type}}),
+				    #"Filtered Rows" = Table.SelectRows(#"Changed Type", each [Project Id] <> null and [Project Id] <> "")
+				in 
+				    #"Filtered Rows"
+				```
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

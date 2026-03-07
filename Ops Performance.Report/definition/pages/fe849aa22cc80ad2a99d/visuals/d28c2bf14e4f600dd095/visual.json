@@ -1,0 +1,32 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
+  "name": "d28c2bf14e4f600dd095",
+  "position": {
+    "x": 313.44041699783736,
+    "y": 66.625016173453346,
+    "z": 12000,
+    "height": 168.0767453466664,
+    "width": 205.93186817249219,
+    "tabOrder": 1000
+  },
+  "visualGroup": {
+    "displayName": "Total Leave KPI",
+    "groupMode": "ScaleMode",
+    "objects": {
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "isHidden": true
+}

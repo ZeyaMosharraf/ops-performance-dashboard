@@ -1,0 +1,111 @@
+table dim_users
+	lineageTag: ba2df59e-54b0-425b-99d2-03b6e91c67d0
+
+	column User_ID
+		dataType: int64
+		formatString: 0
+		lineageTag: 58ae163b-d177-4596-a79c-ae0a26c65c27
+		summarizeBy: none
+		sourceColumn: User_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Employee_ID
+		dataType: string
+		lineageTag: d648f6f4-3fc0-4e57-8c9c-5f7b974df45c
+		summarizeBy: none
+		sourceColumn: Employee_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column User_Name
+		dataType: string
+		lineageTag: fac03c72-1c34-49af-ace1-245c2aaefa11
+		summarizeBy: none
+		sourceColumn: User_Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Team_Name
+		dataType: string
+		lineageTag: d3a6eacc-9d72-491a-af24-3122b60ef1cb
+		summarizeBy: none
+		sourceColumn: Team_Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column User_Email
+		dataType: string
+		lineageTag: 1d65ac0c-82e2-4e8e-be6b-e880340c0831
+		summarizeBy: none
+		sourceColumn: User_Email
+
+		annotation SummarizationSetBy = Automatic
+
+	column Archived
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: a7962f34-319a-49ee-9f9d-fb93ee06f213
+		summarizeBy: none
+		sourceColumn: Archived
+
+		annotation SummarizationSetBy = Automatic
+
+	column Join_Date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: a788069a-62ca-49fb-8f38-a4a24098d924
+		summarizeBy: none
+		sourceColumn: Join_Date
+
+		variation Variation
+			isDefault
+			relationship: 3379c7e4-8674-4b99-acab-b385da2d24fc
+			defaultHierarchy: LocalDateTable_a72eb5e6-165b-4842-bd71-850c5d6f9778.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Resign_Date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 4e5b6614-3cc8-4630-9d57-8170eaf44ca0
+		summarizeBy: none
+		sourceColumn: Resign_Date
+
+		variation Variation
+			isDefault
+			relationship: eb26d429-50b5-47b5-8bbd-b29cdb603163
+			defaultHierarchy: LocalDateTable_e063cf03-89e0-46f8-afad-e89578b31b87.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	partition dim_users = m
+		mode: import
+		queryGroup: Load
+		source =
+				let
+				
+				    WebconnectorLink = Web_app_url_dimusers,
+				    connectorkey     = Auth_Token,
+				
+				    Source = Web.Contents(
+				        WebconnectorLink,
+				        [
+				            Query = [ token = connectorkey ]
+				        ]
+				    ),
+				
+				    Csv = Csv.Document(Source, [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Out = Table.PromoteHeaders(Csv, [PromoteAllScalars = true]),
+				    #"Changed Type" = Table.TransformColumnTypes(Out,{{"User_ID", Int64.Type}, {"Archived", type logical}, {"Join_Date", type date}, {"Resign_Date", type date}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

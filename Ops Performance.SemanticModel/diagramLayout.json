@@ -1,0 +1,254 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 322.37732381605872,
+        "y": 183.14043542477472
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 2048,
+            "y": 182.62499999999994
+          },
+          "nodeIndex": "Measure",
+          "nodeLineageTag": "a33b6d6d-d00a-4a46-af88-bcea64f24cb9",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 4
+        },
+        {
+          "location": {
+            "x": 2715,
+            "y": 188.62499999999994
+          },
+          "nodeIndex": "EndDate",
+          "nodeLineageTag": "1a5e68ff-57d5-4ef1-9678-b04f3cc6f7ac",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 11
+        },
+        {
+          "location": {
+            "x": 733.70606741737924,
+            "y": 734.38815953369169
+          },
+          "nodeIndex": "dim_date",
+          "nodeLineageTag": "8c71f9eb-bc5e-4dde-a14f-b65e9df5a9fb",
+          "size": {
+            "height": 224,
+            "width": 234
+          },
+          "zIndex": 18
+        },
+        {
+          "location": {
+            "x": 2336.6666666666665,
+            "y": 797.62499999999989
+          },
+          "nodeIndex": "# Hours",
+          "nodeLineageTag": "5324fb9f-a218-4742-85b6-d88c2a56e1c8",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 8
+        },
+        {
+          "location": {
+            "x": 2336.6666666666665,
+            "y": 629.62499999999989
+          },
+          "nodeIndex": "# Month/Week",
+          "nodeLineageTag": "725657e6-0e31-4a7d-bc7b-a5df507648c7",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 5
+        },
+        {
+          "location": {
+            "x": 2046.6666666666665,
+            "y": 308.95833333333326
+          },
+          "nodeIndex": "# F Items",
+          "nodeLineageTag": "daa28659-a794-4e9e-a28d-ba2f04da48c8",
+          "size": {
+            "height": 145,
+            "width": 234
+          },
+          "zIndex": 6
+        },
+        {
+          "location": {
+            "x": 2718.6666666666665,
+            "y": 308.95833333333326
+          },
+          "nodeIndex": "# F Pages",
+          "nodeLineageTag": "4e520d88-3685-4e05-b1c5-a4234f5a46e8",
+          "size": {
+            "height": 145,
+            "width": 234
+          },
+          "zIndex": 9
+        },
+        {
+          "location": {
+            "x": 2050.6666666666665,
+            "y": 642.95833333333326
+          },
+          "nodeIndex": "# Project",
+          "nodeLineageTag": "ff0f9231-a267-4991-bbd9-a9a0430818c2",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 7
+        },
+        {
+          "location": {
+            "x": 2660.1666666666665,
+            "y": 725.95833333333326
+          },
+          "nodeIndex": "# Project Axis Parameter",
+          "nodeLineageTag": "1ba32f79-8f2b-482a-915d-d72c3feb87de",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 12
+        },
+        {
+          "location": {
+            "x": 3142.833333333333,
+            "y": 309.95833333333326
+          },
+          "nodeIndex": "# Payment / Teams",
+          "nodeLineageTag": "f2619d71-94cf-4c66-b9d1-45f04092e195",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 13
+        },
+        {
+          "location": {
+            "x": 2980.333333333333,
+            "y": 660.45833333333326
+          },
+          "nodeIndex": "# Param",
+          "nodeLineageTag": "13415d72-7134-41ce-8e31-03ab177f3695",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 10
+        },
+        {
+          "location": {
+            "x": 311.49999999999977,
+            "y": 378.44035932663166
+          },
+          "nodeIndex": "dim_team",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 2
+        },
+        {
+          "location": {
+            "x": 1213.0504721907018,
+            "y": 794.28654095961713
+          },
+          "nodeIndex": "dim_task",
+          "nodeLineageTag": "cf57a6fe-23e3-44c9-9030-a4cd84d460c1",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 16
+        },
+        {
+          "location": {
+            "x": 315.448651256769,
+            "y": 594.15990681510118
+          },
+          "nodeIndex": "dim_users",
+          "nodeLineageTag": "043df6ba-cdc1-4e5e-9817-8fb208ef6d72",
+          "size": {
+            "height": 272,
+            "width": 234
+          },
+          "zIndex": 17
+        },
+        {
+          "location": {
+            "x": 1157.8331464924624,
+            "y": 225.89662264352174
+          },
+          "nodeIndex": "dim_project",
+          "nodeLineageTag": "54176677-5a28-4c7d-8975-9482aab6d65f",
+          "size": {
+            "height": 296,
+            "width": 234
+          },
+          "zIndex": 15
+        },
+        {
+          "location": {
+            "x": 785.21918024085323,
+            "y": 308.650998774704
+          },
+          "nodeIndex": "fact_ActivityLog",
+          "nodeLineageTag": "e56864f1-d690-4fc1-8bfd-0fa4f8e54f00",
+          "size": {
+            "height": 272,
+            "width": 234
+          },
+          "zIndex": 14
+        },
+        {
+          "location": {
+            "x": 2621.5,
+            "y": 536.45833333333326
+          },
+          "nodeIndex": "dim_refresh_date",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 1
+        },
+        {
+          "location": {
+            "x": 3115.333333333333,
+            "y": 372.7565797668459
+          },
+          "nodeIndex": "Holiday",
+          "nodeLineageTag": "59dd3ece-2209-49b1-8819-a7a87e784cc6",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "All tables",
+      "zoomValue": 53.146830000000023,
+      "pinKeyFieldsToTop": true,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "All tables",
+  "defaultDiagram": "All tables"
+}

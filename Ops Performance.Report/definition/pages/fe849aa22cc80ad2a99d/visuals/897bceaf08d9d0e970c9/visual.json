@@ -1,0 +1,31 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
+  "name": "897bceaf08d9d0e970c9",
+  "position": {
+    "x": 275.12297205770386,
+    "y": 224.71910557002926,
+    "z": 5000,
+    "height": 159.16666666666669,
+    "width": 231.66666666666669,
+    "tabOrder": 15000
+  },
+  "visualGroup": {
+    "displayName": "Utilization KPI",
+    "groupMode": "ScaleMode",
+    "objects": {
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

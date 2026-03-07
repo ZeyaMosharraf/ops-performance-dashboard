@@ -1,0 +1,49 @@
+table '# Param'
+	lineageTag: 13415d72-7134-41ce-8e31-03ab177f3695
+
+	column '# Param'
+		lineageTag: 2e6a67c8-348b-4fd0-91ee-f826ddffd38f
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: '# Param Order'
+
+		relatedColumnDetails
+			groupByColumn: '# Param Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column '# Param Fields'
+		isHidden
+		lineageTag: 506f4a89-778d-41cb-82b2-cd889850f25e
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: '# Param Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column '# Param Order'
+		isHidden
+		formatString: 0
+		lineageTag: 49aa1ea7-d28d-45d7-8c73-d25f8b5d2876
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition '# Param' = calculated
+		mode: import
+		source =
+				{
+				    ("Payment Type", NAMEOF('dim_project'[Payment Type]), 0),
+				    ("Teams Name", NAMEOF('dim_team'[Team Name]), 1),
+				    ("Project Category", NAMEOF('dim_project'[Project Priority]), 2)
+				}
+
+	annotation PBI_Id = 0a29e63007dc4f149a9ed4f43c9cf756
+

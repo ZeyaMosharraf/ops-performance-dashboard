@@ -1,0 +1,48 @@
+table '# Project Axis Parameter'
+	lineageTag: 1ba32f79-8f2b-482a-915d-d72c3feb87de
+
+	column '# Project Axis Parameter'
+		lineageTag: 3df0adec-faaa-4dac-aaae-ad08647f3e6a
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: '# Project Axis Parameter Order'
+
+		relatedColumnDetails
+			groupByColumn: '# Project Axis Parameter Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column '# Project Axis Parameter Fields'
+		isHidden
+		lineageTag: ad665c0f-141f-4c10-9f59-8e147607d63c
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: '# Project Axis Parameter Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column '# Project Axis Parameter Order'
+		isHidden
+		formatString: 0
+		lineageTag: ee77a717-9b9f-4d6a-a13b-926b0444debd
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition '# Project Axis Parameter' = calculated
+		mode: import
+		source =
+				{
+				    ("Payment Type", NAMEOF('dim_project'[Payment Type]), 0),
+				    ("Project Category", NAMEOF('dim_project'[Project Priority]), 1)
+				}
+
+	annotation PBI_Id = 40169cf373944d1a9906f7230f2dc386
+

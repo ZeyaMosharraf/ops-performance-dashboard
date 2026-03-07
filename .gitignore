@@ -1,0 +1,6 @@
+**/.pbi/localSettings.json
+**/.pbi/cache.abf
+
+# Ignore the expressions.tmdl file that contain credentials for the data sources
+**/expressions.tmdl
+

@@ -1,0 +1,48 @@
+table '# Payment / Teams'
+	lineageTag: f2619d71-94cf-4c66-b9d1-45f04092e195
+
+	column '# Payment / Teams'
+		lineageTag: 793a9afd-33d1-485e-a32b-50d2a5c6432f
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: '# Payment / Teams Order'
+
+		relatedColumnDetails
+			groupByColumn: '# Payment / Teams Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column '# Payment / Teams Fields'
+		isHidden
+		lineageTag: 216bfe58-ff30-484a-a0a9-4d8fb1d7fdf1
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: '# Payment / Teams Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column '# Payment / Teams Order'
+		isHidden
+		formatString: 0
+		lineageTag: c45265f7-7fba-4258-9888-081b295a6fb2
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition '# Payment / Teams' = calculated
+		mode: import
+		source =
+				{
+				    ("Payment Type", NAMEOF('dim_project'[Payment Type]), 0),
+				    ("Teams Name", NAMEOF('dim_team'[Team Name]), 1)
+				}
+
+	annotation PBI_Id = eb743b1e12f04f9db8721e6545bb1788
+

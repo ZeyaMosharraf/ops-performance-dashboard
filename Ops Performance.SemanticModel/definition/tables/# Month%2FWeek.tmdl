@@ -1,0 +1,48 @@
+table '# Month/Week'
+	lineageTag: 725657e6-0e31-4a7d-bc7b-a5df507648c7
+
+	column Month/Week
+		lineageTag: 81c636fe-6f5e-4aad-ac02-cc35f1162090
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'Month/Week Order'
+
+		relatedColumnDetails
+			groupByColumn: 'Month/Week Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Month/Week Fields'
+		isHidden
+		lineageTag: cc7b3c34-f3f2-461d-acdb-5a3d787dcf7f
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'Month/Week Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Month/Week Order'
+		isHidden
+		formatString: 0
+		lineageTag: 32a23192-bbf8-417a-933d-fe14951a148b
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition '# Month/Week' = calculated
+		mode: import
+		source =
+				{
+				    ("W", NAMEOF('dim_date'[Week]), 0),
+				    ("M", NAMEOF('dim_date'[MonthShortName]), 1)
+				}
+
+	annotation PBI_Id = 8102c5756e424fc29e5f2d1cd75914d3
+

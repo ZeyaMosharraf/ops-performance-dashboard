@@ -1,0 +1,55 @@
+table dim_task
+	lineageTag: cf57a6fe-23e3-44c9-9030-a4cd84d460c1
+
+	column 'Task Id'
+		dataType: int64
+		formatString: 0
+		lineageTag: 877dce60-0ce0-4954-b294-f35a2a4c3e55
+		summarizeBy: none
+		sourceColumn: Task Id
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Task Category'
+		dataType: string
+		lineageTag: 8e9669e9-2e30-4a21-b244-aa3f0bb178fd
+		summarizeBy: none
+		sourceColumn: Task Category
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Task Name'
+		dataType: string
+		lineageTag: e3014a80-900f-45fe-a10c-da625e521fc8
+		summarizeBy: none
+		sourceColumn: Task Name
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_task = m
+		mode: import
+		queryGroup: Load
+		source = ```
+				let
+				
+				    WebconnectorLink = web_app_url_dimtask,
+				    connectorkey     = Auth_Token,
+				
+				    Source = Web.Contents(
+				        WebconnectorLink,
+				        [
+				            Query = [ token = connectorkey ]
+				        ]
+				    ),
+				
+				    Csv = Csv.Document(Source, [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Out = Table.PromoteHeaders(Csv, [PromoteAllScalars = true]),
+				    #"Changed Type" = Table.TransformColumnTypes(Out,{{"Task Id", Int64.Type}})
+				in 
+				    #"Changed Type"
+				```
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
