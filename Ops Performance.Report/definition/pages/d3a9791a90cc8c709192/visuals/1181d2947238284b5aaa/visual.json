@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
-  "name": "7aaf0e4a917c1bf1c4ec",
+  "name": "1181d2947238284b5aaa",
   "position": {
-    "x": 115.21739130434783,
-    "y": 238.04347826086956,
-    "z": 6000,
-    "height": 134.78260869565216,
-    "width": 188.04347826086956,
-    "tabOrder": 7000
+    "x": 1068.5714285714287,
+    "y": 84.285714285714292,
+    "z": 2,
+    "height": 134.28571428571431,
+    "width": 161.42857142857144,
+    "tabOrder": 2
   },
   "visual": {
     "visualType": "cardVisual",
@@ -23,12 +23,11 @@
                       "Entity": "Measure"
                     }
                   },
-                  "Property": "Total Non Billable Hours"
+                  "Property": "Total Project"
                 }
               },
-              "queryRef": "Measure.Total Non Billable Hours",
-              "nativeQueryRef": "Non Billable Hours",
-              "displayName": "Non Billable Hours"
+              "queryRef": "Measure.Total Project",
+              "nativeQueryRef": "Total Project"
             }
           ]
         }
@@ -43,7 +42,7 @@
                     "Entity": "Measure"
                   }
                 },
-                "Property": "Total Non Billable Hours"
+                "Property": "Total Project"
               }
             },
             "direction": "Descending"
@@ -53,133 +52,6 @@
       }
     },
     "objects": {
-      "value": [
-        {
-          "properties": {
-            "labelDisplayUnits": {
-              "expr": {
-                "Literal": {
-                  "Value": "1D"
-                }
-              }
-            }
-          },
-          "selector": {
-            "metadata": "Measure.Total Hours"
-          }
-        },
-        {
-          "properties": {
-            "fontFamily": {
-              "expr": {
-                "Literal": {
-                  "Value": "'Calibri'"
-                }
-              }
-            },
-            "fontSize": {
-              "expr": {
-                "Literal": {
-                  "Value": "15D"
-                }
-              }
-            },
-            "bold": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            },
-            "horizontalAlignment": {
-              "expr": {
-                "Literal": {
-                  "Value": "'center'"
-                }
-              }
-            },
-            "fontColor": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "Literal": {
-                      "Value": "'#9A6EEA'"
-                    }
-                  }
-                }
-              }
-            },
-            "showBlankAs": {
-              "expr": {
-                "Literal": {
-                  "Value": "'0'"
-                }
-              }
-            }
-          },
-          "selector": {
-            "id": "default"
-          }
-        },
-        {
-          "properties": {
-            "labelDisplayUnits": {
-              "expr": {
-                "Literal": {
-                  "Value": "1D"
-                }
-              }
-            }
-          },
-          "selector": {
-            "metadata": "Measure.Total Billable Hours"
-          }
-        },
-        {
-          "properties": {
-            "labelDisplayUnits": {
-              "expr": {
-                "Literal": {
-                  "Value": "1D"
-                }
-              }
-            },
-            "labelPrecision": {
-              "expr": {
-                "Literal": {
-                  "Value": "0L"
-                }
-              }
-            }
-          },
-          "selector": {
-            "metadata": "Measure.Total Non Billable Hours"
-          }
-        }
-      ],
-      "layout": [
-        {
-          "properties": {
-            "rectangleRoundedCurveCustomStyle": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
-                }
-              }
-            },
-            "rectangleRoundedCurve": {
-              "expr": {
-                "Literal": {
-                  "Value": "0L"
-                }
-              }
-            }
-          },
-          "selector": {
-            "id": "default"
-          }
-        }
-      ],
       "fillCustom": [
         {
           "properties": {
@@ -209,13 +81,124 @@
           }
         }
       ],
-      "label": [
+      "value": [
         {
           "properties": {
             "fontFamily": {
               "expr": {
                 "Literal": {
                   "Value": "'Calibri'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "20D"
+                }
+              }
+            },
+            "bold": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#9A6EEA'"
+                    }
+                  }
+                }
+              }
+            },
+            "horizontalAlignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'center'"
+                }
+              }
+            },
+            "showBlankAs": {
+              "expr": {
+                "Literal": {
+                  "Value": "'0'"
+                }
+              }
+            }
+          },
+          "selector": {
+            "id": "default"
+          }
+        },
+        {
+          "properties": {
+            "labelDisplayUnits": {
+              "expr": {
+                "Literal": {
+                  "Value": "1D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Measure.Total Hours"
+          }
+        },
+        {
+          "properties": {
+            "labelDisplayUnits": {
+              "expr": {
+                "Literal": {
+                  "Value": "1D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Measure.Total Billable Hours"
+          }
+        },
+        {
+          "properties": {
+            "labelDisplayUnits": {
+              "expr": {
+                "Literal": {
+                  "Value": "1D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Measure.TotalMonthlyBudget"
+          }
+        },
+        {
+          "properties": {
+            "labelDisplayUnits": {
+              "expr": {
+                "Literal": {
+                  "Value": "1D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Measure.Available Hours"
+          }
+        }
+      ],
+      "label": [
+        {
+          "properties": {
+            "heading": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Heading3'"
                 }
               }
             },
@@ -237,6 +220,60 @@
                   }
                 }
               }
+            },
+            "textWrap": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Measure.TotalMonthlyBudget"
+          }
+        },
+        {
+          "properties": {
+            "fontFamily": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Calibri'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "15D"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 1,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            },
+            "textWrap": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "alignBaselines": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
             }
           },
           "selector": {
@@ -244,68 +281,65 @@
           }
         }
       ],
-      "referenceLabelLayout": [
+      "shapeCustomRectangle": [
         {
           "properties": {
-            "arrangement": {
+            "tileShape": {
               "expr": {
                 "Literal": {
-                  "Value": "'rows'"
+                  "Value": "'rectangleRoundedByPixel'"
                 }
               }
             },
-            "style": {
+            "rectangleRoundedCurve": {
               "expr": {
                 "Literal": {
-                  "Value": "'tabular'"
-                }
-              }
-            },
-            "verticalAlignment": {
-              "expr": {
-                "Literal": {
-                  "Value": "'middle'"
-                }
-              }
-            },
-            "valueArea": {
-              "expr": {
-                "Literal": {
-                  "Value": "50D"
-                }
-              }
-            },
-            "labelSpace": {
-              "expr": {
-                "Literal": {
-                  "Value": "5D"
-                }
-              }
-            },
-            "outerPadding": {
-              "expr": {
-                "Literal": {
-                  "Value": "11D"
-                }
-              }
-            },
-            "customizePadding": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
-                }
-              }
-            },
-            "paddingBeforeDivider": {
-              "expr": {
-                "Literal": {
-                  "Value": "8D"
+                  "Value": "10L"
                 }
               }
             }
           },
           "selector": {
             "id": "default"
+          }
+        }
+      ],
+      "layout": [
+        {
+          "properties": {
+            "rectangleRoundedCurveCustomStyle": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "rectangleRoundedCurve": {
+              "expr": {
+                "Literal": {
+                  "Value": "0L"
+                }
+              }
+            }
+          },
+          "selector": {
+            "id": "default"
+          }
+        }
+      ],
+      "spacing": [
+        {
+          "properties": {
+            "verticalSpacing": {
+              "expr": {
+                "Literal": {
+                  "Value": "8L"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Measure.TotalMonthlyBudget"
           }
         }
       ],
@@ -376,7 +410,7 @@
                       "Entity": "Measure"
                     }
                   },
-                  "Property": "PM Non Billable Hours"
+                  "Property": "Budget Hours % MoM Arrow Label"
                 }
               }
             }
@@ -389,9 +423,9 @@
                 }
               }
             ],
-            "metadata": "Measure.Total Non Billable Hours",
-            "id": "field-a9303592-dc2f-c87d-10f2-8e48d3ad186f",
-            "order": 0
+            "metadata": "Measure.TotalMonthlyBudget",
+            "id": "field-6e155013-1fdc-a890-9cd6-c93b059b59f3",
+            "order": 1
           }
         },
         {
@@ -404,7 +438,7 @@
                       "Entity": "Measure"
                     }
                   },
-                  "Property": "Non Billabel Hours % MoM Arrow Label"
+                  "Property": "PM Budget Hours"
                 }
               }
             }
@@ -417,23 +451,9 @@
                 }
               }
             ],
-            "metadata": "Measure.Total Non Billable Hours",
-            "id": "field-62cbae9b-da32-4ed4-4e6b-233d0309f476",
-            "order": 1
-          }
-        },
-        {
-          "properties": {
-            "backgroundShow": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
-                }
-              }
-            }
-          },
-          "selector": {
-            "id": "default"
+            "metadata": "Measure.TotalMonthlyBudget",
+            "id": "field-277b6db3-3f5b-9bee-fc92-1a73eacd4f34",
+            "order": 0
           }
         }
       ],
@@ -506,6 +526,50 @@
         },
         {
           "properties": {
+            "titleText": {
+              "expr": {
+                "Literal": {
+                  "Value": "'MoM'"
+                }
+              }
+            },
+            "titleContentType": {
+              "expr": {
+                "Literal": {
+                  "Value": "'custom'"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Measure.TotalMonthlyBudget",
+            "id": "field-6e155013-1fdc-a890-9cd6-c93b059b59f3"
+          }
+        },
+        {
+          "properties": {
+            "titleText": {
+              "expr": {
+                "Literal": {
+                  "Value": "'vs PM'"
+                }
+              }
+            },
+            "titleContentType": {
+              "expr": {
+                "Literal": {
+                  "Value": "'custom'"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Measure.TotalMonthlyBudget",
+            "id": "field-277b6db3-3f5b-9bee-fc92-1a73eacd4f34"
+          }
+        },
+        {
+          "properties": {
             "titleFontSize": {
               "expr": {
                 "Literal": {
@@ -527,50 +591,6 @@
         },
         {
           "properties": {
-            "titleContentType": {
-              "expr": {
-                "Literal": {
-                  "Value": "'custom'"
-                }
-              }
-            },
-            "titleText": {
-              "expr": {
-                "Literal": {
-                  "Value": "'vs PM'"
-                }
-              }
-            }
-          },
-          "selector": {
-            "metadata": "Measure.Total Non Billable Hours",
-            "id": "field-a9303592-dc2f-c87d-10f2-8e48d3ad186f"
-          }
-        },
-        {
-          "properties": {
-            "titleContentType": {
-              "expr": {
-                "Literal": {
-                  "Value": "'custom'"
-                }
-              }
-            },
-            "titleText": {
-              "expr": {
-                "Literal": {
-                  "Value": "'MoM'"
-                }
-              }
-            }
-          },
-          "selector": {
-            "metadata": "Measure.Total Non Billable Hours",
-            "id": "field-62cbae9b-da32-4ed4-4e6b-233d0309f476"
-          }
-        },
-        {
-          "properties": {
             "titleFontSize": {
               "expr": {
                 "Literal": {
@@ -587,7 +607,7 @@
             }
           },
           "selector": {
-            "metadata": "Measure.Total Non Billable Hours"
+            "metadata": "Measure.TotalMonthlyBudget"
           }
         }
       ],
@@ -625,6 +645,37 @@
         },
         {
           "properties": {
+            "valueFontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Measure"
+                        }
+                      },
+                      "Property": "MOM Budget Hours % Color"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "dataViewWildcard": {
+                  "matchingOption": 0
+                }
+              }
+            ],
+            "metadata": "Measure.TotalMonthlyBudget",
+            "id": "field-6e155013-1fdc-a890-9cd6-c93b059b59f3"
+          }
+        },
+        {
+          "properties": {
             "valueFontSize": {
               "expr": {
                 "Literal": {
@@ -646,24 +697,24 @@
         },
         {
           "properties": {
+            "valueFontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "10D"
+                }
+              }
+            },
             "valueDisplayUnits": {
               "expr": {
                 "Literal": {
                   "Value": "1D"
                 }
               }
-            },
-            "valuePrecision": {
-              "expr": {
-                "Literal": {
-                  "Value": "0L"
-                }
-              }
             }
           },
           "selector": {
-            "metadata": "Measure.Total Non Billable Hours",
-            "id": "field-a9303592-dc2f-c87d-10f2-8e48d3ad186f"
+            "metadata": "Measure.TotalMonthlyBudget",
+            "id": "field-277b6db3-3f5b-9bee-fc92-1a73eacd4f34"
           }
         },
         {
@@ -671,7 +722,7 @@
             "valueFontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "10D"
+                  "Value": "9D"
                 }
               }
             },
@@ -684,46 +735,81 @@
             }
           },
           "selector": {
-            "metadata": "Measure.Total Non Billable Hours"
+            "metadata": "Measure.TotalMonthlyBudget"
           }
         },
         {
           "properties": {
-            "valueFontColor": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "Measure": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "Measure"
-                        }
-                      },
-                      "Property": "MOM Non Billabel Hours % Color"
-                    }
-                  }
+            "valueFontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "9D"
                 }
               }
             }
           },
           "selector": {
-            "data": [
-              {
-                "dataViewWildcard": {
-                  "matchingOption": 0
-                }
-              }
-            ],
-            "metadata": "Measure.Total Non Billable Hours",
-            "id": "field-62cbae9b-da32-4ed4-4e6b-233d0309f476"
+            "metadata": "Measure.TotalMonthlyBudget",
+            "id": "field-6e155013-1fdc-a890-9cd6-c93b059b59f3"
           }
-        },
+        }
+      ],
+      "referenceLabelLayout": [
         {
           "properties": {
-            "showBlankAs": {
+            "arrangement": {
               "expr": {
                 "Literal": {
-                  "Value": "'0'"
+                  "Value": "'rows'"
+                }
+              }
+            },
+            "style": {
+              "expr": {
+                "Literal": {
+                  "Value": "'tabular'"
+                }
+              }
+            },
+            "verticalAlignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'middle'"
+                }
+              }
+            },
+            "valueArea": {
+              "expr": {
+                "Literal": {
+                  "Value": "50D"
+                }
+              }
+            },
+            "labelSpace": {
+              "expr": {
+                "Literal": {
+                  "Value": "5D"
+                }
+              }
+            },
+            "outerPadding": {
+              "expr": {
+                "Literal": {
+                  "Value": "11D"
+                }
+              }
+            },
+            "customizePadding": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "paddingBeforeDivider": {
+              "expr": {
+                "Literal": {
+                  "Value": "8D"
                 }
               }
             }
@@ -762,28 +848,19 @@
             "id": "default"
           }
         }
-      ],
-      "shapeCustomRectangle": [
-        {
-          "properties": {
-            "tileShape": {
-              "expr": {
-                "Literal": {
-                  "Value": "'rectangleRoundedByPixel'"
-                }
-              }
-            }
-          },
-          "selector": {
-            "id": "default"
-          }
-        }
       ]
     },
     "visualContainerObjects": {
       "title": [
         {
           "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Total Project KPI'"
+                }
+              }
+            },
             "show": {
               "expr": {
                 "Literal": {
@@ -826,6 +903,19 @@
               "expr": {
                 "Literal": {
                   "Value": "0D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "general": [
+        {
+          "properties": {
+            "keepLayerOrder": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
                 }
               }
             }
@@ -930,19 +1020,6 @@
               "expr": {
                 "Literal": {
                   "Value": "0D"
-                }
-              }
-            }
-          }
-        }
-      ],
-      "general": [
-        {
-          "properties": {
-            "keepLayerOrder": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
                 }
               }
             }

@@ -1330,7 +1330,7 @@ cultureInfo en-US
 			      "Definition": {
 			        "Binding": {
 			          "ConceptualEntity": "Measure",
-			          "ConceptualProperty": "Total Active User"
+			          "ConceptualProperty": "Active User"
 			        }
 			      },
 			      "State": "Generated",
@@ -2808,16 +2808,6 @@ cultureInfo en-US
 			        {
 			          "week": {
 			            "State": "Generated"
-			          }
-			        },
-			        {
-			          "W": {
-			            "State": "Suggested",
-			            "Source": {
-			              "Type": "External",
-			              "Agent": "PowerBI.VisualColumnRename"
-			            },
-			            "Weight": 0.9
 			          }
 			        }
 			      ]
@@ -9291,6 +9281,48 @@ cultureInfo en-US
 			              "Agent": "Thesaurus"
 			            },
 			            "Weight": 0.492
+			          }
+			        }
+			      ]
+			    },
+			    "dim_date.monthshortname": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "dim_date",
+			          "ConceptualProperty": "MonthShortName"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "M": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "dim_project.payment_type": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "dim_project",
+			          "ConceptualProperty": "Payment Type"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Payment Type": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
 			          }
 			        }
 			      ]

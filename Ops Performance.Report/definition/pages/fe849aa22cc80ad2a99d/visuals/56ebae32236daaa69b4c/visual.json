@@ -5,8 +5,8 @@
     "x": 0,
     "y": 0,
     "z": 0,
-    "height": 158.99533727074913,
-    "width": 232.04724898974197,
+    "height": 212.5,
+    "width": 328.40909090909093,
     "tabOrder": 1000
   },
   "visual": {
@@ -99,7 +99,7 @@
             "innerRadiusRatio": {
               "expr": {
                 "Literal": {
-                  "Value": "90L"
+                  "Value": "75L"
                 }
               }
             },
@@ -208,5 +208,5 @@
     },
     "drillFilterOtherVisuals": true
   },
-  "parentGroupName": "897bceaf08d9d0e970c9"
+  "parentGroupName": "dbe5aba782b782607da0"
 }

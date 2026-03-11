@@ -35,7 +35,7 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "dim_projec"
+                      "Entity": "dim_project"
                     }
                   },
                   "Property": "Project Name"

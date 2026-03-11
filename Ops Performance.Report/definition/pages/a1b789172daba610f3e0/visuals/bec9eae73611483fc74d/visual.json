@@ -20,7 +20,7 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "dim_projec"
+                      "Entity": "dim_project"
                     }
                   },
                   "Property": "Project Name"
@@ -384,7 +384,8 @@
             "Property": "Project Name"
           }
         },
-        "type": "Categorical"
+        "type": "Categorical",
+        "howCreated": "User"
       },
       {
         "name": "28c018120f51b53b6f67",

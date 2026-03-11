@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
-  "name": "2f54ee1fe7d6fd8ad3bc",
+  "name": "392f333b2862b00a78e6",
   "position": {
-    "x": 688.38875331564986,
-    "y": 396.34503978779838,
-    "z": 3000,
-    "height": 281.61358090185678,
-    "width": 481.52445623342174,
-    "tabOrder": 4000
+    "x": 500,
+    "y": 395.18072289156629,
+    "z": 4,
+    "height": 184.33734939759037,
+    "width": 692.77108433734941,
+    "tabOrder": 4
   },
   "visual": {
     "visualType": "pivotTable",
@@ -15,6 +15,21 @@
       "queryState": {
         "Rows": {
           "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_project"
+                    }
+                  },
+                  "Property": "Project Name"
+                }
+              },
+              "queryRef": "dim_project.Project Name",
+              "nativeQueryRef": "Project Name",
+              "active": true
+            },
             {
               "field": {
                 "Column": {
@@ -28,12 +43,27 @@
               },
               "queryRef": "dim_users.User_Name",
               "nativeQueryRef": "User_Name",
-              "active": true
+              "active": false
             }
           ]
         },
         "Values": {
           "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measure"
+                    }
+                  },
+                  "Property": "Budget Hours"
+                }
+              },
+              "queryRef": "Measure.Total Budget Hours",
+              "nativeQueryRef": "Budget Hours",
+              "displayName": "Budget Hours"
+            },
             {
               "field": {
                 "Measure": {
@@ -80,6 +110,23 @@
             }
           ]
         }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Measure"
+                  }
+                },
+                "Property": "Budget Hours"
+              }
+            },
+            "direction": "Descending"
+          }
+        ]
       }
     },
     "expansionStates": [
@@ -88,6 +135,13 @@
           "Rows"
         ],
         "levels": [
+          {
+            "queryRefs": [
+              "dim_project.Project Name"
+            ],
+            "isCollapsed": true,
+            "isPinned": true
+          },
           {
             "queryRefs": [
               "dim_users.User_Name"
@@ -216,6 +270,20 @@
           },
           "selector": {
             "metadata": "Measure.Contribution Employee %"
+          }
+        },
+        {
+          "properties": {
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Center'"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Measure.Total Budget Hours"
           }
         }
       ],

@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
-  "name": "0c60588722c5ffafe95d",
+  "name": "cd06791d856eaec9ecb5",
   "position": {
-    "x": 23.211319485027186,
-    "y": 101.54952274699393,
-    "z": 15000,
-    "height": 133.46508703890632,
-    "width": 279.98654128814042,
-    "tabOrder": 14000
+    "x": 122,
+    "y": 96,
+    "z": 3,
+    "height": 119.33333333333333,
+    "width": 163.33333333333334,
+    "tabOrder": 3
   },
   "visual": {
     "visualType": "multiRowCard",
@@ -23,11 +23,12 @@
                       "Entity": "Measure"
                     }
                   },
-                  "Property": "Total Leave"
+                  "Property": "Available Capacity"
                 }
               },
-              "queryRef": "Measure.Total Leave",
-              "nativeQueryRef": "Total Leave"
+              "queryRef": "Measure.Available Hours",
+              "nativeQueryRef": "Available Capacity",
+              "displayName": "Available Capacity"
             },
             {
               "field": {
@@ -37,45 +38,16 @@
                       "Entity": "Measure"
                     }
                   },
-                  "Property": "Total Employee"
+                  "Property": "Projects Inactive"
                 }
               },
-              "queryRef": "Measure.Total Employee",
-              "nativeQueryRef": "Total Employee"
-            },
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Measure"
-                    }
-                  },
-                  "Property": "Active User"
-                }
-              },
-              "queryRef": "Measure.Active User",
-              "nativeQueryRef": "Active User"
+              "queryRef": "Measure.Projects Inactive",
+              "nativeQueryRef": "Projects Inactive"
             }
           ]
         }
       },
       "sortDefinition": {
-        "sort": [
-          {
-            "field": {
-              "Measure": {
-                "Expression": {
-                  "SourceRef": {
-                    "Entity": "Measure"
-                  }
-                },
-                "Property": "Total Leave"
-              }
-            },
-            "direction": "Descending"
-          }
-        ],
         "isDefaultSort": true
       }
     },

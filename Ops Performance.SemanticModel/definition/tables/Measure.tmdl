@@ -21,12 +21,12 @@ table Measure
 
 	measure 'Total Project' = DISTINCTCOUNT(dim_project[Project Id])
 		formatString: 0
-		displayFolder: # Grand Totals
+		displayFolder: # Grand Totals\# Project
 		lineageTag: 2a8ec4ee-b9c0-46e2-96bc-4bb3e399ff5b
 
 	measure 'Project Age(Months)' = DATEDIFF(MIN(dim_project[Project Start Date]), TODAY(),MONTH)
 		formatString: 0
-		displayFolder: # Grand Totals
+		displayFolder: # Grand Totals\# Project
 		lineageTag: 8c5e2924-8b86-46d5-a14f-f391897ec00c
 
 	measure 'Project Lost' =
@@ -35,7 +35,7 @@ table Measure
 			RETURN
 			COALESCE(_project, 0)
 		formatString: 0
-		displayFolder: # Grand Totals
+		displayFolder: # Grand Totals\# Project
 		lineageTag: 2fa69e1e-c078-40f1-8e55-27d66b70f1a0
 
 	measure 'Available Capacity' = ```
@@ -62,12 +62,12 @@ table Measure
 			RETURN
 			IF(ISBLANK(_inactiveproject), 0, _inactiveproject)
 		formatString: 0
-		displayFolder: # Grand Totals
+		displayFolder: # Grand Totals\# Project
 		lineageTag: 093f164a-f300-4bd3-b6a3-e6cc9a59a3be
 
-	measure 'Total Active User' = CALCULATE(DISTINCTCOUNT(dim_users[User_ID]), dim_users[Archived] = FALSE())
+	measure 'Active User' = CALCULATE(DISTINCTCOUNT(dim_users[User_ID]), dim_users[Archived] = FALSE())
 		formatString: 0
-		displayFolder: # Grand Totals
+		displayFolder: # Grand Totals\# Employee
 		lineageTag: 7f67cea8-61b6-45e2-a0d8-c3dcf31bba14
 
 	measure 'Budget Status' =
@@ -89,7 +89,7 @@ table Measure
 
 	measure 'Project Name' =
 			// Label Bar Chart Project Name
-			VAR _Item = SELECTEDVALUE('dim_projec'[Project Name])
+			VAR _Item = SELECTEDVALUE('dim_project'[Project Name])
 			VAR _Value = FORMAT([Total Billable Hours], "#,##0")
 			VAR _Label = _Item & " | " & _Value
 			RETURN
@@ -99,7 +99,7 @@ table Measure
 
 	measure 'Projects Active' = CALCULATE(DISTINCTCOUNT(dim_project[Project Id]), dim_project[Project Status] = FALSE)
 		formatString: 0
-		displayFolder: # Grand Totals
+		displayFolder: # Grand Totals\# Project
 		lineageTag: 0b5cfe43-b074-4237-812a-b77957eed787
 
 	measure 'Rank Team Utilization Billabel' =
@@ -120,12 +120,12 @@ table Measure
 			VAR _Items = [# Items Value]
 			VAR _Item_Rank = [Rank Project Billabel Hour]
 			VAR _Filter =
-			FILTER(ALLSELECTED(dim_projec[Project Name]),
+			FILTER(ALLSELECTED(dim_project[Project Name]),
 			        _Item_Rank > (_Page - 1) * _Items
 			        && _Item_Rank <= (_Page) * _Items
 			)
 			VAR _itemshow = 
-			IF( SELECTEDVALUE(dim_projec[Project Name]) IN _Filter, 1,0)
+			IF( SELECTEDVALUE(dim_project[Project Name]) IN _Filter, 1,0)
 			RETURN
 			_itemshow
 			```
@@ -135,7 +135,7 @@ table Measure
 
 	measure 'Rank Project Billabel Hour' =
 			
-			RANKX(ALL(dim_projec[Project Name]), [Total Billable Hours],,DESC)
+			RANKX(ALL(dim_project[Project Name]), [Total Billable Hours],,DESC)
 		formatString: 0
 		displayFolder: # Rank
 		lineageTag: c554cdba-8da4-4dd6-a3b9-3a2d6796501e
@@ -303,25 +303,21 @@ table Measure
 		displayFolder: # Visual Labels\Arrow
 		lineageTag: 3c492771-a572-4dbf-a8f6-984d95a16b9f
 
-	measure 'Total Leave' = ```
+	measure 'Total Leave' =
 			
 			VAR _leave = CALCULATE(
 			    COUNTROWS(fact_ActivityLog),
 			    FILTER(
 			        'dim_task',
 			        'dim_task'[Task Name] IN {
-			            "Sick leave", 
-			            "Birthday leave", 
-			            "Personal leave",
-			            "Annual leave"
+			            "Personal / Sick Leave"
 			        }
 			    )
 			)
 			RETURN
 			IF(ISBLANK(_leave), 0, _leave)
-			```
 		formatString: 0
-		displayFolder: # Grand Totals
+		displayFolder: # Grand Totals\# Employee
 		lineageTag: 90da8931-a521-4d45-b6df-5e245661ed55
 
 	measure 'Total Billable (All Users)' =
@@ -336,7 +332,7 @@ table Measure
 
 	measure 'Contribution Employee %' = DIVIDE([Total Billable Hours],[Total Billable (All Users)])
 		formatString: 0.00%;-0.00%;0.00%
-		displayFolder: # Grand Totals
+		displayFolder: # Grand Totals\# Employee
 		lineageTag: 14556a92-c12b-47f4-b879-a7eea13f921a
 
 	measure 'Budget Spent %' = DIVIDE([Total Billable Hours], [Budget Hours])
@@ -660,6 +656,81 @@ table Measure
 			
 			```
 		lineageTag: cdf55253-6597-4501-b842-722647cd8d54
+
+	measure 'Total Employee' = DISTINCTCOUNT(dim_users[User_ID])
+		formatString: 0
+		lineageTag: c59fb259-4163-4f0e-98f0-482fb0f20311
+
+	measure 'CM Available Capacity' =
+			
+			VAR SelectedDate = MAX('dim_date'[Date])
+			VAR FirstDayThisMonth = DATE(YEAR(SelectedDate), MONTH(SelectedDate), 1)
+			VAR LastDayThisMonth = EOMONTH(SelectedDate, 0)
+			
+			VAR _CurrentMonth =
+			    CALCULATE(
+			        [Available Capacity],
+			        FILTER(
+			            ALL('dim_date'),
+			            'dim_date'[Date] >= FirstDayThisMonth &&
+			            'dim_date'[Date] <= LastDayThisMonth
+			        )
+			    )
+			
+			RETURN
+			_CurrentMonth
+		formatString: 0
+		lineageTag: 11a23b95-07aa-42ee-9756-034576673004
+
+	measure 'PM Available Capacity' =
+			
+			VAR SelectedDate =
+			    MAX('dim_date'[Date])
+			VAR FirstDayPrevMonth =
+			    DATE(YEAR(SelectedDate), MONTH(SelectedDate) - 1, 1)
+			VAR LastDayPrevMonth =
+			    EOMONTH(SelectedDate, -1)
+			RETURN
+			    CALCULATE(
+			        [Available Capacity],
+			        FILTER(
+			            ALL('dim_date'),
+			            'dim_date'[Date] >= FirstDayPrevMonth &&
+			            'dim_date'[Date] <= LastDayPrevMonth
+			        )
+			    )
+		formatString: 0
+		lineageTag: 13df750d-dc9f-47f8-b34f-016602e08859
+
+	measure 'MoM Available Capacity (%)' =
+			
+			VAR _CurrentMonth = [CM Available Capacity]
+			VAR _PreviousMonth = [PM Available Capacity]
+			RETURN
+			IF(
+			    NOT ISBLANK(_PreviousMonth),
+			    DIVIDE(_CurrentMonth - _PreviousMonth, _PreviousMonth)
+			)
+		lineageTag: bf6a6788-f6f3-4d4f-9a31-4bbbb304b81f
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Available Capacity % MoM Arrow Label' =
+			
+			VAR ArrowUp = UNICHAR(9650)
+			VAR ArrowDown = UNICHAR(9660)
+			VAR Change = [MoM Available Capacity (%)]
+			RETURN
+			IF(Change > 0,
+			     FORMAT(Change, "0.00%") & " " & ArrowUp,
+			     FORMAT(Change, "0.00%") & " " & ArrowDown
+			)
+		lineageTag: cb71df07-9eb3-42cb-bafe-f215b105ed53
+
+	measure 'MOM Available Capacity % Color' =
+			
+			IF([MoM Available Capacity (%)] >= 0, "Green", "Red")
+		lineageTag: 6a68aca0-0731-49da-a90a-90a3cc04b595
 
 	partition Measure = m
 		mode: import
