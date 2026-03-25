@@ -4,10 +4,10 @@
   "position": {
     "x": 688.38875331564986,
     "y": 396.34503978779838,
-    "z": 3000,
+    "z": 1000,
     "height": 281.61358090185678,
     "width": 481.52445623342174,
-    "tabOrder": 4000
+    "tabOrder": 2000
   },
   "visual": {
     "visualType": "pivotTable",
@@ -80,25 +80,25 @@
             }
           ]
         }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Measure"
+                  }
+                },
+                "Property": "Budget Hours"
+              }
+            },
+            "direction": "Descending"
+          }
+        ]
       }
     },
-    "expansionStates": [
-      {
-        "roles": [
-          "Rows"
-        ],
-        "levels": [
-          {
-            "queryRefs": [
-              "dim_users.User_Name"
-            ],
-            "isCollapsed": true,
-            "isPinned": true
-          }
-        ],
-        "root": {}
-      }
-    ],
     "objects": {
       "values": [
         {

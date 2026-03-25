@@ -23,13 +23,13 @@
                       "Entity": "dim_date"
                     }
                   },
-                  "Property": "MonthShortName"
+                  "Property": "Week"
                 }
               },
-              "queryRef": "dim_date.MonthShortName",
-              "nativeQueryRef": "M",
+              "queryRef": "dim_date.Week",
+              "nativeQueryRef": "W",
               "active": true,
-              "displayName": "M"
+              "displayName": "W"
             }
           ],
           "fieldParameters": [

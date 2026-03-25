@@ -4,10 +4,10 @@
   "position": {
     "x": 1070.5882352941176,
     "y": 75.882352941176478,
-    "z": 4000,
+    "z": 2000,
     "height": 49.411764705882355,
     "width": 170,
-    "tabOrder": 5000
+    "tabOrder": 3000
   },
   "visual": {
     "visualType": "advancedSlicerVisual",
@@ -67,7 +67,7 @@
                           [
                             {
                               "Literal": {
-                                "Value": "'''dim_date''[MonthShortName]'"
+                                "Value": "'''dim_date''[Week]'"
                               }
                             }
                           ]
@@ -95,7 +95,7 @@
                                 "0": [
                                   {
                                     "Literal": {
-                                      "Value": "'''dim_date''[MonthShortName]'"
+                                      "Value": "'''dim_date''[Week]'"
                                     }
                                   }
                                 ]
@@ -119,7 +119,7 @@
                         },
                         "valueMap": [
                           {
-                            "0": "M"
+                            "0": "W"
                           }
                         ]
                       }

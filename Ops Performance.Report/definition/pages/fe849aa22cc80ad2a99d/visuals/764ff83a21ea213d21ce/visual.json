@@ -4,10 +4,10 @@
   "position": {
     "x": 48.253244408976045,
     "y": 292.63257899637085,
-    "z": 17002,
+    "z": 14000,
     "height": 133.86383932812709,
     "width": 213.24820916224897,
-    "tabOrder": 17001
+    "tabOrder": 13000
   },
   "visual": {
     "visualType": "cardVisual",
@@ -33,21 +33,6 @@
         }
       },
       "sortDefinition": {
-        "sort": [
-          {
-            "field": {
-              "Measure": {
-                "Expression": {
-                  "SourceRef": {
-                    "Entity": "Measure"
-                  }
-                },
-                "Property": "Available Capacity"
-              }
-            },
-            "direction": "Descending"
-          }
-        ],
         "isDefaultSort": true
       }
     },

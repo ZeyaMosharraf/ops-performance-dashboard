@@ -2809,6 +2809,16 @@ cultureInfo en-US
 			          "week": {
 			            "State": "Generated"
 			          }
+			        },
+			        {
+			          "W": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
 			        }
 			      ]
 			    },
@@ -9292,19 +9302,7 @@ cultureInfo en-US
 			          "ConceptualProperty": "MonthShortName"
 			        }
 			      },
-			      "State": "Generated",
-			      "Terms": [
-			        {
-			          "M": {
-			            "State": "Suggested",
-			            "Source": {
-			              "Type": "External",
-			              "Agent": "PowerBI.VisualColumnRename"
-			            },
-			            "Weight": 0.9
-			          }
-			        }
-			      ]
+			      "State": "Generated"
 			    },
 			    "dim_project.payment_type": {
 			      "Definition": {
@@ -9313,10 +9311,19 @@ cultureInfo en-US
 			          "ConceptualProperty": "Payment Type"
 			        }
 			      },
+			      "State": "Generated"
+			    },
+			    "dim_project.project_priority": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "dim_project",
+			          "ConceptualProperty": "Project Priority"
+			        }
+			      },
 			      "State": "Generated",
 			      "Terms": [
 			        {
-			          "Payment Type": {
+			          "Project Category": {
 			            "State": "Suggested",
 			            "Source": {
 			              "Type": "External",

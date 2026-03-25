@@ -11,12 +11,10 @@
       "name": "9ab50dc027101d5d0d5d"
     },
     {
-      "name": "10ebb8dc9847718c6ffc",
-      "displayName": "Operational view",
-      "children": [
-        "5a6da0e6ea703cc7e48b",
-        "b564f40e897bfb9c911c"
-      ]
+      "name": "5a6da0e6ea703cc7e48b"
+    },
+    {
+      "name": "b564f40e897bfb9c911c"
     }
   ]
 }

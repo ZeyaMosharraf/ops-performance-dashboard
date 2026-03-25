@@ -1,7 +1,7 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.0.0/schema.json",
-  "name": "a1b789172daba610f3e0",
-  "displayName": "Operational View",
+  "name": "a32ac135b40700fd5e4c",
+  "displayName": "Home",
   "displayOption": "FitToPage",
   "height": 720,
   "width": 1280,
@@ -14,26 +14,23 @@
               "name": {
                 "expr": {
                   "Literal": {
-                    "Value": "''"
+                    "Value": "'Home.png'"
                   }
                 }
               },
               "url": {
                 "expr": {
-                  "Literal": {
-                    "Value": "''"
+                  "ResourcePackageItem": {
+                    "PackageName": "RegisteredResources",
+                    "PackageType": 1,
+                    "ItemName": "Home28463056523185226.png"
                   }
                 }
-              }
-            }
-          },
-          "color": {
-            "solid": {
-              "color": {
+              },
+              "scaling": {
                 "expr": {
-                  "ThemeDataColor": {
-                    "ColorId": 0,
-                    "Percent": 0
+                  "Literal": {
+                    "Value": "'Fill'"
                   }
                 }
               }

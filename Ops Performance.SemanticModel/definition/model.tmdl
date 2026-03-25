@@ -14,7 +14,7 @@ queryGroup Load
 
 	annotation PBI_QueryGroupOrder = 1
 
-annotation PBI_QueryOrder = ["StartDate","dim_refresh_date","Measure","EndDate","Web_app_url_factactivity","Web_app_url_dimproject","web_app_url_dimtask","Web_app_url_dimteam","Web_app_url_dimusers","Web_app_url_holiday","Auth_Token","dim_date","fact_ActivityLog","dim_project","dim_task","dim_team","dim_users","Holiday"]
+annotation PBI_QueryOrder = ["StartDate","dim_refresh_date","Measure","EndDate","RangeStart","RangeEnd","Web_app_url_factactivity","Web_app_url_dimproject","web_app_url_dimtask","Web_app_url_dimteam","Web_app_url_dimusers","Web_app_url_holiday","Auth_Token","dim_date","fact_ActivityLog","dim_project","dim_task","dim_team","dim_users","Holiday"]
 
 annotation __PBI_TimeIntelligenceEnabled = 1
 
