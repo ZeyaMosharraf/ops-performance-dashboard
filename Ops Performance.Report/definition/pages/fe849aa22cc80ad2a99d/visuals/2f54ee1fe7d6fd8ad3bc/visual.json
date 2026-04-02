@@ -1,13 +1,13 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "2f54ee1fe7d6fd8ad3bc",
   "position": {
-    "x": 688.38875331564986,
-    "y": 396.34503978779838,
-    "z": 1000,
-    "height": 281.61358090185678,
-    "width": 481.52445623342174,
-    "tabOrder": 2000
+    "x": 589,
+    "y": 415,
+    "z": 0,
+    "height": 253,
+    "width": 486,
+    "tabOrder": 1000
   },
   "visual": {
     "visualType": "pivotTable",
@@ -42,12 +42,11 @@
                       "Entity": "Measure"
                     }
                   },
-                  "Property": "Total Billable (All Users)"
+                  "Property": "Available Capacity"
                 }
               },
-              "queryRef": "Measure.Total Billable (All Users)",
-              "nativeQueryRef": "Billable Hours",
-              "displayName": "Billable Hours"
+              "queryRef": "Measure.Available Capacity",
+              "nativeQueryRef": "Available Capacity"
             },
             {
               "field": {
@@ -72,11 +71,11 @@
                       "Entity": "Measure"
                     }
                   },
-                  "Property": "Contribution Employee %"
+                  "Property": "Overall Utilization"
                 }
               },
-              "queryRef": "Measure.Contribution Employee %",
-              "nativeQueryRef": "Contribution Employee %"
+              "queryRef": "Measure.Utilization Billable %",
+              "nativeQueryRef": "Overall Utilization"
             }
           ]
         }
@@ -99,6 +98,23 @@
         ]
       }
     },
+    "expansionStates": [
+      {
+        "roles": [
+          "Rows"
+        ],
+        "levels": [
+          {
+            "queryRefs": [
+              "dim_users.User_Name"
+            ],
+            "isCollapsed": true,
+            "isPinned": true
+          }
+        ],
+        "root": {}
+      }
+    ],
     "objects": {
       "values": [
         {
@@ -128,36 +144,6 @@
                 }
               }
             }
-          }
-        },
-        {
-          "properties": {
-            "fontColor": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "Measure": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "Measure"
-                        }
-                      },
-                      "Property": "Color employee contribution"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "selector": {
-            "data": [
-              {
-                "dataViewWildcard": {
-                  "matchingOption": 1
-                }
-              }
-            ],
-            "metadata": "Measure.Contribution Employee %"
           }
         }
       ],
@@ -202,20 +188,6 @@
           },
           "selector": {
             "metadata": "Measure.Total Billable Hours"
-          }
-        },
-        {
-          "properties": {
-            "alignment": {
-              "expr": {
-                "Literal": {
-                  "Value": "'Center'"
-                }
-              }
-            }
-          },
-          "selector": {
-            "metadata": "Measure.Contribution Employee %"
           }
         }
       ],

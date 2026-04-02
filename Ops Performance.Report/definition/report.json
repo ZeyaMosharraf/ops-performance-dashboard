@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/report/3.1.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/report/3.2.0/schema.json",
   "themeCollection": {
     "baseTheme": {
       "name": "CY23SU04",
@@ -62,23 +62,13 @@
           "type": "Image"
         },
         {
-          "name": "noun-next-7000694_19064900067495806.png",
-          "path": "noun-next-7000694_19064900067495806.png",
-          "type": "Image"
-        },
-        {
-          "name": "Vector16078175144957052.png",
-          "path": "Vector16078175144957052.png",
+          "name": "Guide_View14338383001089372.png",
+          "path": "Guide_View14338383001089372.png",
           "type": "Image"
         },
         {
           "name": "Home28463056523185226.png",
           "path": "Home28463056523185226.png",
-          "type": "Image"
-        },
-        {
-          "name": "Guide_View14338383001089372.png",
-          "path": "Guide_View14338383001089372.png",
           "type": "Image"
         }
       ]

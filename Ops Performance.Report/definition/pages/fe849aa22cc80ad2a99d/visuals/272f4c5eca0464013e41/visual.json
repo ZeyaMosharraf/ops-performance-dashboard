@@ -1,13 +1,13 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "272f4c5eca0464013e41",
   "position": {
-    "x": 369.55672987255207,
-    "y": 100.26732981038234,
-    "z": 6000,
-    "height": 134.64470003108485,
-    "width": 183.34597451041341,
-    "tabOrder": 4000
+    "x": 274.06421841953471,
+    "y": 81.904249182849455,
+    "z": 4000,
+    "height": 135.45702749471255,
+    "width": 214.2111132474524,
+    "tabOrder": 2000
   },
   "visual": {
     "visualType": "cardVisual",
@@ -705,6 +705,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "isHidden": true
+  }
 }

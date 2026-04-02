@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
-  "name": "1181d2947238284b5aaa",
+  "name": "cfa8517713adb5629de0",
   "position": {
-    "x": 481.66666666666669,
-    "y": 20,
-    "z": 2000,
+    "x": 1068.3333333333335,
+    "y": 21.666666666666668,
+    "z": 7004,
     "height": 135,
-    "width": 160,
-    "tabOrder": 2000
+    "width": 170,
+    "tabOrder": 7004
   },
   "visual": {
     "visualType": "cardVisual",
@@ -23,11 +23,11 @@
                       "Entity": "Measure"
                     }
                   },
-                  "Property": "Total Project"
+                  "Property": "Budget Spent %"
                 }
               },
-              "queryRef": "Measure.Total Project",
-              "nativeQueryRef": "Total Project"
+              "queryRef": "Measure.Budget Spent %",
+              "nativeQueryRef": "Budget Spent %"
             }
           ]
         }
@@ -42,7 +42,7 @@
                     "Entity": "Measure"
                   }
                 },
-                "Property": "Total Project"
+                "Property": "Budget Spent %"
               }
             },
             "direction": "Descending"

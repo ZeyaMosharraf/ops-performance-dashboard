@@ -733,7 +733,7 @@ cultureInfo en-US
 			      "Definition": {
 			        "Binding": {
 			          "ConceptualEntity": "Measure",
-			          "ConceptualProperty": "Utilization Billable %"
+			          "ConceptualProperty": "Overall Utilization"
 			        }
 			      },
 			      "State": "Generated",
@@ -1196,16 +1196,6 @@ cultureInfo en-US
 			              "Agent": "Thesaurus"
 			            },
 			            "Weight": 0.461
-			          }
-			        },
-			        {
-			          "Available Capacity": {
-			            "State": "Suggested",
-			            "Source": {
-			              "Type": "External",
-			              "Agent": "PowerBI.VisualColumnRename"
-			            },
-			            "Weight": 0.9
 			          }
 			        }
 			      ]
@@ -2727,101 +2717,6 @@ cultureInfo en-US
 			      ],
 			      "SemanticType": "Time"
 			    },
-			    "dim_date.year": {
-			      "Definition": {
-			        "Binding": {
-			          "ConceptualEntity": "dim_date",
-			          "ConceptualProperty": "Year"
-			        }
-			      },
-			      "State": "Generated",
-			      "Terms": [
-			        {
-			          "year": {
-			            "State": "Generated"
-			          }
-			        },
-			        {
-			          "yr": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.736
-			          }
-			        }
-			      ],
-			      "SemanticType": "Time"
-			    },
-			    "dim_date.day": {
-			      "Definition": {
-			        "Binding": {
-			          "ConceptualEntity": "dim_date",
-			          "ConceptualProperty": "Day"
-			        }
-			      },
-			      "State": "Generated",
-			      "Terms": [
-			        {
-			          "day": {
-			            "State": "Generated"
-			          }
-			        }
-			      ]
-			    },
-			    "dim_date.month": {
-			      "Definition": {
-			        "Binding": {
-			          "ConceptualEntity": "dim_date",
-			          "ConceptualProperty": "Month"
-			        }
-			      },
-			      "State": "Generated",
-			      "Terms": [
-			        {
-			          "month": {
-			            "State": "Generated"
-			          }
-			        },
-			        {
-			          "mth": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.736
-			          }
-			        }
-			      ]
-			    },
-			    "dim_date.week": {
-			      "Definition": {
-			        "Binding": {
-			          "ConceptualEntity": "dim_date",
-			          "ConceptualProperty": "Week"
-			        }
-			      },
-			      "State": "Generated",
-			      "Terms": [
-			        {
-			          "week": {
-			            "State": "Generated"
-			          }
-			        },
-			        {
-			          "W": {
-			            "State": "Suggested",
-			            "Source": {
-			              "Type": "External",
-			              "Agent": "PowerBI.VisualColumnRename"
-			            },
-			            "Weight": 0.9
-			          }
-			        }
-			      ]
-			    },
 			    "dim_date.is_weekday": {
 			      "Definition": {
 			        "Binding": {
@@ -2887,141 +2782,6 @@ cultureInfo en-US
 			              "Agent": "Thesaurus"
 			            },
 			            "Weight": 0.476
-			          }
-			        }
-			      ]
-			    },
-			    "dim_date.year_week_index": {
-			      "Definition": {
-			        "Binding": {
-			          "ConceptualEntity": "dim_date",
-			          "ConceptualProperty": "YearWeekIndex"
-			        }
-			      },
-			      "State": "Generated",
-			      "Terms": [
-			        {
-			          "year week index": {
-			            "State": "Generated"
-			          }
-			        },
-			        {
-			          "YearWeekIndex": {
-			            "Type": "Noun",
-			            "State": "Generated",
-			            "Weight": 0.99
-			          }
-			        },
-			        {
-			          "index": {
-			            "State": "Generated",
-			            "Weight": 0.97
-			          }
-			        },
-			        {
-			          "week index": {
-			            "State": "Generated",
-			            "Weight": 0.97
-			          }
-			        },
-			        {
-			          "yr week index": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.609
-			          }
-			        },
-			        {
-			          "year week directory": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.492
-			          }
-			        },
-			        {
-			          "year week catalogue": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.492
-			          }
-			        },
-			        {
-			          "year week catalog": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.492
-			          }
-			        },
-			        {
-			          "year week guide": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.492
-			          }
-			        },
-			        {
-			          "year week file": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.492
-			          }
-			        },
-			        {
-			          "year week key": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.492
-			          }
-			        },
-			        {
-			          "year week table": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.492
-			          }
-			        },
-			        {
-			          "week directory": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.485
-			          }
-			        },
-			        {
-			          "week catalogue": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.485
 			          }
 			        }
 			      ]
@@ -4201,72 +3961,6 @@ cultureInfo en-US
 			              "Agent": "Thesaurus"
 			            },
 			            "Weight": 0.468
-			          }
-			        }
-			      ]
-			    },
-			    "dim_date.month_name": {
-			      "Definition": {
-			        "Binding": {
-			          "ConceptualEntity": "dim_date",
-			          "ConceptualProperty": "Month Name"
-			        }
-			      },
-			      "State": "Generated",
-			      "Terms": [
-			        {
-			          "month name": {
-			            "State": "Generated"
-			          }
-			        },
-			        {
-			          "month nickname": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.727
-			          }
-			        },
-			        {
-			          "month title": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.727
-			          }
-			        },
-			        {
-			          "month label": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.727
-			          }
-			        },
-			        {
-			          "month tag": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.727
-			          }
-			        },
-			        {
-			          "mth name": {
-			            "Type": "Noun",
-			            "State": "Suggested",
-			            "Source": {
-			              "Agent": "Thesaurus"
-			            },
-			            "Weight": 0.6
 			          }
 			        }
 			      ]

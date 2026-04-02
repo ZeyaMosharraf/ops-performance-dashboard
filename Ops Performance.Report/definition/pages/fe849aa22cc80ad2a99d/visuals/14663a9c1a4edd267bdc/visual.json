@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
-  "name": "fafc9addeeeedbe46200",
+  "name": "14663a9c1a4edd267bdc",
   "position": {
-    "x": 76,
-    "y": 64,
-    "z": 1000,
-    "height": 84,
-    "width": 177,
-    "tabOrder": 0
+    "x": 900,
+    "y": 92.222222222222214,
+    "z": 10003,
+    "height": 134.44444444444443,
+    "width": 215.55555555555554,
+    "tabOrder": 10003
   },
   "visual": {
     "visualType": "cardVisual",
@@ -23,12 +23,11 @@
                       "Entity": "Measure"
                     }
                   },
-                  "Property": "Overall Utilization"
+                  "Property": "Active User"
                 }
               },
-              "queryRef": "Measure.Utilization Billable %",
-              "nativeQueryRef": "Utilization %",
-              "displayName": "Utilization %"
+              "queryRef": "Measure.Active User",
+              "nativeQueryRef": "Active User"
             }
           ]
         }
@@ -43,7 +42,7 @@
                     "Entity": "Measure"
                   }
                 },
-                "Property": "Overall Utilization"
+                "Property": "Active User"
               }
             },
             "direction": "Descending"
@@ -77,17 +76,10 @@
                 }
               }
             },
-            "showBlankAs": {
-              "expr": {
-                "Literal": {
-                  "Value": "'0'"
-                }
-              }
-            },
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "11D"
+                  "Value": "14D"
                 }
               }
             },
@@ -97,24 +89,35 @@
                   "Value": "'Calibri'"
                 }
               }
-            }
-          },
-          "selector": {
-            "id": "default"
-          }
-        },
-        {
-          "properties": {
-            "fontSize": {
+            },
+            "bold": {
               "expr": {
                 "Literal": {
-                  "Value": "11D"
+                  "Value": "true"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#9A6EEA'"
+                    }
+                  }
+                }
+              }
+            },
+            "showBlankAs": {
+              "expr": {
+                "Literal": {
+                  "Value": "'0'"
                 }
               }
             }
           },
           "selector": {
-            "metadata": "Measure.Utilization Billable %"
+            "id": "default"
           }
         }
       ],
@@ -124,7 +127,7 @@
             "rectangleRoundedCurve": {
               "expr": {
                 "Literal": {
-                  "Value": "9L"
+                  "Value": "0L"
                 }
               }
             },
@@ -138,6 +141,17 @@
           },
           "selector": {
             "id": "default"
+          }
+        },
+        {
+          "properties": {
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'middle'"
+                }
+              }
+            }
           }
         }
       ],
@@ -173,31 +187,17 @@
       "label": [
         {
           "properties": {
-            "show": {
+            "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "false"
-                }
-              }
-            }
-          },
-          "selector": {
-            "id": "default"
-          }
-        },
-        {
-          "properties": {
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
+                  "Value": "11D"
                 }
               }
             },
-            "position": {
+            "fontFamily": {
               "expr": {
                 "Literal": {
-                  "Value": "'aboveValue'"
+                  "Value": "'Calibri'"
                 }
               }
             },
@@ -212,70 +212,14 @@
                   }
                 }
               }
-            },
-            "heading": {
-              "expr": {
-                "Literal": {
-                  "Value": "'Heading3'"
-                }
-              }
-            },
-            "fontSize": {
-              "expr": {
-                "Literal": {
-                  "Value": "8D"
-                }
-              }
-            },
-            "fontFamily": {
-              "expr": {
-                "Literal": {
-                  "Value": "'Calibri'"
-                }
-              }
-            },
-            "text": {
-              "expr": {
-                "Literal": {
-                  "Value": "'Overall Utilization'"
-                }
-              }
             }
           },
           "selector": {
-            "metadata": "Measure.Utilization Billable %"
+            "id": "default"
           }
         }
       ],
       "referenceLabel": [
-        {
-          "properties": {
-            "value": {
-              "expr": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Measure"
-                    }
-                  },
-                  "Property": "Utilization % MoM Arrow Label"
-                }
-              }
-            }
-          },
-          "selector": {
-            "data": [
-              {
-                "dataViewWildcard": {
-                  "matchingOption": 0
-                }
-              }
-            ],
-            "metadata": "Measure.Utilization Billable %",
-            "id": "field-03c51881-ff58-9e6d-97ff-dfd316615d84",
-            "order": 0
-          }
-        },
         {
           "properties": {
             "backgroundShow": {
@@ -291,193 +235,13 @@
           }
         }
       ],
-      "referenceLabelTitle": [
-        {
-          "properties": {
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            },
-            "titleContentType": {
-              "expr": {
-                "Literal": {
-                  "Value": "'custom'"
-                }
-              }
-            },
-            "titleText": {
-              "expr": {
-                "Literal": {
-                  "Value": "'MoM:'"
-                }
-              }
-            }
-          },
-          "selector": {
-            "metadata": "Measure.Utilization Billable %",
-            "id": "field-03c51881-ff58-9e6d-97ff-dfd316615d84"
-          }
-        },
-        {
-          "properties": {
-            "titleFontSize": {
-              "expr": {
-                "Literal": {
-                  "Value": "8D"
-                }
-              }
-            }
-          },
-          "selector": {
-            "metadata": "Measure.Utilization Billable %"
-          }
-        },
-        {
-          "properties": {
-            "titleFontSize": {
-              "expr": {
-                "Literal": {
-                  "Value": "10D"
-                }
-              }
-            },
-            "titleFontFamily": {
-              "expr": {
-                "Literal": {
-                  "Value": "'Calibri'"
-                }
-              }
-            }
-          },
-          "selector": {
-            "id": "default"
-          }
-        }
-      ],
       "referenceLabelValue": [
         {
           "properties": {
             "valueFontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "9D"
-                }
-              }
-            }
-          },
-          "selector": {
-            "metadata": "Measure.Utilization Billable %",
-            "id": "field-03c51881-ff58-9e6d-97ff-dfd316615d84"
-          }
-        },
-        {
-          "properties": {
-            "valueFontColor": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "Measure": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "Measure"
-                        }
-                      },
-                      "Property": "MOM Utilization % Color"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "selector": {
-            "data": [
-              {
-                "dataViewWildcard": {
-                  "matchingOption": 0
-                }
-              }
-            ],
-            "metadata": "Measure.Utilization Billable %",
-            "id": "field-03c51881-ff58-9e6d-97ff-dfd316615d84"
-          }
-        },
-        {
-          "properties": {
-            "valueFontSize": {
-              "expr": {
-                "Literal": {
-                  "Value": "8D"
-                }
-              }
-            }
-          },
-          "selector": {
-            "metadata": "Measure.Utilization Billable %"
-          }
-        },
-        {
-          "properties": {
-            "valueFontSize": {
-              "expr": {
-                "Literal": {
                   "Value": "10D"
-                }
-              }
-            },
-            "valueFontFamily": {
-              "expr": {
-                "Literal": {
-                  "Value": "'Calibri'"
-                }
-              }
-            }
-          },
-          "selector": {
-            "id": "default"
-          }
-        }
-      ],
-      "referenceLabelDetail": [
-        {
-          "properties": {
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
-                }
-              }
-            }
-          },
-          "selector": {
-            "metadata": "Measure.Utilization Billable %",
-            "id": "field-03c51881-ff58-9e6d-97ff-dfd316615d84"
-          }
-        },
-        {
-          "properties": {
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
-                }
-              }
-            }
-          },
-          "selector": {
-            "id": "default"
-          }
-        }
-      ],
-      "divider": [
-        {
-          "properties": {
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
                 }
               }
             }
@@ -490,31 +254,82 @@
       "referenceLabelLayout": [
         {
           "properties": {
-            "horizontalAlignment": {
-              "expr": {
-                "Literal": {
-                  "Value": "'center'"
-                }
-              }
-            },
-            "position": {
-              "expr": {
-                "Literal": {
-                  "Value": "'below'"
-                }
-              }
-            },
             "labelSpace": {
               "expr": {
                 "Literal": {
-                  "Value": "2D"
+                  "Value": "5D"
+                }
+              }
+            },
+            "customizePadding": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "paddingBeforeDivider": {
+              "expr": {
+                "Literal": {
+                  "Value": "8D"
                 }
               }
             },
             "outerPadding": {
               "expr": {
                 "Literal": {
-                  "Value": "2D"
+                  "Value": "11D"
+                }
+              }
+            },
+            "arrangement": {
+              "expr": {
+                "Literal": {
+                  "Value": "'rows'"
+                }
+              }
+            },
+            "style": {
+              "expr": {
+                "Literal": {
+                  "Value": "'tabular'"
+                }
+              }
+            },
+            "valueArea": {
+              "expr": {
+                "Literal": {
+                  "Value": "50D"
+                }
+              }
+            },
+            "verticalAlignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'middle'"
+                }
+              }
+            }
+          },
+          "selector": {
+            "id": "default"
+          }
+        }
+      ],
+      "shapeCustomRectangle": [
+        {
+          "properties": {
+            "tileShape": {
+              "expr": {
+                "Literal": {
+                  "Value": "'rectangleRoundedByPixel'"
+                }
+              }
+            },
+            "rectangleRoundedCurve": {
+              "expr": {
+                "Literal": {
+                  "Value": "10L"
                 }
               }
             }
@@ -539,7 +354,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Utilization KPI'"
+                  "Value": "'Billable Hours Card'"
                 }
               }
             }
@@ -594,6 +409,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "parentGroupName": "dbe5aba782b782607da0"
+  }
 }

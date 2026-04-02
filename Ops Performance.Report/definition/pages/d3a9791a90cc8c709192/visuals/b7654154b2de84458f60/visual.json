@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
-  "name": "1181d2947238284b5aaa",
+  "name": "b7654154b2de84458f60",
   "position": {
-    "x": 481.66666666666669,
-    "y": 20,
-    "z": 2000,
-    "height": 135,
-    "width": 160,
-    "tabOrder": 2000
+    "x": 641.66666666666674,
+    "y": 50,
+    "z": 7002,
+    "height": 105,
+    "width": 300,
+    "tabOrder": 7002
   },
   "visual": {
     "visualType": "cardVisual",
@@ -23,11 +23,11 @@
                       "Entity": "Measure"
                     }
                   },
-                  "Property": "Total Project"
+                  "Property": "Projects Active"
                 }
               },
-              "queryRef": "Measure.Total Project",
-              "nativeQueryRef": "Total Project"
+              "queryRef": "Measure.Projects Active",
+              "nativeQueryRef": "Projects Active"
             }
           ]
         }
@@ -42,7 +42,7 @@
                     "Entity": "Measure"
                   }
                 },
-                "Property": "Total Project"
+                "Property": "Projects Active"
               }
             },
             "direction": "Descending"

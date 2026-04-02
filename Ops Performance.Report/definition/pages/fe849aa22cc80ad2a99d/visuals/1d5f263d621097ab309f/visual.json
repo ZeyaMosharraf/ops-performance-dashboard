@@ -1,13 +1,13 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
-  "name": "b88587449349e6bb2d13",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "1d5f263d621097ab309f",
   "position": {
-    "x": 735.71428571428578,
-    "y": 75.714285714285722,
-    "z": 0,
-    "height": 181.42857142857144,
-    "width": 524.28571428571433,
-    "tabOrder": 0
+    "x": 40,
+    "y": 450.90909090909088,
+    "z": 9000,
+    "height": 180.90909090909091,
+    "width": 523.63636363636363,
+    "tabOrder": 9000
   },
   "visual": {
     "visualType": "areaChart",
@@ -23,29 +23,27 @@
                       "Entity": "dim_date"
                     }
                   },
+                  "Property": "MonthShortName"
+                }
+              },
+              "queryRef": "dim_date.MonthShortName",
+              "nativeQueryRef": "MonthShortName",
+              "active": true
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_date"
+                    }
+                  },
                   "Property": "Week"
                 }
               },
               "queryRef": "dim_date.Week",
-              "nativeQueryRef": "W",
-              "active": true,
-              "displayName": "W"
-            }
-          ],
-          "fieldParameters": [
-            {
-              "parameterExpr": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "# Month/Week"
-                    }
-                  },
-                  "Property": "Month/Week"
-                }
-              },
-              "index": 0,
-              "length": 1
+              "nativeQueryRef": "Week",
+              "active": false
             }
           ]
         },
@@ -59,17 +57,17 @@
                       "Entity": "Measure"
                     }
                   },
-                  "Property": "Utilization Billable %"
+                  "Property": "Overall Utilization"
                 }
               },
               "queryRef": "Measure.Utilization Billable %",
-              "nativeQueryRef": "Utilization Billable %"
+              "nativeQueryRef": "Overall Utilization"
             },
             {
               "field": {
                 "NativeVisualCalculation": {
                   "Language": "dax",
-                  "Expression": "MOVINGAVERAGE([Utilization Billable %], 3)",
+                  "Expression": "MOVINGAVERAGE([Overall Utilization], 3)",
                   "Name": "Moving average"
                 }
               },
@@ -432,7 +430,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Billable % Utilization Over Time'"
+                  "Value": "'Overall Utilization % Over Time'"
                 }
               }
             },

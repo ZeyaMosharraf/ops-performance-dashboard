@@ -33,7 +33,6 @@ relationship AutoDetected_f2f2a171-e2e8-44f1-9fe0-8d4ec5bdbac5
 	toColumn: dim_team.'Team ID'
 
 relationship AutoDetected_83761bf2-dd11-416e-9010-18bd023c6a1b
-	crossFilteringBehavior: bothDirections
 	fromColumn: fact_ActivityLog.'Task ID'
 	toColumn: dim_task.'Task Id'
 

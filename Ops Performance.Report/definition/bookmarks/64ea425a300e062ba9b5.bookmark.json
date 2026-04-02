@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/bookmark/2.0.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/bookmark/2.1.0/schema.json",
   "displayName": "Leave KPI",
   "name": "64ea425a300e062ba9b5",
   "options": {
@@ -17,116 +17,11 @@
     ]
   },
   "explorationState": {
-    "version": "1.11",
+    "version": "1.3",
     "activeSection": "fe849aa22cc80ad2a99d",
     "sections": {
       "fe849aa22cc80ad2a99d": {
         "visualContainers": {
-          "b88587449349e6bb2d13": {
-            "filters": {
-              "byExpr": [
-                {
-                  "name": "12ca9b3990cc6ba1eea8",
-                  "type": "Advanced",
-                  "expression": {
-                    "Measure": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "Measure"
-                        }
-                      },
-                      "Property": "Utilization Billable %"
-                    }
-                  },
-                  "howCreated": 0
-                },
-                {
-                  "name": "4478d4a01b98389d0904",
-                  "type": "Categorical",
-                  "expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "dim_date"
-                        }
-                      },
-                      "Property": "Week"
-                    }
-                  },
-                  "howCreated": 0
-                }
-              ]
-            },
-            "singleVisual": {
-              "visualType": "areaChart",
-              "objects": {},
-              "activeProjections": {
-                "Category": [
-                  {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "dim_date"
-                        }
-                      },
-                      "Property": "Week"
-                    }
-                  }
-                ]
-              },
-              "projections": {
-                "Category": [
-                  {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "dim_date"
-                        }
-                      },
-                      "Property": "Week"
-                    }
-                  }
-                ],
-                "Y": [
-                  {
-                    "Measure": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "Measure"
-                        }
-                      },
-                      "Property": "Utilization Billable %"
-                    }
-                  },
-                  {
-                    "NativeVisualCalculation": {
-                      "Language": "dax",
-                      "Expression": "MOVINGAVERAGE([Utilization Billable %], 3)",
-                      "Name": "Moving average"
-                    }
-                  }
-                ]
-              },
-              "parameters": {
-                "Category": [
-                  {
-                    "expr": {
-                      "Column": {
-                        "Expression": {
-                          "SourceRef": {
-                            "Entity": "# Month/Week"
-                          }
-                        },
-                        "Property": "Month/Week"
-                      }
-                    },
-                    "index": 0,
-                    "length": 1
-                  }
-                ]
-              }
-            }
-          },
           "2f54ee1fe7d6fd8ad3bc": {
             "filters": {
               "byExpr": [
@@ -265,108 +160,6 @@
               ]
             }
           },
-          "4cc9632b80447be3462e": {
-            "filters": {
-              "byExpr": [
-                {
-                  "name": "24d067bdbeb39064450d",
-                  "type": "Categorical",
-                  "expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "# Month/Week"
-                        }
-                      },
-                      "Property": "Month/Week"
-                    }
-                  },
-                  "howCreated": 0
-                }
-              ]
-            },
-            "singleVisual": {
-              "visualType": "advancedSlicerVisual",
-              "objects": {
-                "merge": {
-                  "general": [
-                    {
-                      "properties": {
-                        "filter": {
-                          "filter": {
-                            "Version": 2,
-                            "From": [
-                              {
-                                "Name": "#",
-                                "Entity": "# Month/Week",
-                                "Type": 0
-                              }
-                            ],
-                            "Where": [
-                              {
-                                "Condition": {
-                                  "In": {
-                                    "Expressions": [
-                                      {
-                                        "Column": {
-                                          "Expression": {
-                                            "SourceRef": {
-                                              "Source": "#"
-                                            }
-                                          },
-                                          "Property": "Month/Week Fields"
-                                        }
-                                      }
-                                    ],
-                                    "Values": [
-                                      [
-                                        {
-                                          "Literal": {
-                                            "Value": "'''dim_date''[Week]'"
-                                          }
-                                        }
-                                      ]
-                                    ]
-                                  }
-                                }
-                              }
-                            ]
-                          }
-                        }
-                      }
-                    }
-                  ]
-                }
-              },
-              "cachedFilterDisplayItems": [
-                {
-                  "id": {
-                    "scopeId": {
-                      "Comparison": {
-                        "ComparisonKind": 0,
-                        "Left": {
-                          "Column": {
-                            "Expression": {
-                              "SourceRef": {
-                                "Entity": "# Month/Week"
-                              }
-                            },
-                            "Property": "Month/Week Fields"
-                          }
-                        },
-                        "Right": {
-                          "Literal": {
-                            "Value": "'''dim_date''[Week]'"
-                          }
-                        }
-                      }
-                    }
-                  },
-                  "displayName": "W"
-                }
-              ]
-            }
-          },
           "272f4c5eca0464013e41": {
             "filters": {
               "byExpr": [
@@ -423,7 +216,7 @@
                           "Entity": "Measure"
                         }
                       },
-                      "Property": "Utilization Billable %"
+                      "Property": "Overall Utilization"
                     }
                   },
                   "howCreated": 0
@@ -443,7 +236,7 @@
                           "Entity": "Measure"
                         }
                       },
-                      "Property": "Utilization Billable %"
+                      "Property": "Overall Utilization"
                     }
                   }
                 }
@@ -463,7 +256,7 @@
                           "Entity": "Measure"
                         }
                       },
-                      "Property": "Utilization Billable %"
+                      "Property": "Overall Utilization"
                     }
                   },
                   "howCreated": 0
@@ -498,79 +291,11 @@
                           "Entity": "Measure"
                         }
                       },
-                      "Property": "Utilization Billable %"
+                      "Property": "Overall Utilization"
                     }
                   }
                 }
               ]
-            }
-          },
-          "3a7fa20048f70932be91": {
-            "filters": {
-              "byExpr": [
-                {
-                  "name": "9b5b81b32b6870ec2e33",
-                  "type": "Categorical",
-                  "expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "dim_date"
-                        }
-                      },
-                      "Property": "Week"
-                    }
-                  },
-                  "howCreated": 0
-                }
-              ]
-            },
-            "singleVisual": {
-              "visualType": "slicer",
-              "objects": {
-                "merge": {
-                  "data": [
-                    {
-                      "properties": {
-                        "mode": {
-                          "expr": {
-                            "Literal": {
-                              "Value": "'Dropdown'"
-                            }
-                          }
-                        }
-                      }
-                    }
-                  ],
-                  "selection": [
-                    {
-                      "properties": {
-                        "strictSingleSelect": {
-                          "expr": {
-                            "Literal": {
-                              "Value": "false"
-                            }
-                          }
-                        }
-                      }
-                    }
-                  ]
-                }
-              },
-              "activeProjections": {
-                "Values": [
-                  {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "dim_date"
-                        }
-                      },
-                      "Property": "Week"
-                    }
-                  }
-                ]
-              }
             }
           },
           "fe6808a7296d3e4a0e13": {
@@ -728,279 +453,6 @@
                     }
                   }
                 ]
-              }
-            }
-          },
-          "1fd24bb26829d0a1255d": {
-            "filters": {
-              "byExpr": [
-                {
-                  "name": "456235c7b13d19d79006",
-                  "type": "Advanced",
-                  "expression": {
-                    "Measure": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "Measure"
-                        }
-                      },
-                      "Property": "Total Leave"
-                    }
-                  },
-                  "howCreated": 0
-                }
-              ]
-            },
-            "singleVisual": {
-              "visualType": "cardVisual",
-              "objects": {},
-              "orderBy": [
-                {
-                  "Direction": 2,
-                  "Expression": {
-                    "Measure": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "Measure"
-                        }
-                      },
-                      "Property": "Total Leave"
-                    }
-                  }
-                }
-              ]
-            }
-          },
-          "e4ed9514793ccc39024e": {
-            "filters": {
-              "byExpr": [
-                {
-                  "name": "760b0bbb932eb231099c",
-                  "type": "Advanced",
-                  "expression": {
-                    "Measure": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "Measure"
-                        }
-                      },
-                      "Property": "Total Project"
-                    }
-                  },
-                  "howCreated": 0
-                }
-              ]
-            },
-            "singleVisual": {
-              "visualType": "cardVisual",
-              "objects": {},
-              "orderBy": [
-                {
-                  "Direction": 2,
-                  "Expression": {
-                    "Measure": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "Measure"
-                        }
-                      },
-                      "Property": "Total Project"
-                    }
-                  }
-                }
-              ]
-            }
-          },
-          "8bdbec4d3ba658548d12": {
-            "filters": {
-              "byExpr": [
-                {
-                  "name": "53fc00109d1dc597072e",
-                  "type": "Advanced",
-                  "expression": {
-                    "HierarchyLevel": {
-                      "Expression": {
-                        "Hierarchy": {
-                          "Expression": {
-                            "PropertyVariationSource": {
-                              "Expression": {
-                                "SourceRef": {
-                                  "Entity": "dim_date"
-                                }
-                              },
-                              "Name": "Variation",
-                              "Property": "Date"
-                            }
-                          },
-                          "Hierarchy": "Date Hierarchy"
-                        }
-                      },
-                      "Level": "Day"
-                    }
-                  },
-                  "howCreated": 0
-                },
-                {
-                  "name": "ef3128864825a39c0ddd",
-                  "type": "Advanced",
-                  "expression": {
-                    "Measure": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "Measure"
-                        }
-                      },
-                      "Property": "Total Leave"
-                    }
-                  },
-                  "howCreated": 0
-                }
-              ]
-            },
-            "singleVisual": {
-              "visualType": "areaChart",
-              "objects": {},
-              "orderBy": [
-                {
-                  "Direction": 1,
-                  "Expression": {
-                    "HierarchyLevel": {
-                      "Expression": {
-                        "Hierarchy": {
-                          "Expression": {
-                            "PropertyVariationSource": {
-                              "Expression": {
-                                "SourceRef": {
-                                  "Entity": "dim_date"
-                                }
-                              },
-                              "Name": "Variation",
-                              "Property": "Date"
-                            }
-                          },
-                          "Hierarchy": "Date Hierarchy"
-                        }
-                      },
-                      "Level": "Day"
-                    }
-                  }
-                }
-              ],
-              "activeProjections": {
-                "Category": [
-                  {
-                    "HierarchyLevel": {
-                      "Expression": {
-                        "Hierarchy": {
-                          "Expression": {
-                            "PropertyVariationSource": {
-                              "Expression": {
-                                "SourceRef": {
-                                  "Entity": "dim_date"
-                                }
-                              },
-                              "Name": "Variation",
-                              "Property": "Date"
-                            }
-                          },
-                          "Hierarchy": "Date Hierarchy"
-                        }
-                      },
-                      "Level": "Day"
-                    }
-                  }
-                ]
-              }
-            }
-          },
-          "3c5c17e0ab95c54c5fee": {
-            "filters": {
-              "byExpr": [
-                {
-                  "name": "53da15387e2ce372dd3d",
-                  "type": "Advanced",
-                  "expression": {
-                    "Measure": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "Measure"
-                        }
-                      },
-                      "Property": "Total Project"
-                    }
-                  },
-                  "howCreated": 0
-                },
-                {
-                  "name": "f7a4dec96b1e30ac8c30",
-                  "type": "Categorical",
-                  "expression": {
-                    "HierarchyLevel": {
-                      "Expression": {
-                        "Hierarchy": {
-                          "Expression": {
-                            "PropertyVariationSource": {
-                              "Expression": {
-                                "SourceRef": {
-                                  "Entity": "dim_date"
-                                }
-                              },
-                              "Name": "Variation",
-                              "Property": "Date"
-                            }
-                          },
-                          "Hierarchy": "Date Hierarchy"
-                        }
-                      },
-                      "Level": "Month"
-                    }
-                  },
-                  "howCreated": 0
-                }
-              ]
-            },
-            "singleVisual": {
-              "visualType": "areaChart",
-              "objects": {},
-              "activeProjections": {
-                "Category": [
-                  {
-                    "HierarchyLevel": {
-                      "Expression": {
-                        "Hierarchy": {
-                          "Expression": {
-                            "PropertyVariationSource": {
-                              "Expression": {
-                                "SourceRef": {
-                                  "Entity": "dim_date"
-                                }
-                              },
-                              "Name": "Variation",
-                              "Property": "Date"
-                            }
-                          },
-                          "Hierarchy": "Date Hierarchy"
-                        }
-                      },
-                      "Level": "Month"
-                    }
-                  }
-                ]
-              }
-            }
-          },
-          "3040b94cdec187d863c7": {
-            "singleVisual": {
-              "visualType": "actionButton",
-              "objects": {}
-            }
-          },
-          "d1f8bb3c863b9469431d": {
-            "singleVisual": {
-              "visualType": "actionButton",
-              "objects": {},
-              "display": {
-                "mode": "hidden"
               }
             }
           }

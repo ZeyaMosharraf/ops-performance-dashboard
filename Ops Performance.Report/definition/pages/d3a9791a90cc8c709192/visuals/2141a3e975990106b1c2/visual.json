@@ -1,13 +1,13 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
-  "name": "e4ed9514793ccc39024e",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "2141a3e975990106b1c2",
   "position": {
-    "x": 16.666666666666686,
-    "y": 0,
-    "z": 0,
-    "height": 134.44444444444443,
-    "width": 185.55555555555554,
-    "tabOrder": 0
+    "x": 893.33333333333337,
+    "y": 21.666666666666668,
+    "z": 7003,
+    "height": 135,
+    "width": 160,
+    "tabOrder": 7003
   },
   "visual": {
     "visualType": "cardVisual",
@@ -23,11 +23,11 @@
                       "Entity": "Measure"
                     }
                   },
-                  "Property": "Total Project"
+                  "Property": "Budget Hours"
                 }
               },
-              "queryRef": "Measure.Total Project",
-              "nativeQueryRef": "Total Project"
+              "queryRef": "Measure.Budget Hours",
+              "nativeQueryRef": "Budget Hours"
             }
           ]
         }
@@ -42,7 +42,7 @@
                     "Entity": "Measure"
                   }
                 },
-                "Property": "Total Project"
+                "Property": "Budget Hours"
               }
             },
             "direction": "Descending"
@@ -94,7 +94,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "15D"
+                  "Value": "20D"
                 }
               }
             },
@@ -120,6 +120,13 @@
               "expr": {
                 "Literal": {
                   "Value": "'center'"
+                }
+              }
+            },
+            "showBlankAs": {
+              "expr": {
+                "Literal": {
+                  "Value": "'0'"
                 }
               }
             }
@@ -168,6 +175,34 @@
           },
           "selector": {
             "metadata": "Measure.TotalMonthlyBudget"
+          }
+        },
+        {
+          "properties": {
+            "labelDisplayUnits": {
+              "expr": {
+                "Literal": {
+                  "Value": "1D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Measure.Available Hours"
+          }
+        },
+        {
+          "properties": {
+            "labelDisplayUnits": {
+              "expr": {
+                "Literal": {
+                  "Value": "1D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Measure.Budget Hours"
           }
         }
       ],
@@ -224,7 +259,19 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "11D"
+                  "Value": "15D"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 1,
+                      "Percent": 0
+                    }
+                  }
                 }
               }
             },
@@ -239,18 +286,6 @@
               "expr": {
                 "Literal": {
                   "Value": "true"
-                }
-              }
-            },
-            "fontColor": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "ThemeDataColor": {
-                      "ColorId": 1,
-                      "Percent": 0
-                    }
-                  }
                 }
               }
             }
@@ -273,7 +308,7 @@
             "rectangleRoundedCurve": {
               "expr": {
                 "Literal": {
-                  "Value": "50L"
+                  "Value": "10L"
                 }
               }
             }
@@ -833,6 +868,13 @@
       "title": [
         {
           "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Total Project KPI'"
+                }
+              }
+            },
             "show": {
               "expr": {
                 "Literal": {
@@ -844,13 +886,6 @@
               "expr": {
                 "Literal": {
                   "Value": "true"
-                }
-              }
-            },
-            "text": {
-              "expr": {
-                "Literal": {
-                  "Value": "'Total Project KPI'"
                 }
               }
             }
@@ -1067,6 +1102,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "parentGroupName": "506331b961165315965b"
+  }
 }

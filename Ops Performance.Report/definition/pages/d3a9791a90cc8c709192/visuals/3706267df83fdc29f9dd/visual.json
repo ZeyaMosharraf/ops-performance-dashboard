@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
-  "name": "fafc9addeeeedbe46200",
+  "name": "3706267df83fdc29f9dd",
   "position": {
-    "x": 76,
-    "y": 64,
-    "z": 1000,
-    "height": 84,
-    "width": 177,
-    "tabOrder": 0
+    "x": 33.333333333333336,
+    "y": 36.666666666666671,
+    "z": 7005,
+    "height": 131.66666666666669,
+    "width": 213.33333333333334,
+    "tabOrder": 7005
   },
   "visual": {
     "visualType": "cardVisual",
@@ -23,32 +23,16 @@
                       "Entity": "Measure"
                     }
                   },
-                  "Property": "Overall Utilization"
+                  "Property": "Available Capacity"
                 }
               },
-              "queryRef": "Measure.Utilization Billable %",
-              "nativeQueryRef": "Utilization %",
-              "displayName": "Utilization %"
+              "queryRef": "Measure.Available Capacity",
+              "nativeQueryRef": "Available Capacity"
             }
           ]
         }
       },
       "sortDefinition": {
-        "sort": [
-          {
-            "field": {
-              "Measure": {
-                "Expression": {
-                  "SourceRef": {
-                    "Entity": "Measure"
-                  }
-                },
-                "Property": "Overall Utilization"
-              }
-            },
-            "direction": "Descending"
-          }
-        ],
         "isDefaultSort": true
       }
     },
@@ -77,17 +61,10 @@
                 }
               }
             },
-            "showBlankAs": {
-              "expr": {
-                "Literal": {
-                  "Value": "'0'"
-                }
-              }
-            },
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "11D"
+                  "Value": "14D"
                 }
               }
             },
@@ -95,6 +72,31 @@
               "expr": {
                 "Literal": {
                   "Value": "'Calibri'"
+                }
+              }
+            },
+            "bold": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#9A6EEA'"
+                    }
+                  }
+                }
+              }
+            },
+            "showBlankAs": {
+              "expr": {
+                "Literal": {
+                  "Value": "'0'"
                 }
               }
             }
@@ -105,16 +107,16 @@
         },
         {
           "properties": {
-            "fontSize": {
+            "labelDisplayUnits": {
               "expr": {
                 "Literal": {
-                  "Value": "11D"
+                  "Value": "1D"
                 }
               }
             }
           },
           "selector": {
-            "metadata": "Measure.Utilization Billable %"
+            "metadata": "Measure.Available Capacity"
           }
         }
       ],
@@ -124,7 +126,7 @@
             "rectangleRoundedCurve": {
               "expr": {
                 "Literal": {
-                  "Value": "9L"
+                  "Value": "0L"
                 }
               }
             },
@@ -138,6 +140,17 @@
           },
           "selector": {
             "id": "default"
+          }
+        },
+        {
+          "properties": {
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'middle'"
+                }
+              }
+            }
           }
         }
       ],
@@ -173,31 +186,17 @@
       "label": [
         {
           "properties": {
-            "show": {
+            "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "false"
-                }
-              }
-            }
-          },
-          "selector": {
-            "id": "default"
-          }
-        },
-        {
-          "properties": {
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
+                  "Value": "11D"
                 }
               }
             },
-            "position": {
+            "fontFamily": {
               "expr": {
                 "Literal": {
-                  "Value": "'aboveValue'"
+                  "Value": "'Calibri'"
                 }
               }
             },
@@ -212,70 +211,14 @@
                   }
                 }
               }
-            },
-            "heading": {
-              "expr": {
-                "Literal": {
-                  "Value": "'Heading3'"
-                }
-              }
-            },
-            "fontSize": {
-              "expr": {
-                "Literal": {
-                  "Value": "8D"
-                }
-              }
-            },
-            "fontFamily": {
-              "expr": {
-                "Literal": {
-                  "Value": "'Calibri'"
-                }
-              }
-            },
-            "text": {
-              "expr": {
-                "Literal": {
-                  "Value": "'Overall Utilization'"
-                }
-              }
             }
           },
           "selector": {
-            "metadata": "Measure.Utilization Billable %"
+            "id": "default"
           }
         }
       ],
       "referenceLabel": [
-        {
-          "properties": {
-            "value": {
-              "expr": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Measure"
-                    }
-                  },
-                  "Property": "Utilization % MoM Arrow Label"
-                }
-              }
-            }
-          },
-          "selector": {
-            "data": [
-              {
-                "dataViewWildcard": {
-                  "matchingOption": 0
-                }
-              }
-            ],
-            "metadata": "Measure.Utilization Billable %",
-            "id": "field-03c51881-ff58-9e6d-97ff-dfd316615d84",
-            "order": 0
-          }
-        },
         {
           "properties": {
             "backgroundShow": {
@@ -289,71 +232,50 @@
           "selector": {
             "id": "default"
           }
-        }
-      ],
-      "referenceLabelTitle": [
+        },
         {
-          "properties": {
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "true"
-                }
-              }
-            },
-            "titleContentType": {
-              "expr": {
-                "Literal": {
-                  "Value": "'custom'"
-                }
-              }
-            },
-            "titleText": {
-              "expr": {
-                "Literal": {
-                  "Value": "'MoM:'"
-                }
-              }
-            }
-          },
+          "properties": {},
           "selector": {
-            "metadata": "Measure.Utilization Billable %",
-            "id": "field-03c51881-ff58-9e6d-97ff-dfd316615d84"
+            "data": [
+              {
+                "dataViewWildcard": {
+                  "matchingOption": 0
+                }
+              }
+            ],
+            "metadata": "Measure.Available Capacity",
+            "id": "field-b720f10c-3ad3-e5df-36a9-7c76bea3527f",
+            "order": 0
           }
         },
         {
-          "properties": {
-            "titleFontSize": {
-              "expr": {
-                "Literal": {
-                  "Value": "8D"
+          "properties": {},
+          "selector": {
+            "data": [
+              {
+                "dataViewWildcard": {
+                  "matchingOption": 0
                 }
               }
-            }
-          },
-          "selector": {
-            "metadata": "Measure.Utilization Billable %"
+            ],
+            "metadata": "Measure.Available Capacity",
+            "id": "field-14206ca1-84a6-5a71-c5f2-3fb40861f683",
+            "order": 1
           }
         },
         {
-          "properties": {
-            "titleFontSize": {
-              "expr": {
-                "Literal": {
-                  "Value": "10D"
-                }
-              }
-            },
-            "titleFontFamily": {
-              "expr": {
-                "Literal": {
-                  "Value": "'Calibri'"
-                }
-              }
-            }
-          },
+          "properties": {},
           "selector": {
-            "id": "default"
+            "data": [
+              {
+                "dataViewWildcard": {
+                  "matchingOption": 0
+                }
+              }
+            ],
+            "metadata": "Measure.Available Capacity",
+            "id": "field-2388be24-1d7a-74d9-c67a-3e47307597bb",
+            "order": 0
           }
         }
       ],
@@ -363,14 +285,35 @@
             "valueFontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "9D"
+                  "Value": "10D"
                 }
               }
             }
           },
           "selector": {
-            "metadata": "Measure.Utilization Billable %",
-            "id": "field-03c51881-ff58-9e6d-97ff-dfd316615d84"
+            "id": "default"
+          }
+        },
+        {
+          "properties": {
+            "valueDisplayUnits": {
+              "expr": {
+                "Literal": {
+                  "Value": "1D"
+                }
+              }
+            },
+            "showBlankAs": {
+              "expr": {
+                "Literal": {
+                  "Value": "'--'"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Measure.Available Capacity",
+            "id": "field-b720f10c-3ad3-e5df-36a9-7c76bea3527f"
           }
         },
         {
@@ -385,7 +328,7 @@
                           "Entity": "Measure"
                         }
                       },
-                      "Property": "MOM Utilization % Color"
+                      "Property": "MOM Available Capacity % Color"
                     }
                   }
                 }
@@ -400,8 +343,8 @@
                 }
               }
             ],
-            "metadata": "Measure.Utilization Billable %",
-            "id": "field-03c51881-ff58-9e6d-97ff-dfd316615d84"
+            "metadata": "Measure.Available Capacity",
+            "id": "field-2388be24-1d7a-74d9-c67a-3e47307597bb"
           }
         },
         {
@@ -409,28 +352,84 @@
             "valueFontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "8D"
+                  "Value": "9D"
+                }
+              }
+            },
+            "valueFontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 1,
+                      "Percent": 0
+                    }
+                  }
                 }
               }
             }
           },
           "selector": {
-            "metadata": "Measure.Utilization Billable %"
+            "metadata": "Measure.Available Capacity"
           }
-        },
+        }
+      ],
+      "referenceLabelLayout": [
         {
           "properties": {
-            "valueFontSize": {
+            "labelSpace": {
               "expr": {
                 "Literal": {
-                  "Value": "10D"
+                  "Value": "5D"
                 }
               }
             },
-            "valueFontFamily": {
+            "customizePadding": {
               "expr": {
                 "Literal": {
-                  "Value": "'Calibri'"
+                  "Value": "false"
+                }
+              }
+            },
+            "paddingBeforeDivider": {
+              "expr": {
+                "Literal": {
+                  "Value": "8D"
+                }
+              }
+            },
+            "outerPadding": {
+              "expr": {
+                "Literal": {
+                  "Value": "11D"
+                }
+              }
+            },
+            "arrangement": {
+              "expr": {
+                "Literal": {
+                  "Value": "'rows'"
+                }
+              }
+            },
+            "style": {
+              "expr": {
+                "Literal": {
+                  "Value": "'tabular'"
+                }
+              }
+            },
+            "valueArea": {
+              "expr": {
+                "Literal": {
+                  "Value": "50D"
+                }
+              }
+            },
+            "verticalAlignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'middle'"
                 }
               }
             }
@@ -440,34 +439,98 @@
           }
         }
       ],
-      "referenceLabelDetail": [
+      "shapeCustomRectangle": [
         {
           "properties": {
-            "show": {
+            "tileShape": {
               "expr": {
                 "Literal": {
-                  "Value": "false"
+                  "Value": "'rectangleRoundedByPixel'"
                 }
               }
-            }
-          },
-          "selector": {
-            "metadata": "Measure.Utilization Billable %",
-            "id": "field-03c51881-ff58-9e6d-97ff-dfd316615d84"
-          }
-        },
-        {
-          "properties": {
-            "show": {
+            },
+            "rectangleRoundedCurve": {
               "expr": {
                 "Literal": {
-                  "Value": "false"
+                  "Value": "10L"
                 }
               }
             }
           },
           "selector": {
             "id": "default"
+          }
+        }
+      ],
+      "referenceLabelTitle": [
+        {
+          "properties": {
+            "titleContentType": {
+              "expr": {
+                "Literal": {
+                  "Value": "'custom'"
+                }
+              }
+            },
+            "titleText": {
+              "expr": {
+                "Literal": {
+                  "Value": "'vs PM'"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Measure.Available Capacity",
+            "id": "field-b720f10c-3ad3-e5df-36a9-7c76bea3527f"
+          }
+        },
+        {
+          "properties": {
+            "titleContentType": {
+              "expr": {
+                "Literal": {
+                  "Value": "'custom'"
+                }
+              }
+            },
+            "titleText": {
+              "expr": {
+                "Literal": {
+                  "Value": "'MoM'"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Measure.Available Capacity",
+            "id": "field-2388be24-1d7a-74d9-c67a-3e47307597bb"
+          }
+        },
+        {
+          "properties": {
+            "titleFontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "10D"
+                }
+              }
+            },
+            "titleFontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 1,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Measure.Available Capacity"
           }
         }
       ],
@@ -483,44 +546,7 @@
             }
           },
           "selector": {
-            "id": "default"
-          }
-        }
-      ],
-      "referenceLabelLayout": [
-        {
-          "properties": {
-            "horizontalAlignment": {
-              "expr": {
-                "Literal": {
-                  "Value": "'center'"
-                }
-              }
-            },
-            "position": {
-              "expr": {
-                "Literal": {
-                  "Value": "'below'"
-                }
-              }
-            },
-            "labelSpace": {
-              "expr": {
-                "Literal": {
-                  "Value": "2D"
-                }
-              }
-            },
-            "outerPadding": {
-              "expr": {
-                "Literal": {
-                  "Value": "2D"
-                }
-              }
-            }
-          },
-          "selector": {
-            "id": "default"
+            "metadata": "Measure.Available Capacity"
           }
         }
       ]
@@ -539,7 +565,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Utilization KPI'"
+                  "Value": "'Billable Hours Card'"
                 }
               }
             }
@@ -594,6 +620,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "parentGroupName": "dbe5aba782b782607da0"
+  }
 }

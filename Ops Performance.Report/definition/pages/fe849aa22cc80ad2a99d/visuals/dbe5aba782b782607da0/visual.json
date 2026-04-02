@@ -1,16 +1,15 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "dbe5aba782b782607da0",
   "position": {
-    "x": 186.10148429409733,
-    "y": 345.16258198136,
-    "z": 13000,
-    "height": 213.141870900932,
-    "width": 327.6658612357611,
-    "tabOrder": 1000
+    "x": 922,
+    "y": 201,
+    "z": 7000,
+    "height": 212.5,
+    "width": 328.40909090909093
   },
   "visualGroup": {
-    "displayName": "Group 1",
+    "displayName": "Utilization Card",
     "groupMode": "ScaleMode"
   }
 }

@@ -19,70 +19,12 @@ table dim_date
 
 		annotation UnderlyingDateTimeDataType = Date
 
-	column Year
-		dataType: int64
-		formatString: 0
-		lineageTag: 03f8f590-6fcd-41bc-8f69-9aac005eb403
-		summarizeBy: sum
-		sourceColumn: Year
-
-		annotation SummarizationSetBy = Automatic
-
-	column Day
-		dataType: int64
-		formatString: 0
-		lineageTag: beaee838-8037-484a-8686-d8e2f3fb88d7
-		summarizeBy: sum
-		sourceColumn: Day
-
-		annotation SummarizationSetBy = Automatic
-
-	column Month
-		dataType: int64
-		formatString: 0
-		lineageTag: 7918a811-d047-4f74-a149-f95fe4f91b9a
-		summarizeBy: sum
-		sourceColumn: Month
-
-		annotation SummarizationSetBy = Automatic
-
-	column Week
-		dataType: string
-		lineageTag: 3c34bf59-2b55-4bcd-b69f-aacf199f946f
-		summarizeBy: none
-		sourceColumn: Week
-		sortByColumn: YearWeekIndex
-
-		changedProperty = SortByColumn
-
-		annotation SummarizationSetBy = Automatic
-
 	column IsWeekday
 		dataType: boolean
 		formatString: """TRUE"";""TRUE"";""FALSE"""
 		lineageTag: 1ce8e20a-9438-4644-a35e-dcd737afeb49
 		summarizeBy: none
 		sourceColumn: IsWeekday
-
-		annotation SummarizationSetBy = Automatic
-
-	column YearWeekIndex = YEAR('dim_date'[Date]) * 100 + WEEKNUM('dim_date'[Date], 2)
-		formatString: 0
-		lineageTag: f8d037b5-e3b9-456a-8a86-5dc827fa2b40
-		summarizeBy: sum
-
-		changedProperty = SortByColumn
-
-		annotation SummarizationSetBy = Automatic
-
-	column 'Month Name'
-		dataType: string
-		lineageTag: 77b35691-4972-4649-a385-9e40d4bb64fc
-		summarizeBy: none
-		sourceColumn: Month Name
-		sortByColumn: Year
-
-		changedProperty = SortByColumn
 
 		annotation SummarizationSetBy = Automatic
 
@@ -109,9 +51,69 @@ table dim_date
 
 		annotation SummarizationSetBy = Automatic
 
+	column Year
+		dataType: int64
+		formatString: 0
+		lineageTag: b1d45775-c727-4698-861c-67bb4966f967
+		summarizeBy: sum
+		sourceColumn: Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column Month
+		dataType: int64
+		formatString: 0
+		lineageTag: 8e92c7fc-c749-45d1-9d47-0f8a89aee76c
+		summarizeBy: sum
+		sourceColumn: Month
+
+		annotation SummarizationSetBy = Automatic
+
+	column Day
+		dataType: int64
+		formatString: 0
+		lineageTag: f6ffc3e8-305f-4b6d-8d8b-a14cfc858ec3
+		summarizeBy: sum
+		sourceColumn: Day
+
+		annotation SummarizationSetBy = Automatic
+
+	column Week
+		dataType: string
+		lineageTag: c96c65b7-32a3-4309-b208-88239b7304b5
+		summarizeBy: none
+		sourceColumn: Week
+
+		annotation SummarizationSetBy = Automatic
+
+	column YearWeekIndex
+		dataType: int64
+		formatString: 0
+		lineageTag: 17ccbbdb-328a-474d-b585-4d49b0589be9
+		summarizeBy: sum
+		sourceColumn: YearWeekIndex
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Month Name'
+		dataType: string
+		lineageTag: f6ec9ee1-16de-4429-ba9e-79bed4a0116a
+		summarizeBy: none
+		sourceColumn: Month Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column MonthShort
+		dataType: string
+		lineageTag: f439f6ca-9815-4066-b346-ef9d5908a8d2
+		summarizeBy: none
+		sourceColumn: MonthShort
+
+		annotation SummarizationSetBy = Automatic
+
 	column 'Holiday Type'
 		dataType: string
-		lineageTag: 1811cc80-1044-41ca-8b3e-13f35b2e12a8
+		lineageTag: 211b4c05-f33c-439e-9719-00d52a0d5007
 		summarizeBy: none
 		sourceColumn: Holiday Type
 
@@ -120,47 +122,39 @@ table dim_date
 	partition dim_date = m
 		mode: import
 		queryGroup: Load
-		source = ```
+		source =
 				let
-				    CurrentYear = Date.Year(DateTime.LocalNow()),
 				    StartDate = StartDate,
 				    EndDate = EndDate,
-				    
+				
 				    DateList = List.Dates(StartDate, Duration.Days(EndDate - StartDate) + 1, #duration(1, 0, 0, 0)),
-				    
 				    DateTable = Table.FromList(DateList, Splitter.SplitByNothing(), {"Date"}, null, ExtraValues.Error),
-				    
-				    TypedDateTable = Table.TransformColumnTypes(DateTable, {{"Date", type date}}),
-				    #"Duplicated Column" = Table.DuplicateColumn(TypedDateTable, "Date", "Date - Copy"),
-				    #"Renamed Columns1" = Table.RenameColumns(#"Duplicated Column",{{"Date - Copy", "Year"}}),
-				    #"Extracted Year" = Table.TransformColumns(#"Renamed Columns1",{{"Year", Date.Year, Int64.Type}}),
-				    #"Duplicated Column1" = Table.DuplicateColumn(#"Extracted Year", "Date", "Date - Copy"),
-				    #"Renamed Columns2" = Table.RenameColumns(#"Duplicated Column1",{{"Date - Copy", "Day"}}),
-				    #"Calculated Day of Week" = Table.TransformColumns(#"Renamed Columns2",{{"Day", Date.DayOfWeek, Int64.Type}}),
-				    #"Duplicated Column2" = Table.DuplicateColumn(#"Calculated Day of Week", "Date", "Date - Copy"),
-				    #"Extracted Month" = Table.TransformColumns(#"Duplicated Column2",{{"Date - Copy", Date.Month, Int64.Type}}),
-				    #"Renamed Columns3" = Table.RenameColumns(#"Extracted Month",{{"Date - Copy", "Month"}}),
-				    #"Added Custom" = Table.AddColumn(#"Renamed Columns3", "Custom", each let
-				        startdate = StartDate,
-				        daysBetween = Duration.Days([Date] - startdate),
-				        weekNumber = Number.IntegerDivide(daysBetween, 7) + 1,
-				        weekStart = Date.AddDays(startdate, (weekNumber - 1) * 7),
-				        weekEnd = Date.AddDays(weekStart, 6),
-				        monthAbbr = Date.ToText(weekStart, "MMM", "en-US")
-				    in
-				        "W" & Text.From(weekNumber) & " " & monthAbbr & " " & Text.From(Date.Day(weekStart)) & "-" & Text.From(Date.Day(weekEnd))),
-				    #"Renamed Columns4" = Table.RenameColumns(#"Added Custom",{{"Custom", "Week"}}),
-				    #"Added Custom1" = Table.AddColumn(#"Renamed Columns4", "IsWeekday", each if Date.DayOfWeek([Date], Day.Monday) < 5 then true else false),
-				    #"Changed Type" = Table.TransformColumnTypes(#"Added Custom1",{{"IsWeekday", type logical}, {"Week", type text}}),
-				    #"Added Custom2" = Table.AddColumn(#"Changed Type", "Month.1", each Date.ToText([Date], "MMMM", "en-US")),
-				    #"Renamed Columns5" = Table.RenameColumns(#"Added Custom2",{{"Month.1", "Month Name"}}),
-				    #"Changed Type1" = Table.TransformColumnTypes(#"Renamed Columns5",{{"Month Name", type text}}),
-				    #"Merged Queries" = Table.NestedJoin(#"Changed Type1", {"Date"}, Holiday, {"Date"}, "Google Holiday", JoinKind.LeftOuter),
-				    #"Expanded Google Holiday" = Table.ExpandTableColumn(#"Merged Queries", "Google Holiday", {"Festival", "Type"}, {"Festival", "Type"}),
-				    #"Renamed Columns" = Table.RenameColumns(#"Expanded Google Holiday",{{"Type", "Holiday Type"}})
+				    DateTable_Typed = Table.TransformColumnTypes(DateTable, {{"Date", type date}}),
+				
+				    AddYear = Table.AddColumn(DateTable_Typed, "Year", each Date.Year([Date]), Int64.Type),
+				    AddMonth = Table.AddColumn(AddYear, "Month", each Date.Month([Date]), Int64.Type),
+				    AddDay = Table.AddColumn(AddMonth, "Day", each Date.DayOfWeek([Date]), Int64.Type),
+				
+				    AddWeek = Table.AddColumn(AddDay, "Week", each
+				        let
+				            daysBetween = Duration.Days([Date] - StartDate),
+				            weekNumber = Number.IntegerDivide(daysBetween, 7) + 1,
+				            weekStart = Date.AddDays(StartDate, (weekNumber - 1) * 7),
+				            weekEnd = Date.AddDays(weekStart, 6),
+				            monthAbbr = Date.ToText(weekStart, "MMM", "en-US")
+				        in
+				            "W" & Text.From(weekNumber) & " " & monthAbbr & " " & Text.From(Date.Day(weekStart)) & "-" & Text.From(Date.Day(weekEnd)),
+				        type text),
+				    AddWeekIndex = Table.AddColumn(AddWeek, "YearWeekIndex",
+				        each Number.IntegerDivide(Duration.Days([Date] - StartDate), 7) + 1, Int64.Type),
+				
+				    AddIsWeekday = Table.AddColumn(AddWeekIndex, "IsWeekday", each Date.DayOfWeek([Date], Day.Monday) < 5, type logical),
+				    AddMonthName = Table.AddColumn(AddIsWeekday, "Month Name", each Date.ToText([Date], "MMMM", "en-US"), type text),
+				    AddMonthshort = Table.AddColumn(AddMonthName, "MonthShort", each Date.ToText([Date], "MMMyy", "en-US"), type text),
+				    MergeHolidays = Table.NestedJoin(AddMonthshort, {"Date"}, Holiday, {"Date"}, "Google Holiday", JoinKind.LeftOuter),
+				    ExpandHolidays = Table.ExpandTableColumn(MergeHolidays, "Google Holiday", {"Festival", "Type"}, {"Festival", "Holiday Type"})
 				in
-				    #"Renamed Columns"
-				```
+				    ExpandHolidays
 
 	annotation PBI_NavigationStepName = Navigation
 

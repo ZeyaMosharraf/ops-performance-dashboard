@@ -1,13 +1,13 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
-  "name": "764ff83a21ea213d21ce",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
+  "name": "e70367b15fb884756f2f",
   "position": {
-    "x": 48.253244408976045,
-    "y": 292.63257899637085,
-    "z": 14000,
-    "height": 133.86383932812709,
-    "width": 213.24820916224897,
-    "tabOrder": 13000
+    "x": 251,
+    "y": 21,
+    "z": 7001,
+    "height": 135,
+    "width": 214,
+    "tabOrder": 7001
   },
   "visual": {
     "visualType": "cardVisual",
@@ -23,21 +23,58 @@
                       "Entity": "Measure"
                     }
                   },
-                  "Property": "Available Capacity"
+                  "Property": "Total Billable Hours"
                 }
               },
-              "queryRef": "Measure.Available Capacity",
-              "nativeQueryRef": "Available Capacity"
+              "queryRef": "Measure.Total Billable Hours",
+              "nativeQueryRef": "Billable Hours",
+              "displayName": "Billable Hours"
             }
           ]
         }
       },
       "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Measure"
+                  }
+                },
+                "Property": "Total Billable Hours"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
         "isDefaultSort": true
       }
     },
     "objects": {
       "value": [
+        {
+          "properties": {
+            "labelDisplayUnits": {
+              "expr": {
+                "Literal": {
+                  "Value": "1D"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "15D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Measure.Total Billable Hours"
+          }
+        },
         {
           "properties": {
             "labelDisplayUnits": {
@@ -103,20 +140,6 @@
           },
           "selector": {
             "id": "default"
-          }
-        },
-        {
-          "properties": {
-            "labelDisplayUnits": {
-              "expr": {
-                "Literal": {
-                  "Value": "1D"
-                }
-              }
-            }
-          },
-          "selector": {
-            "metadata": "Measure.Available Capacity"
           }
         }
       ],
@@ -221,20 +244,6 @@
       "referenceLabel": [
         {
           "properties": {
-            "backgroundShow": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
-                }
-              }
-            }
-          },
-          "selector": {
-            "id": "default"
-          }
-        },
-        {
-          "properties": {
             "value": {
               "expr": {
                 "Measure": {
@@ -243,7 +252,7 @@
                       "Entity": "Measure"
                     }
                   },
-                  "Property": "PM Available Capacity"
+                  "Property": "PM Billable Hours"
                 }
               }
             }
@@ -256,8 +265,8 @@
                 }
               }
             ],
-            "metadata": "Measure.Available Capacity",
-            "id": "field-b720f10c-3ad3-e5df-36a9-7c76bea3527f",
+            "metadata": "Measure.Total Billable Hours",
+            "id": "field-f21ec699-8e39-c6ac-0d29-6eee35be1528",
             "order": 0
           }
         },
@@ -271,8 +280,8 @@
                 }
               }
             ],
-            "metadata": "Measure.Available Capacity",
-            "id": "field-14206ca1-84a6-5a71-c5f2-3fb40861f683",
+            "metadata": "Measure.Total Billable Hours",
+            "id": "field-ae9e7f37-6072-a761-3167-699fd09e6174",
             "order": 1
           }
         },
@@ -286,7 +295,7 @@
                       "Entity": "Measure"
                     }
                   },
-                  "Property": "Available Capacity % MoM Arrow Label"
+                  "Property": "Billabel Hours % MoM Arrow Label"
                 }
               }
             }
@@ -299,13 +308,199 @@
                 }
               }
             ],
-            "metadata": "Measure.Available Capacity",
-            "id": "field-2388be24-1d7a-74d9-c67a-3e47307597bb",
+            "metadata": "Measure.Total Billable Hours",
+            "id": "field-1016bb7d-123c-d7c0-b1b2-7dc0bc983947",
             "order": 1
+          }
+        },
+        {
+          "properties": {
+            "backgroundShow": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          },
+          "selector": {
+            "id": "default"
+          }
+        }
+      ],
+      "referenceLabelTitle": [
+        {
+          "properties": {
+            "titleContentType": {
+              "expr": {
+                "Literal": {
+                  "Value": "'custom'"
+                }
+              }
+            },
+            "titleText": {
+              "expr": {
+                "Literal": {
+                  "Value": "'vs PM'"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Measure.Total Billable Hours",
+            "id": "field-f21ec699-8e39-c6ac-0d29-6eee35be1528"
+          }
+        },
+        {
+          "properties": {
+            "titleFontFamily": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Calibri'"
+                }
+              }
+            },
+            "titleFontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "10D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Measure.Total Billable Hours"
+          }
+        },
+        {
+          "properties": {
+            "titleContentType": {
+              "expr": {
+                "Literal": {
+                  "Value": "'custom'"
+                }
+              }
+            },
+            "titleText": {
+              "expr": {
+                "Literal": {
+                  "Value": "'MoM :'"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Measure.Total Billable Hours",
+            "id": "field-ae9e7f37-6072-a761-3167-699fd09e6174"
+          }
+        },
+        {
+          "properties": {
+            "titleContentType": {
+              "expr": {
+                "Literal": {
+                  "Value": "'custom'"
+                }
+              }
+            },
+            "titleText": {
+              "expr": {
+                "Literal": {
+                  "Value": "'MoM'"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Measure.Total Billable Hours",
+            "id": "field-1016bb7d-123c-d7c0-b1b2-7dc0bc983947"
+          }
+        }
+      ],
+      "divider": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Measure.Total Billable Hours"
           }
         }
       ],
       "referenceLabelValue": [
+        {
+          "properties": {
+            "valueFontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "10D"
+                }
+              }
+            },
+            "valueFontFamily": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Calibri'"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Measure.Total Billable Hours"
+          }
+        },
+        {
+          "properties": {
+            "valueFontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Measure"
+                        }
+                      },
+                      "Property": "MOM Billabel Hours % Color"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "dataViewWildcard": {
+                  "matchingOption": 0
+                }
+              }
+            ],
+            "metadata": "Measure.Total Billable Hours",
+            "id": "field-1016bb7d-123c-d7c0-b1b2-7dc0bc983947"
+          }
+        },
+        {
+          "properties": {
+            "valueDisplayUnits": {
+              "expr": {
+                "Literal": {
+                  "Value": "1D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Measure.Total Billable Hours",
+            "id": "field-f21ec699-8e39-c6ac-0d29-6eee35be1528"
+          }
+        },
         {
           "properties": {
             "valueFontSize": {
@@ -322,55 +517,17 @@
         },
         {
           "properties": {
-            "valueDisplayUnits": {
+            "valueFontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "1D"
-                }
-              }
-            },
-            "showBlankAs": {
-              "expr": {
-                "Literal": {
-                  "Value": "'--'"
+                  "Value": "9D"
                 }
               }
             }
           },
           "selector": {
-            "metadata": "Measure.Available Capacity",
-            "id": "field-b720f10c-3ad3-e5df-36a9-7c76bea3527f"
-          }
-        },
-        {
-          "properties": {
-            "valueFontColor": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "Measure": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "Measure"
-                        }
-                      },
-                      "Property": "MOM Available Capacity % Color"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "selector": {
-            "data": [
-              {
-                "dataViewWildcard": {
-                  "matchingOption": 0
-                }
-              }
-            ],
-            "metadata": "Measure.Available Capacity",
-            "id": "field-2388be24-1d7a-74d9-c67a-3e47307597bb"
+            "metadata": "Measure.Total Billable Hours",
+            "id": "field-1016bb7d-123c-d7c0-b1b2-7dc0bc983947"
           }
         }
       ],
@@ -439,6 +596,22 @@
           }
         }
       ],
+      "padding": [
+        {
+          "properties": {
+            "paddingSelection": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Custom'"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Measure.Total Billable Hours"
+          }
+        }
+      ],
       "shapeCustomRectangle": [
         {
           "properties": {
@@ -459,68 +632,6 @@
           },
           "selector": {
             "id": "default"
-          }
-        }
-      ],
-      "referenceLabelTitle": [
-        {
-          "properties": {
-            "titleContentType": {
-              "expr": {
-                "Literal": {
-                  "Value": "'custom'"
-                }
-              }
-            },
-            "titleText": {
-              "expr": {
-                "Literal": {
-                  "Value": "'vs PM'"
-                }
-              }
-            }
-          },
-          "selector": {
-            "metadata": "Measure.Available Capacity",
-            "id": "field-b720f10c-3ad3-e5df-36a9-7c76bea3527f"
-          }
-        },
-        {
-          "properties": {
-            "titleContentType": {
-              "expr": {
-                "Literal": {
-                  "Value": "'custom'"
-                }
-              }
-            },
-            "titleText": {
-              "expr": {
-                "Literal": {
-                  "Value": "'MoM'"
-                }
-              }
-            }
-          },
-          "selector": {
-            "metadata": "Measure.Available Capacity",
-            "id": "field-2388be24-1d7a-74d9-c67a-3e47307597bb"
-          }
-        }
-      ],
-      "divider": [
-        {
-          "properties": {
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
-                }
-              }
-            }
-          },
-          "selector": {
-            "metadata": "Measure.Available Capacity"
           }
         }
       ]

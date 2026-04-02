@@ -35,7 +35,7 @@ table Holiday
 
 	partition Holiday = m
 		mode: import
-		source = ```
+		source =
 				let
 				
 				    WebconnectorLink = Web_app_url_holiday,
@@ -50,11 +50,9 @@ table Holiday
 				
 				    Csv = Csv.Document(Source, [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
 				    Out = Table.PromoteHeaders(Csv, [PromoteAllScalars = true]),
-				    #"Changed Type" = Table.TransformColumnTypes(Out,{{"Date", type date}}),
-				    #"Filtered Rows" = Table.SelectRows(#"Changed Type", each [Date] <> null and [Date] <> "")
-				in 
-				    #"Filtered Rows"
-				```
+				    #"Changed Type" = Table.TransformColumnTypes(Out,{{"Date", type date}})
+				in
+				    #"Changed Type"
 
 	annotation PBI_NavigationStepName = Navigation
 

@@ -1,12 +1,12 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "392f333b2862b00a78e6",
   "position": {
-    "x": 500,
-    "y": 395.18072289156629,
+    "x": 506.66666666666669,
+    "y": 408.33333333333337,
     "z": 4000,
-    "height": 184.33734939759037,
-    "width": 692.77108433734941,
+    "height": 273.33333333333337,
+    "width": 773.33333333333337,
     "tabOrder": 4000
   },
   "visual": {
@@ -140,6 +140,18 @@
               "dim_project.Project Name"
             ],
             "isCollapsed": true,
+            "identityKeys": [
+              {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "dim_project"
+                    }
+                  },
+                  "Property": "Project Name"
+                }
+              }
+            ],
             "isPinned": true
           },
           {
@@ -422,7 +434,7 @@
             "layout": {
               "expr": {
                 "Literal": {
-                  "Value": "'Compact'"
+                  "Value": "'Outline'"
                 }
               }
             }

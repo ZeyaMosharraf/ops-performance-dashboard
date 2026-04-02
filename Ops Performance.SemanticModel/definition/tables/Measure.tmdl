@@ -14,7 +14,7 @@ table Measure
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
-	measure 'Utilization Billable %' = DIVIDE([Total Billable Hours], [Available Capacity])
+	measure 'Overall Utilization' = DIVIDE([Total Billable Hours], [Available Capacity])
 		formatString: 0.00%;-0.00%;0.00%
 		displayFolder: # Grand Totals
 		lineageTag: e117835d-b23d-4dfe-baf0-c9d41d48023a
@@ -104,7 +104,7 @@ table Measure
 
 	measure 'Rank Team Utilization Billabel' =
 			
-			RANKX(ALL('dim_team'[Team Name]), [Utilization Billable %])
+			RANKX(ALL('dim_team'[Team Name]), [Overall Utilization])
 		formatString: 0
 		displayFolder: # Rank
 		lineageTag: cb6dd2fe-06b9-467a-b646-509fc2736ead
@@ -179,7 +179,7 @@ table Measure
 		displayFolder: # Growth
 		lineageTag: 152c460a-1673-4839-9e05-304b5e3743de
 
-	measure Utilization = 1 - [Utilization Billable %]
+	measure Utilization = 1 - [Overall Utilization]
 		displayFolder: # Visual Labels\Custom Calculations
 		lineageTag: ee964d3d-7ce5-4b75-ba1a-fab93a784133
 
@@ -206,7 +206,7 @@ table Measure
 
 	measure 'Utilization Color' = ```
 			
-			VAR Util = [Utilization Billable %] * 100
+			VAR Util = [Overall Utilization] * 100
 			RETURN
 			    SWITCH(
 			        TRUE(),
@@ -520,7 +520,7 @@ table Measure
 			
 			VAR _CurrentMonth =
 			    CALCULATE(
-			        [Utilization Billable %],
+			        [Overall Utilization],
 			        FILTER(
 			            ALL('dim_date'),
 			            'dim_date'[Date] >= FirstDayThisMonth &&
@@ -545,7 +545,7 @@ table Measure
 			    EOMONTH(SelectedDate, -1)
 			RETURN
 			    CALCULATE(
-			        [Utilization Billable %],
+			        [Overall Utilization],
 			        FILTER(
 			            ALL('dim_date'),
 			            'dim_date'[Date] >= FirstDayPrevMonth &&
@@ -577,6 +577,7 @@ table Measure
 			    TRUE(), "#000000" 
 			)
 			```
+		displayFolder: # Visual Labels\Color
 		lineageTag: 0e251e9b-8174-470e-a28a-fa9db4528a12
 
 	measure 'Color employee contribution' = ```
@@ -591,10 +592,10 @@ table Measure
 			        contro_employee >= 50, "#2ECC40"               -- 🟢 Green      
 			    )
 			```
+		displayFolder: # Visual Labels\Color
 		lineageTag: 40b04ed9-48c9-4b00-901a-d5871920933d
 
 	measure 'Budget Hours (Retainers)' =
-			
 			
 			VAR RetainerHourly =
 			    CALCULATE(SUMX (
@@ -655,34 +656,15 @@ table Measure
 			    )
 			
 			```
+		displayFolder: # Grand Totals\# Project
 		lineageTag: cdf55253-6597-4501-b842-722647cd8d54
 
 	measure 'Total Employee' = DISTINCTCOUNT(dim_users[User_ID])
 		formatString: 0
+		displayFolder: # Grand Totals\# Employee
 		lineageTag: c59fb259-4163-4f0e-98f0-482fb0f20311
 
-	measure 'CM Available Capacity' =
-			
-			VAR SelectedDate = MAX('dim_date'[Date])
-			VAR FirstDayThisMonth = DATE(YEAR(SelectedDate), MONTH(SelectedDate), 1)
-			VAR LastDayThisMonth = EOMONTH(SelectedDate, 0)
-			
-			VAR _CurrentMonth =
-			    CALCULATE(
-			        [Available Capacity],
-			        FILTER(
-			            ALL('dim_date'),
-			            'dim_date'[Date] >= FirstDayThisMonth &&
-			            'dim_date'[Date] <= LastDayThisMonth
-			        )
-			    )
-			
-			RETURN
-			_CurrentMonth
-		formatString: 0
-		lineageTag: 11a23b95-07aa-42ee-9756-034576673004
-
-	measure 'PM Available Capacity' =
+	measure 'PM leave' =
 			
 			VAR SelectedDate =
 			    MAX('dim_date'[Date])
@@ -692,7 +674,7 @@ table Measure
 			    EOMONTH(SelectedDate, -1)
 			RETURN
 			    CALCULATE(
-			        [Available Capacity],
+			        [Total Leave],
 			        FILTER(
 			            ALL('dim_date'),
 			            'dim_date'[Date] >= FirstDayPrevMonth &&
@@ -700,37 +682,62 @@ table Measure
 			        )
 			    )
 		formatString: 0
-		lineageTag: 13df750d-dc9f-47f8-b34f-016602e08859
+		displayFolder: # Previous Month
+		lineageTag: 3a374852-9e5d-42c7-821f-7e6c7d42aca7
 
-	measure 'MoM Available Capacity (%)' =
+	measure 'CM Leave' =
 			
-			VAR _CurrentMonth = [CM Available Capacity]
-			VAR _PreviousMonth = [PM Available Capacity]
+			VAR SelectedDate = MAX('dim_date'[Date])
+			VAR FirstDayThisMonth = DATE(YEAR(SelectedDate), MONTH(SelectedDate), 1)
+			VAR LastDayThisMonth = EOMONTH(SelectedDate, 0)
+			
+			VAR _CurrentMonth =
+			    CALCULATE(
+			        [Total Leave],
+			        FILTER(
+			            ALL('dim_date'),
+			            'dim_date'[Date] >= FirstDayThisMonth &&
+			            'dim_date'[Date] <= LastDayThisMonth
+			        )
+			    )
+			RETURN
+			_CurrentMonth
+		formatString: 0
+		displayFolder: # Current Month
+		lineageTag: 54dd9315-8a65-4fff-b34b-5e707d78895f
+
+	measure 'MoM Leave(%)' =
+			
+			VAR _CurrentMonth = [CM Leave]
+			VAR _PreviousMonth = [PM leave]
 			RETURN
 			IF(
 			    NOT ISBLANK(_PreviousMonth),
 			    DIVIDE(_CurrentMonth - _PreviousMonth, _PreviousMonth)
 			)
-		lineageTag: bf6a6788-f6f3-4d4f-9a31-4bbbb304b81f
+		displayFolder: # Growth
+		lineageTag: 3ec39689-9f11-4f4c-aade-78c52861d6a2
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
-	measure 'Available Capacity % MoM Arrow Label' =
+	measure 'Leave % MoM Arrow Label' =
 			
 			VAR ArrowUp = UNICHAR(9650)
 			VAR ArrowDown = UNICHAR(9660)
-			VAR Change = [MoM Available Capacity (%)]
+			VAR Change = [MoM Leave(%)]
 			RETURN
 			IF(Change > 0,
 			     FORMAT(Change, "0.00%") & " " & ArrowUp,
 			     FORMAT(Change, "0.00%") & " " & ArrowDown
 			)
-		lineageTag: cb71df07-9eb3-42cb-bafe-f215b105ed53
+		displayFolder: # Visual Labels\Arrow
+		lineageTag: e1cebe9d-3073-4b30-a379-1fc21ba74d67
 
-	measure 'MOM Available Capacity % Color' =
+	measure 'MOM Leave% Color' =
 			
-			IF([MoM Available Capacity (%)] >= 0, "Green", "Red")
-		lineageTag: 6a68aca0-0731-49da-a90a-90a3cc04b595
+			IF([MoM Leave(%)] >= 0, "Green", "Red")
+		displayFolder: # Visual Labels\Color
+		lineageTag: 68690d92-5d82-4483-916a-2da9011fa97e
 
 	partition Measure = m
 		mode: import
