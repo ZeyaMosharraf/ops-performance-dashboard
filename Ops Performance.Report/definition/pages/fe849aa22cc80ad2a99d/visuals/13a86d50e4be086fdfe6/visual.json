@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "13a86d50e4be086fdfe6",
   "position": {
-    "x": 491.81818181818176,
-    "y": 90.9090909090909,
-    "z": 10000,
-    "height": 118.18181818181817,
-    "width": 196.36363636363635,
+    "x": 441.66666666666669,
+    "y": 74.166666666666671,
+    "z": 5000,
+    "height": 104.16666666666667,
+    "width": 176.66666666666669,
     "tabOrder": 10000
   },
   "visual": {
@@ -123,7 +123,7 @@
                 "color": {
                   "expr": {
                     "Literal": {
-                      "Value": "'#9A6EEA'"
+                      "Value": "'#4FB0C3'"
                     }
                   }
                 }
@@ -505,7 +505,7 @@
             "titleFontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "10D"
+                  "Value": "8D"
                 }
               }
             }
@@ -534,7 +534,7 @@
             "titleFontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "10D"
+                  "Value": "8D"
                 }
               }
             }
@@ -542,6 +542,20 @@
           "selector": {
             "metadata": "Measure.Total Leave",
             "id": "field-54757c64-951b-e4b2-3a30-680b3f071154"
+          }
+        },
+        {
+          "properties": {
+            "titleFontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "11D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Measure.Total Leave"
           }
         }
       ],
@@ -699,6 +713,36 @@
                 }
               }
             ],
+            "metadata": "Measure.Total Leave",
+            "id": "field-54757c64-951b-e4b2-3a30-680b3f071154"
+          }
+        },
+        {
+          "properties": {
+            "valueFontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "8D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Measure.Total Leave",
+            "id": "field-f3e376ac-8046-391c-1814-aa282a19f4ca"
+          }
+        },
+        {
+          "properties": {
+            "valueFontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "8D"
+                }
+              }
+            }
+          },
+          "selector": {
             "metadata": "Measure.Total Leave",
             "id": "field-54757c64-951b-e4b2-3a30-680b3f071154"
           }

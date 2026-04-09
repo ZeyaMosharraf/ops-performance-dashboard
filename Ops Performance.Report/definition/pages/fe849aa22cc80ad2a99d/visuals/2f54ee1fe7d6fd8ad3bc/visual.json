@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "2f54ee1fe7d6fd8ad3bc",
   "position": {
-    "x": 589,
-    "y": 415,
-    "z": 0,
-    "height": 253,
-    "width": 486,
+    "x": 80,
+    "y": 210,
+    "z": 1000,
+    "height": 474,
+    "width": 530,
     "tabOrder": 1000
   },
   "visual": {
@@ -27,8 +27,9 @@
                 }
               },
               "queryRef": "dim_users.User_Name",
-              "nativeQueryRef": "User_Name",
-              "active": true
+              "nativeQueryRef": "Employee",
+              "active": true,
+              "displayName": "Employee"
             }
           ]
         },
@@ -223,6 +224,20 @@
           },
           "selector": {
             "metadata": "Measure.Total Billable (All Users)"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "138.66666279668425D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "dim_users.User_Name"
           }
         }
       ],

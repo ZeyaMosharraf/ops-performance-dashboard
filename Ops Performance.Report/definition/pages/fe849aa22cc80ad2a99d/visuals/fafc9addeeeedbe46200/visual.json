@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "fafc9addeeeedbe46200",
   "position": {
-    "x": 76,
-    "y": 64,
-    "z": 1000,
-    "height": 84,
-    "width": 177,
+    "x": 939.375,
+    "y": 140.625,
+    "z": 750,
+    "height": 138.75,
+    "width": 217.5,
     "tabOrder": 0
   },
   "visual": {
@@ -108,7 +108,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "11D"
+                  "Value": "30D"
                 }
               }
             }
@@ -223,7 +223,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "8D"
+                  "Value": "10D"
                 }
               }
             },
@@ -523,6 +523,22 @@
             "id": "default"
           }
         }
+      ],
+      "spacing": [
+        {
+          "properties": {
+            "verticalSpacing": {
+              "expr": {
+                "Literal": {
+                  "Value": "7L"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Measure.Utilization Billable %"
+          }
+        }
       ]
     },
     "visualContainerObjects": {
@@ -594,6 +610,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "parentGroupName": "dbe5aba782b782607da0"
+  }
 }
