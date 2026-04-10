@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "392f333b2862b00a78e6",
   "position": {
-    "x": 506.66666666666669,
-    "y": 408.33333333333337,
+    "x": 507.06621075536214,
+    "y": 408.23127137084236,
     "z": 4000,
-    "height": 273.33333333333337,
-    "width": 773.33333333333337,
+    "height": 273.58657133975754,
+    "width": 752.00497357786753,
     "tabOrder": 4000
   },
   "visual": {
@@ -43,7 +43,7 @@
               },
               "queryRef": "dim_users.User_Name",
               "nativeQueryRef": "User_Name",
-              "active": false
+              "active": true
             }
           ]
         },
@@ -162,7 +162,30 @@
             "isPinned": true
           }
         ],
-        "root": {}
+        "root": {
+          "children": [
+            {
+              "identityValues": [
+                {
+                  "Literal": {
+                    "Value": "'P3_F_Orion Dynamics_Titan_Nov''25'"
+                  }
+                }
+              ],
+              "isToggled": true
+            },
+            {
+              "identityValues": [
+                {
+                  "Literal": {
+                    "Value": "'P0_F_BlueWave Technologies_Nexus_Sep''24'"
+                  }
+                }
+              ],
+              "isToggled": true
+            }
+          ]
+        }
       }
     ],
     "objects": {

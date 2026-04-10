@@ -27,8 +27,9 @@
                 }
               },
               "queryRef": "dim_date.MonthShortName",
-              "nativeQueryRef": "MonthShortName",
-              "active": true
+              "nativeQueryRef": "Month",
+              "active": true,
+              "displayName": "Month"
             }
           ]
         },

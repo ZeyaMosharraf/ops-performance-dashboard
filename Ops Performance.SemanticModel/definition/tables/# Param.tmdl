@@ -42,7 +42,7 @@ table '# Param'
 				{
 				    ("Payment Type", NAMEOF('dim_project'[Payment Type]), 0),
 				    ("Teams Name", NAMEOF('dim_team'[Team Name]), 1),
-				    ("Project Category", NAMEOF('dim_project'[Project Priority]), 2)
+				    ("Project Priority", NAMEOF('dim_project'[Project Priority]), 2)
 				}
 
 	annotation PBI_Id = 0a29e63007dc4f149a9ed4f43c9cf756
