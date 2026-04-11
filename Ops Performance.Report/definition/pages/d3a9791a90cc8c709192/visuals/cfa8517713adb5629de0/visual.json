@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "cfa8517713adb5629de0",
   "position": {
-    "x": 1068.3333333333335,
-    "y": 21.666666666666668,
+    "x": 714,
+    "y": 5,
     "z": 7004,
-    "height": 135,
-    "width": 170,
+    "height": 136,
+    "width": 265,
     "tabOrder": 7004
   },
   "visual": {
@@ -455,6 +455,48 @@
             "id": "field-277b6db3-3f5b-9bee-fc92-1a73eacd4f34",
             "order": 0
           }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measure"
+                    }
+                  },
+                  "Property": "MoM Budget Hours (%)"
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "dataViewWildcard": {
+                  "matchingOption": 0
+                }
+              }
+            ],
+            "metadata": "Measure.Budget Spent %",
+            "id": "field-3fa36328-be3c-8aa5-6354-47fc6313d03e",
+            "order": 0
+          }
+        },
+        {
+          "properties": {
+            "backgroundShow": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          },
+          "selector": {
+            "id": "default"
+          }
         }
       ],
       "referenceLabelTitle": [
@@ -609,6 +651,20 @@
           "selector": {
             "metadata": "Measure.TotalMonthlyBudget"
           }
+        },
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Measure.Budget Spent %"
+          }
         }
       ],
       "referenceLabelValue": [
@@ -752,6 +808,37 @@
             "metadata": "Measure.TotalMonthlyBudget",
             "id": "field-6e155013-1fdc-a890-9cd6-c93b059b59f3"
           }
+        },
+        {
+          "properties": {
+            "valueFontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Measure"
+                        }
+                      },
+                      "Property": "MOM Budget Hours % Color"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "dataViewWildcard": {
+                  "matchingOption": 0
+                }
+              }
+            ],
+            "metadata": "Measure.Budget Spent %",
+            "id": "field-3fa36328-be3c-8aa5-6354-47fc6313d03e"
+          }
         }
       ],
       "referenceLabelLayout": [
@@ -846,6 +933,49 @@
           },
           "selector": {
             "id": "default"
+          }
+        }
+      ],
+      "referenceLabelDetail": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Measure.Budget Spent %"
+          }
+        },
+        {
+          "properties": {
+            "detailValue": {
+              "expr": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measure"
+                    }
+                  },
+                  "Property": "Label LM PM Budget Spent %"
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "dataViewWildcard": {
+                  "matchingOption": 0
+                }
+              }
+            ],
+            "metadata": "Measure.Budget Spent %",
+            "id": "field-3fa36328-be3c-8aa5-6354-47fc6313d03e"
           }
         }
       ]
@@ -1088,5 +1218,23 @@
       ]
     },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "479c2e0ce155090c9842",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Measure"
+              }
+            },
+            "Property": "Budget Spent %"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
   }
 }

@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "392f333b2862b00a78e6",
   "position": {
-    "x": 507.06621075536214,
-    "y": 408.23127137084236,
+    "x": 507,
+    "y": 408,
     "z": 4000,
-    "height": 273.58657133975754,
-    "width": 752.00497357786753,
+    "height": 274,
+    "width": 700,
     "tabOrder": 4000
   },
   "visual": {
@@ -63,21 +63,6 @@
               "queryRef": "Measure.Total Budget Hours",
               "nativeQueryRef": "Budget Hours",
               "displayName": "Budget Hours"
-            },
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Measure"
-                    }
-                  },
-                  "Property": "Total Billable (All Users)"
-                }
-              },
-              "queryRef": "Measure.Total Billable (All Users)",
-              "nativeQueryRef": "Billable Hours",
-              "displayName": "Billable Hours"
             },
             {
               "field": {
@@ -168,6 +153,66 @@
               "identityValues": [
                 {
                   "Literal": {
+                    "Value": "'P0_F_BlueWave Technologies_Nexus_Sep''24'"
+                  }
+                }
+              ],
+              "isToggled": true
+            },
+            {
+              "identityValues": [
+                {
+                  "Literal": {
+                    "Value": "'P4_F_Solstice Media_Nexus_May''25'"
+                  }
+                }
+              ],
+              "isToggled": true
+            },
+            {
+              "identityValues": [
+                {
+                  "Literal": {
+                    "Value": "'P5_F_Global Apex Group_Vanguard_May''24'"
+                  }
+                }
+              ],
+              "isToggled": true
+            },
+            {
+              "identityValues": [
+                {
+                  "Literal": {
+                    "Value": "'P1_F_Solstice Media_Titan_Nov''24'"
+                  }
+                }
+              ],
+              "isToggled": true
+            },
+            {
+              "identityValues": [
+                {
+                  "Literal": {
+                    "Value": "'P3_F_Hyperion Data_Velocity_Feb''25'"
+                  }
+                }
+              ],
+              "isToggled": true
+            },
+            {
+              "identityValues": [
+                {
+                  "Literal": {
+                    "Value": "'P1_F_OmniCorp International_Nexus_Apr''24'"
+                  }
+                }
+              ],
+              "isToggled": true
+            },
+            {
+              "identityValues": [
+                {
+                  "Literal": {
                     "Value": "'P3_F_Orion Dynamics_Titan_Nov''25'"
                   }
                 }
@@ -178,7 +223,167 @@
               "identityValues": [
                 {
                   "Literal": {
-                    "Value": "'P0_F_BlueWave Technologies_Nexus_Sep''24'"
+                    "Value": "'P1_F_EcoVision Labs_Quantum_Jun''25'"
+                  }
+                }
+              ],
+              "isToggled": true
+            },
+            {
+              "identityValues": [
+                {
+                  "Literal": {
+                    "Value": "'P2_F_IronClad Industries_Titan_Jun''24'"
+                  }
+                }
+              ],
+              "isToggled": true
+            },
+            {
+              "identityValues": [
+                {
+                  "Literal": {
+                    "Value": "'P0_F_Nebula Networks_Apex_Jul''24'"
+                  }
+                }
+              ],
+              "isToggled": true
+            },
+            {
+              "identityValues": [
+                {
+                  "Literal": {
+                    "Value": "'P3_H_Trinity Healthcare_Apex_Feb''26'"
+                  }
+                }
+              ],
+              "isToggled": true
+            },
+            {
+              "identityValues": [
+                {
+                  "Literal": {
+                    "Value": "'P1_H_Stratos Innovations_Nexus_Dec''24'"
+                  }
+                }
+              ],
+              "isToggled": true
+            },
+            {
+              "identityValues": [
+                {
+                  "Literal": {
+                    "Value": "'P3_H_Radiant Energy_Titan_Dec''25'"
+                  }
+                }
+              ],
+              "isToggled": true
+            },
+            {
+              "identityValues": [
+                {
+                  "Literal": {
+                    "Value": "'P1_R_Stratos Innovations_Titan_Sep''25'"
+                  }
+                }
+              ],
+              "isToggled": true
+            },
+            {
+              "identityValues": [
+                {
+                  "Literal": {
+                    "Value": "'P0_H_Venture Horizon_Velocity_Jun''25'"
+                  }
+                }
+              ],
+              "isToggled": true
+            },
+            {
+              "identityValues": [
+                {
+                  "Literal": {
+                    "Value": "'P0_R_Orion Dynamics_Nexus_Jan''25'"
+                  }
+                }
+              ],
+              "isToggled": true
+            },
+            {
+              "identityValues": [
+                {
+                  "Literal": {
+                    "Value": "'P1_R_Radiant Energy_Synergy_Jan''26'"
+                  }
+                }
+              ],
+              "isToggled": true
+            },
+            {
+              "identityValues": [
+                {
+                  "Literal": {
+                    "Value": "'P1_R_Summit Financial_Titan_Jan''25'"
+                  }
+                }
+              ],
+              "isToggled": true
+            },
+            {
+              "identityValues": [
+                {
+                  "Literal": {
+                    "Value": "'P1_R_Trinity Healthcare_Nexus_Jul''25'"
+                  }
+                }
+              ],
+              "isToggled": true
+            },
+            {
+              "identityValues": [
+                {
+                  "Literal": {
+                    "Value": "'P1_R_Aethel Enterprises_Horizon_Jan''25'"
+                  }
+                }
+              ],
+              "isToggled": true
+            },
+            {
+              "identityValues": [
+                {
+                  "Literal": {
+                    "Value": "'P3_R_Global Apex Group_Quantum_Jun''24'"
+                  }
+                }
+              ],
+              "isToggled": true
+            },
+            {
+              "identityValues": [
+                {
+                  "Literal": {
+                    "Value": "'P5_R_Aethel Enterprises_Quantum_Jun''24'"
+                  }
+                }
+              ],
+              "isToggled": true
+            },
+            {
+              "identityValues": [
+                {
+                  "Literal": {
+                    "Value": "'P5_R_Vertex Solutions_Horizon_Apr''24'"
+                  }
+                }
+              ],
+              "isToggled": true
+            },
+            {
+              "identityValues": [
+                {
+                  "Literal": {
+                    "Value": "'P1_H_Aethel Enterprises_Titan_Mar''26'"
                   }
                 }
               ],
@@ -276,20 +481,6 @@
             }
           },
           "selector": {
-            "metadata": "Measure.Total Billable (All Users)"
-          }
-        },
-        {
-          "properties": {
-            "alignment": {
-              "expr": {
-                "Literal": {
-                  "Value": "'Center'"
-                }
-              }
-            }
-          },
-          "selector": {
             "metadata": "Measure.Total Billable Hours"
           }
         },
@@ -340,20 +531,6 @@
           },
           "selector": {
             "metadata": "Measure.Total Billable Hours"
-          }
-        },
-        {
-          "properties": {
-            "value": {
-              "expr": {
-                "Literal": {
-                  "Value": "83.33333333333333D"
-                }
-              }
-            }
-          },
-          "selector": {
-            "metadata": "Measure.Total Billable (All Users)"
           }
         }
       ],
@@ -568,6 +745,24 @@
                   "expr": {
                     "ThemeDataColor": {
                       "ColorId": 1,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "visualHeader": [
+        {
+          "properties": {
+            "background": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
                       "Percent": 0
                     }
                   }

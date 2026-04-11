@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "1181d2947238284b5aaa",
   "position": {
-    "x": 481.66666666666669,
+    "x": 482,
     "y": 20,
     "z": 2000,
     "height": 135,
-    "width": 160,
+    "width": 231,
     "tabOrder": 2000
   },
   "visual": {
@@ -341,6 +341,20 @@
           "selector": {
             "metadata": "Measure.TotalMonthlyBudget"
           }
+        },
+        {
+          "properties": {
+            "verticalSpacing": {
+              "expr": {
+                "Literal": {
+                  "Value": "8L"
+                }
+              }
+            }
+          },
+          "selector": {
+            "id": "default"
+          }
         }
       ],
       "referenceLabel": [
@@ -454,6 +468,48 @@
             "metadata": "Measure.TotalMonthlyBudget",
             "id": "field-277b6db3-3f5b-9bee-fc92-1a73eacd4f34",
             "order": 0
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measure"
+                    }
+                  },
+                  "Property": "Label Project"
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "dataViewWildcard": {
+                  "matchingOption": 0
+                }
+              }
+            ],
+            "metadata": "Measure.Total Project",
+            "id": "field-1da82450-9c76-8e09-1b2b-8dea7eed5a16",
+            "order": 0
+          }
+        },
+        {
+          "properties": {
+            "backgroundShow": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          },
+          "selector": {
+            "id": "default"
           }
         }
       ],
@@ -609,6 +665,20 @@
           "selector": {
             "metadata": "Measure.TotalMonthlyBudget"
           }
+        },
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Measure.Total Project"
+          }
         }
       ],
       "referenceLabelValue": [
@@ -752,6 +822,31 @@
             "metadata": "Measure.TotalMonthlyBudget",
             "id": "field-6e155013-1fdc-a890-9cd6-c93b059b59f3"
           }
+        },
+        {
+          "properties": {
+            "valueFontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "12D"
+                }
+              }
+            },
+            "valueFontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#4FB0C3'"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Measure.Total Project"
+          }
         }
       ],
       "referenceLabelLayout": [
@@ -781,14 +876,14 @@
             "valueArea": {
               "expr": {
                 "Literal": {
-                  "Value": "50D"
+                  "Value": "80D"
                 }
               }
             },
             "labelSpace": {
               "expr": {
                 "Literal": {
-                  "Value": "5D"
+                  "Value": "0D"
                 }
               }
             },
@@ -1088,5 +1183,23 @@
       ]
     },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "f9d5310c10f18a2dfb37",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Measure"
+              }
+            },
+            "Property": "Total Project"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
   }
 }

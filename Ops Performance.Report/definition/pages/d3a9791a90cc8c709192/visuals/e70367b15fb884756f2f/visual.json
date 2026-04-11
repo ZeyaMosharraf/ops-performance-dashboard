@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "e70367b15fb884756f2f",
   "position": {
-    "x": 251,
-    "y": 21,
+    "x": 251.13536548245426,
+    "y": 21.373222594251427,
     "z": 7001,
-    "height": 135,
-    "width": 214,
+    "height": 135.3637430969257,
+    "width": 249.35426359959996,
     "tabOrder": 7001
   },
   "visual": {
@@ -66,7 +66,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "15D"
+                  "Value": "21D"
                 }
               }
             }
@@ -101,7 +101,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "14D"
+                  "Value": "19D"
                 }
               }
             },
@@ -239,24 +239,25 @@
           "selector": {
             "id": "default"
           }
-        }
-      ],
-      "referenceLabel": [
+        },
         {
           "properties": {
-            "value": {
+            "textWrap": {
               "expr": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Measure"
-                    }
-                  },
-                  "Property": "PM Billable Hours"
+                "Literal": {
+                  "Value": "false"
                 }
               }
             }
           },
+          "selector": {
+            "metadata": "Measure.Total Billable Hours"
+          }
+        }
+      ],
+      "referenceLabel": [
+        {
+          "properties": {},
           "selector": {
             "data": [
               {
@@ -310,7 +311,7 @@
             ],
             "metadata": "Measure.Total Billable Hours",
             "id": "field-1016bb7d-123c-d7c0-b1b2-7dc0bc983947",
-            "order": 1
+            "order": 0
           }
         },
         {
@@ -325,6 +326,21 @@
           },
           "selector": {
             "id": "default"
+          }
+        },
+        {
+          "properties": {},
+          "selector": {
+            "data": [
+              {
+                "dataViewWildcard": {
+                  "matchingOption": 0
+                }
+              }
+            ],
+            "metadata": "Measure.Total Billable Hours",
+            "id": "field-8c76c2a2-a2bf-f5a9-2132-33bb65bf7588",
+            "order": 1
           }
         }
       ],
@@ -364,6 +380,13 @@
               "expr": {
                 "Literal": {
                   "Value": "10D"
+                }
+              }
+            },
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
                 }
               }
             }
@@ -430,6 +453,20 @@
           },
           "selector": {
             "metadata": "Measure.Total Billable Hours"
+          }
+        },
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          },
+          "selector": {
+            "id": "default"
           }
         }
       ],
@@ -520,7 +557,7 @@
             "valueFontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "9D"
+                  "Value": "10D"
                 }
               }
             }
@@ -579,7 +616,7 @@
             "valueArea": {
               "expr": {
                 "Literal": {
-                  "Value": "50D"
+                  "Value": "40D"
                 }
               }
             },
@@ -632,6 +669,80 @@
           },
           "selector": {
             "id": "default"
+          }
+        }
+      ],
+      "referenceLabelDetail": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Measure.Total Billable Hours"
+          }
+        },
+        {
+          "properties": {
+            "detailValue": {
+              "expr": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measure"
+                    }
+                  },
+                  "Property": "Label LM PM Billabel Hours"
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "dataViewWildcard": {
+                  "matchingOption": 0
+                }
+              }
+            ],
+            "metadata": "Measure.Total Billable Hours",
+            "id": "field-1016bb7d-123c-d7c0-b1b2-7dc0bc983947"
+          }
+        },
+        {
+          "properties": {
+            "detailFontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "10D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Measure.Total Billable Hours",
+            "id": "field-1016bb7d-123c-d7c0-b1b2-7dc0bc983947"
+          }
+        }
+      ],
+      "spacing": [
+        {
+          "properties": {
+            "verticalSpacing": {
+              "expr": {
+                "Literal": {
+                  "Value": "9L"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Measure.Total Billable Hours"
           }
         }
       ]

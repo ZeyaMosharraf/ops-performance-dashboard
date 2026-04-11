@@ -557,15 +557,6 @@ table Measure
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
-	measure 'Label Project by Budget' =
-			// Label Bar Chart Project Name
-			VAR _Item = SELECTEDVALUE('dim_project'[Project Name])
-			VAR _Value = FORMAT([Budget Hours], "#,##0")
-			VAR _Label = _Item & " | " & _Value
-			RETURN
-			_Label
-		lineageTag: f31f01de-b3cc-4735-a960-433a8b1c6060
-
 	measure 'Budget spent % Color' = ```
 			
 			VAR _budget = [Budget Spent %] * 100 
@@ -738,6 +729,56 @@ table Measure
 			IF([MoM Leave(%)] >= 0, "Green", "Red")
 		displayFolder: # Visual Labels\Color
 		lineageTag: 68690d92-5d82-4483-916a-2da9011fa97e
+
+	measure 'Label LM PM Billabel Hours' =
+			
+			VAR _LM = [PM Billable Hours]
+			RETURN
+			"Vs " & FORMAT(_LM, "#,##") & " LM"
+		lineageTag: 420c42d4-27e8-449e-bcd9-cb949f55050f
+
+	measure 'Label LM PM Budget Spent %' =
+			
+			VAR _LM = [PM Budget Spent %]
+			RETURN
+			"Vs " & FORMAT(_LM, "0.00%") & " LM"
+		lineageTag: ea98d88c-ff4a-4a7e-8498-2af8f79e0328
+
+	measure 'PM Budget Spent %' =
+			
+			VAR SelectedDate =
+			    MAX('dim_date'[Date])
+			VAR FirstDayPrevMonth =
+			    DATE(YEAR(SelectedDate), MONTH(SelectedDate) - 1, 1)
+			VAR LastDayPrevMonth =
+			    EOMONTH(SelectedDate, -1)
+			RETURN
+			    CALCULATE(
+			        [Budget Spent %],
+			        FILTER(
+			            ALL('dim_date'),
+			            'dim_date'[Date] >= FirstDayPrevMonth &&
+			            'dim_date'[Date] <= LastDayPrevMonth
+			        )
+			    )
+		lineageTag: eae1108e-3ae7-4480-a9ba-3d295d8d5390
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Label LM PM Total Leave' =
+			
+			VAR _LM = [Total Leave]
+			RETURN
+			"Vs " & FORMAT(_LM, "#,##") & " LM"
+		lineageTag: bc423b9e-ad22-4593-b414-952c42122bd0
+
+	measure 'Label Project' =
+			
+			VAR _PA = [Projects Active]
+			VAR _PI = [Projects Inactive]
+			RETURN
+			 FORMAT(_PA, "#,##") & " Active" & " | " & FORMAT(_PI, "#,##") & " Inactive"
+		lineageTag: 752cf48d-7274-4139-8397-393e5ba4cc35
 
 	partition Measure = m
 		mode: import

@@ -1,0 +1,60 @@
+table dim_metrics
+	lineageTag: 4b02ff8a-5e41-41df-a875-af59909bdaa9
+
+	column Name
+		dataType: string
+		lineageTag: 4fbe3c6f-ac41-4657-bd7a-04ed02ec00bd
+		summarizeBy: none
+		sourceColumn: Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Definition / Meaning'
+		dataType: string
+		lineageTag: 1cdc3d5d-e0b5-42fa-9f76-3f9ceeff6dc7
+		summarizeBy: none
+		sourceColumn: Definition / Meaning
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Why it matters'
+		dataType: string
+		lineageTag: 5a78adef-9217-4015-b29b-2ead00d3dfea
+		summarizeBy: none
+		sourceColumn: Why it matters
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Example / How to read'
+		dataType: string
+		lineageTag: 6e0a0045-9a42-4269-83e3-12fca6518efe
+		summarizeBy: none
+		sourceColumn: Example / How to read
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim_metrics = m
+		mode: import
+		queryGroup: Load
+		source =
+				let
+				
+				    WebconnectorLink = Web_app_url_metrics,
+				    connectorkey     = Auth_Token,
+				
+				    Source = Web.Contents(
+				        WebconnectorLink,
+				        [
+				            Query = [ token = connectorkey ]
+				        ]
+				    ),
+				
+				    Csv = Csv.Document(Source, [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Out = Table.PromoteHeaders(Csv, [PromoteAllScalars = true])
+				in
+				    Out
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

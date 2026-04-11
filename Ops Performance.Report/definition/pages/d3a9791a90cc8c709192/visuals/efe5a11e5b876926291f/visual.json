@@ -1,12 +1,12 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
-  "name": "3706267df83fdc29f9dd",
+  "name": "efe5a11e5b876926291f",
   "position": {
-    "x": 33.333333333333336,
-    "y": 36.666666666666671,
+    "x": 33,
+    "y": 21,
     "z": 7005,
-    "height": 131.66666666666669,
-    "width": 213.33333333333334,
+    "height": 104,
+    "width": 181,
     "tabOrder": 7005
   },
   "visual": {
@@ -33,6 +33,21 @@
         }
       },
       "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Measure"
+                  }
+                },
+                "Property": "Available Capacity"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
         "isDefaultSort": true
       }
     },
@@ -64,7 +79,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "14D"
+                  "Value": "20D"
                 }
               }
             },
@@ -189,7 +204,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "11D"
+                  "Value": "12D"
                 }
               }
             },
@@ -232,51 +247,6 @@
           "selector": {
             "id": "default"
           }
-        },
-        {
-          "properties": {},
-          "selector": {
-            "data": [
-              {
-                "dataViewWildcard": {
-                  "matchingOption": 0
-                }
-              }
-            ],
-            "metadata": "Measure.Available Capacity",
-            "id": "field-b720f10c-3ad3-e5df-36a9-7c76bea3527f",
-            "order": 0
-          }
-        },
-        {
-          "properties": {},
-          "selector": {
-            "data": [
-              {
-                "dataViewWildcard": {
-                  "matchingOption": 0
-                }
-              }
-            ],
-            "metadata": "Measure.Available Capacity",
-            "id": "field-14206ca1-84a6-5a71-c5f2-3fb40861f683",
-            "order": 1
-          }
-        },
-        {
-          "properties": {},
-          "selector": {
-            "data": [
-              {
-                "dataViewWildcard": {
-                  "matchingOption": 0
-                }
-              }
-            ],
-            "metadata": "Measure.Available Capacity",
-            "id": "field-2388be24-1d7a-74d9-c67a-3e47307597bb",
-            "order": 0
-          }
         }
       ],
       "referenceLabelValue": [
@@ -292,85 +262,6 @@
           },
           "selector": {
             "id": "default"
-          }
-        },
-        {
-          "properties": {
-            "valueDisplayUnits": {
-              "expr": {
-                "Literal": {
-                  "Value": "1D"
-                }
-              }
-            },
-            "showBlankAs": {
-              "expr": {
-                "Literal": {
-                  "Value": "'--'"
-                }
-              }
-            }
-          },
-          "selector": {
-            "metadata": "Measure.Available Capacity",
-            "id": "field-b720f10c-3ad3-e5df-36a9-7c76bea3527f"
-          }
-        },
-        {
-          "properties": {
-            "valueFontColor": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "Measure": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "Measure"
-                        }
-                      },
-                      "Property": "MOM Available Capacity % Color"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "selector": {
-            "data": [
-              {
-                "dataViewWildcard": {
-                  "matchingOption": 0
-                }
-              }
-            ],
-            "metadata": "Measure.Available Capacity",
-            "id": "field-2388be24-1d7a-74d9-c67a-3e47307597bb"
-          }
-        },
-        {
-          "properties": {
-            "valueFontSize": {
-              "expr": {
-                "Literal": {
-                  "Value": "9D"
-                }
-              }
-            },
-            "valueFontColor": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "ThemeDataColor": {
-                      "ColorId": 1,
-                      "Percent": 0
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "selector": {
-            "metadata": "Measure.Available Capacity"
           }
         }
       ],
@@ -462,78 +353,6 @@
           }
         }
       ],
-      "referenceLabelTitle": [
-        {
-          "properties": {
-            "titleContentType": {
-              "expr": {
-                "Literal": {
-                  "Value": "'custom'"
-                }
-              }
-            },
-            "titleText": {
-              "expr": {
-                "Literal": {
-                  "Value": "'vs PM'"
-                }
-              }
-            }
-          },
-          "selector": {
-            "metadata": "Measure.Available Capacity",
-            "id": "field-b720f10c-3ad3-e5df-36a9-7c76bea3527f"
-          }
-        },
-        {
-          "properties": {
-            "titleContentType": {
-              "expr": {
-                "Literal": {
-                  "Value": "'custom'"
-                }
-              }
-            },
-            "titleText": {
-              "expr": {
-                "Literal": {
-                  "Value": "'MoM'"
-                }
-              }
-            }
-          },
-          "selector": {
-            "metadata": "Measure.Available Capacity",
-            "id": "field-2388be24-1d7a-74d9-c67a-3e47307597bb"
-          }
-        },
-        {
-          "properties": {
-            "titleFontSize": {
-              "expr": {
-                "Literal": {
-                  "Value": "10D"
-                }
-              }
-            },
-            "titleFontColor": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "ThemeDataColor": {
-                      "ColorId": 1,
-                      "Percent": 0
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "selector": {
-            "metadata": "Measure.Available Capacity"
-          }
-        }
-      ],
       "divider": [
         {
           "properties": {
@@ -546,7 +365,7 @@
             }
           },
           "selector": {
-            "metadata": "Measure.Available Capacity"
+            "id": "default"
           }
         }
       ]

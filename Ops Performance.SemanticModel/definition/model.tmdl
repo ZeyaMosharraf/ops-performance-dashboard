@@ -14,7 +14,7 @@ queryGroup Load
 
 	annotation PBI_QueryGroupOrder = 1
 
-annotation PBI_QueryOrder = ["StartDate","dim_refresh_date","Measure","EndDate","RangeStart","RangeEnd","Web_app_url_factactivity","Web_app_url_dimproject","web_app_url_dimtask","Web_app_url_dimteam","Web_app_url_dimusers","Web_app_url_holiday","Auth_Token","dim_date","fact_ActivityLog","dim_project","dim_task","dim_team","dim_users","Holiday"]
+annotation PBI_QueryOrder = ["StartDate","dim_refresh_date","Measure","EndDate","RangeStart","RangeEnd","Web_app_url_factactivity","Web_app_url_dimproject","web_app_url_dimtask","Web_app_url_dimteam","Web_app_url_dimusers","Web_app_url_holiday","Web_app_url_metrics","Auth_Token","dim_date","fact_ActivityLog","dim_project","dim_task","dim_team","dim_users","Holiday","dim_metrics"]
 
 annotation __PBI_TimeIntelligenceEnabled = 1
 
@@ -49,6 +49,7 @@ ref table LocalDateTable_a72eb5e6-165b-4842-bd71-850c5d6f9778
 ref table LocalDateTable_e063cf03-89e0-46f8-afad-e89578b31b87
 ref table Holiday
 ref table LocalDateTable_42f348f6-46f1-4381-9bc8-449375b1ca83
+ref table dim_metrics
 
 ref cultureInfo en-US
 

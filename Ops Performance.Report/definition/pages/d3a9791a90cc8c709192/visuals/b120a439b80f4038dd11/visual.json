@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "b120a439b80f4038dd11",
   "position": {
-    "x": 598.73919801056888,
-    "y": 193.37270749145165,
+    "x": 599,
+    "y": 193,
     "z": 5000,
-    "height": 214.85856387939072,
-    "width": 590.14485545539321,
+    "height": 215,
+    "width": 479,
     "tabOrder": 5000
   },
   "visual": {
@@ -58,21 +58,6 @@
               "queryRef": "Measure.Total Billable Hours",
               "nativeQueryRef": "Billable Hours",
               "displayName": "Billable Hours"
-            },
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Measure"
-                    }
-                  },
-                  "Property": "Total Non Billable Hours"
-                }
-              },
-              "queryRef": "Measure.Total Non Billable Hours",
-              "nativeQueryRef": "Non Billable Hours",
-              "displayName": "Non Billable Hours"
             },
             {
               "field": {
@@ -194,47 +179,10 @@
                   "Value": "'Center'"
                 }
               }
-            },
-            "labelPrecision": {
-              "expr": {
-                "Literal": {
-                  "Value": "0L"
-                }
-              }
-            }
-          },
-          "selector": {
-            "metadata": "Measure.Total Non Billable Hours"
-          }
-        },
-        {
-          "properties": {
-            "alignment": {
-              "expr": {
-                "Literal": {
-                  "Value": "'Center'"
-                }
-              }
             }
           },
           "selector": {
             "metadata": "Measure.Budget Spent %"
-          }
-        }
-      ],
-      "columnWidth": [
-        {
-          "properties": {
-            "value": {
-              "expr": {
-                "Literal": {
-                  "Value": "107.4635591738658D"
-                }
-              }
-            }
-          },
-          "selector": {
-            "metadata": "Measure.Total Non Billable Hours"
           }
         }
       ],
@@ -377,6 +325,17 @@
               "expr": {
                 "Literal": {
                   "Value": "12D"
+                }
+              }
+            },
+            "background": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "null"
+                    }
+                  }
                 }
               }
             }
