@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "cfa8517713adb5629de0",
   "position": {
-    "x": 714,
-    "y": 5,
+    "x": 628,
+    "y": 76,
     "z": 7004,
-    "height": 136,
-    "width": 265,
+    "height": 131,
+    "width": 196,
     "tabOrder": 7004
   },
   "visual": {
@@ -94,7 +94,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "20D"
+                  "Value": "21D"
                 }
               }
             },
@@ -245,7 +245,7 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "15D"
+                  "Value": "12D"
                 }
               }
             },
@@ -839,6 +839,20 @@
             "metadata": "Measure.Budget Spent %",
             "id": "field-3fa36328-be3c-8aa5-6354-47fc6313d03e"
           }
+        },
+        {
+          "properties": {
+            "valueFontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "10D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Measure.Budget Spent %"
+          }
         }
       ],
       "referenceLabelLayout": [
@@ -943,6 +957,13 @@
               "expr": {
                 "Literal": {
                   "Value": "true"
+                }
+              }
+            },
+            "detailFontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "9D"
                 }
               }
             }

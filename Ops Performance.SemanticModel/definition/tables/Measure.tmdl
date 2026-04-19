@@ -780,6 +780,15 @@ table Measure
 			 FORMAT(_PA, "#,##") & " Active" & " | " & FORMAT(_PI, "#,##") & " Inactive"
 		lineageTag: 752cf48d-7274-4139-8397-393e5ba4cc35
 
+	measure 'Total Hours' = SUM(fact_ActivityLog[Hours])
+		lineageTag: f899836e-d347-4b78-a6e6-ca6f7beee6c8
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Internal Load %' = DIVIDE([Total Non Billable Hours], [Available Capacity])
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: c00dd868-c7e3-42e0-9276-cc1066b8eacb
+
 	partition Measure = m
 		mode: import
 		source =

@@ -108,7 +108,18 @@
             "fontSize": {
               "expr": {
                 "Literal": {
-                  "Value": "30D"
+                  "Value": "25D"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#4FB0C3'"
+                    }
+                  }
                 }
               }
             }
@@ -431,6 +442,17 @@
               "expr": {
                 "Literal": {
                   "Value": "'Calibri'"
+                }
+              }
+            },
+            "valueFontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#4FB0C3'"
+                    }
+                  }
                 }
               }
             }

@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "392f333b2862b00a78e6",
   "position": {
-    "x": 507,
-    "y": 408,
+    "x": 73.07692307692308,
+    "y": 417.69230769230768,
     "z": 4000,
-    "height": 274,
-    "width": 700,
+    "height": 274.61538461538458,
+    "width": 693.84615384615381,
     "tabOrder": 4000
   },
   "visual": {
@@ -100,16 +100,16 @@
         "sort": [
           {
             "field": {
-              "Measure": {
+              "Column": {
                 "Expression": {
                   "SourceRef": {
-                    "Entity": "Measure"
+                    "Entity": "dim_users"
                   }
                 },
-                "Property": "Budget Hours"
+                "Property": "User_Name"
               }
             },
-            "direction": "Descending"
+            "direction": "Ascending"
           }
         ]
       }
@@ -524,7 +524,7 @@
             "value": {
               "expr": {
                 "Literal": {
-                  "Value": "128.46792847696523D"
+                  "Value": "107.00630745000446D"
                 }
               }
             }

@@ -160,46 +160,6 @@
               ]
             }
           },
-          "272f4c5eca0464013e41": {
-            "filters": {
-              "byExpr": [
-                {
-                  "name": "538b8153b1494c352568",
-                  "type": "Advanced",
-                  "expression": {
-                    "Measure": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "Measure"
-                        }
-                      },
-                      "Property": "Total Billable Hours"
-                    }
-                  },
-                  "howCreated": 0
-                }
-              ]
-            },
-            "singleVisual": {
-              "visualType": "cardVisual",
-              "objects": {},
-              "orderBy": [
-                {
-                  "Direction": 2,
-                  "Expression": {
-                    "Measure": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "Measure"
-                        }
-                      },
-                      "Property": "Total Billable Hours"
-                    }
-                  }
-                }
-              ]
-            }
-          },
           "fafc9addeeeedbe46200": {
             "filters": {
               "byExpr": [

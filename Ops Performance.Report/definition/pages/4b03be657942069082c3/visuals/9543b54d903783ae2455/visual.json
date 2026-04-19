@@ -1,54 +1,18 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
-  "name": "4f306c54e26ff9a21fff",
+  "name": "9543b54d903783ae2455",
   "position": {
-    "x": 796.66666666666663,
-    "y": 417.77777777777777,
-    "z": 6000,
-    "height": 274.44444444444446,
-    "width": 447.77777777777777,
-    "tabOrder": 6000
+    "x": 840.81317998134909,
+    "y": 74.484302144855448,
+    "z": 1004,
+    "height": 320.85545539322351,
+    "width": 413.96083307429279,
+    "tabOrder": 1004
   },
   "visual": {
-    "visualType": "clusteredColumnChart",
+    "visualType": "donutChart",
     "query": {
       "queryState": {
-        "Category": {
-          "projections": [
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "dim_project"
-                    }
-                  },
-                  "Property": "Project Priority"
-                }
-              },
-              "queryRef": "dim_project.Project Priority",
-              "nativeQueryRef": "Project Priority",
-              "active": true,
-              "displayName": "Project Priority"
-            }
-          ],
-          "fieldParameters": [
-            {
-              "parameterExpr": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "# Param"
-                    }
-                  },
-                  "Property": "# Param"
-                }
-              },
-              "index": 0,
-              "length": 1
-            }
-          ]
-        },
         "Y": {
           "projections": [
             {
@@ -59,12 +23,25 @@
                       "Entity": "Measure"
                     }
                   },
-                  "Property": "Total Project"
+                  "Property": "Overall Utilization"
                 }
               },
-              "queryRef": "Measure.Total Project",
-              "nativeQueryRef": "Project",
-              "displayName": "Project"
+              "queryRef": "Measure.Utilization Billable %",
+              "nativeQueryRef": "Overall Utilization"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measure"
+                    }
+                  },
+                  "Property": "Utilization"
+                }
+              },
+              "queryRef": "Measure.Utilization",
+              "nativeQueryRef": "Utilization"
             }
           ]
         }
@@ -79,7 +56,7 @@
                     "Entity": "Measure"
                   }
                 },
-                "Property": "Total Project"
+                "Property": "Overall Utilization"
               }
             },
             "direction": "Descending"
@@ -92,88 +69,44 @@
       "labels": [
         {
           "properties": {
-            "labelDisplayUnits": {
-              "expr": {
-                "Literal": {
-                  "Value": "1D"
-                }
-              }
-            },
-            "color": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "ThemeDataColor": {
-                      "ColorId": 1,
-                      "Percent": 0
-                    }
-                  }
-                }
-              }
-            },
-            "fontFamily": {
-              "expr": {
-                "Literal": {
-                  "Value": "'Calibri'"
-                }
-              }
-            },
-            "fontSize": {
-              "expr": {
-                "Literal": {
-                  "Value": "9D"
-                }
-              }
-            },
-            "bold": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
-                }
-              }
-            }
-          }
-        }
-      ],
-      "valueAxis": [
-        {
-          "properties": {
-            "gridlineShow": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
-                }
-              }
-            },
             "show": {
               "expr": {
                 "Literal": {
                   "Value": "false"
                 }
               }
+            },
+            "labelStyle": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Category'"
+                }
+              }
+            },
+            "overflow": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
             }
           }
         }
       ],
-      "categoryAxis": [
+      "slices": [
         {
           "properties": {
-            "innerPadding": {
+            "innerRadiusRatio": {
               "expr": {
                 "Literal": {
-                  "Value": "65L"
+                  "Value": "75L"
                 }
               }
             },
-            "labelColor": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "ThemeDataColor": {
-                      "ColorId": 1,
-                      "Percent": 0
-                    }
-                  }
+            "startAngle": {
+              "expr": {
+                "Literal": {
+                  "Value": "307L"
                 }
               }
             }
@@ -194,6 +127,27 @@
                 }
               }
             }
+          },
+          "selector": {
+            "metadata": "Measure.Utilization Billable %"
+          }
+        },
+        {
+          "properties": {
+            "fill": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#DDFAFF'"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Measure.Utilization"
           }
         }
       ]
@@ -202,36 +156,10 @@
       "title": [
         {
           "properties": {
-            "text": {
+            "show": {
               "expr": {
                 "Literal": {
-                  "Value": "'Show Projects By'"
-                }
-              }
-            },
-            "fontSize": {
-              "expr": {
-                "Literal": {
-                  "Value": "12D"
-                }
-              }
-            },
-            "fontFamily": {
-              "expr": {
-                "Literal": {
-                  "Value": "'Calibri'"
-                }
-              }
-            },
-            "fontColor": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "ThemeDataColor": {
-                      "ColorId": 1,
-                      "Percent": 0
-                    }
-                  }
+                  "Value": "false"
                 }
               }
             }

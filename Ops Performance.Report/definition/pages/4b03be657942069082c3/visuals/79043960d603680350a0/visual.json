@@ -1,16 +1,16 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
-  "name": "4f306c54e26ff9a21fff",
+  "name": "79043960d603680350a0",
   "position": {
-    "x": 796.66666666666663,
-    "y": 417.77777777777777,
-    "z": 6000,
-    "height": 274.44444444444446,
-    "width": 447.77777777777777,
-    "tabOrder": 6000
+    "x": 840.81317998134909,
+    "y": 415.39322350015539,
+    "z": 1007,
+    "height": 273.58657133975754,
+    "width": 403.93410009325459,
+    "tabOrder": 1007
   },
   "visual": {
-    "visualType": "clusteredColumnChart",
+    "visualType": "clusteredBarChart",
     "query": {
       "queryState": {
         "Category": {
@@ -20,32 +20,30 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "dim_project"
+                      "Entity": "dim_task"
                     }
                   },
-                  "Property": "Project Priority"
+                  "Property": "Task Category"
                 }
               },
-              "queryRef": "dim_project.Project Priority",
-              "nativeQueryRef": "Project Priority",
-              "active": true,
-              "displayName": "Project Priority"
-            }
-          ],
-          "fieldParameters": [
+              "queryRef": "dim_task.Task Category",
+              "nativeQueryRef": "Task Category",
+              "active": true
+            },
             {
-              "parameterExpr": {
+              "field": {
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "# Param"
+                      "Entity": "dim_task"
                     }
                   },
-                  "Property": "# Param"
+                  "Property": "Task Name"
                 }
               },
-              "index": 0,
-              "length": 1
+              "queryRef": "dim_task.Task Name",
+              "nativeQueryRef": "Task Name",
+              "active": false
             }
           ]
         },
@@ -59,12 +57,11 @@
                       "Entity": "Measure"
                     }
                   },
-                  "Property": "Total Project"
+                  "Property": "Total Hours"
                 }
               },
-              "queryRef": "Measure.Total Project",
-              "nativeQueryRef": "Project",
-              "displayName": "Project"
+              "queryRef": "Measure.Total Hours",
+              "nativeQueryRef": "Total Hours"
             }
           ]
         }
@@ -79,7 +76,7 @@
                     "Entity": "Measure"
                   }
                 },
-                "Property": "Total Project"
+                "Property": "Total Hours"
               }
             },
             "direction": "Descending"
@@ -110,47 +107,6 @@
                   }
                 }
               }
-            },
-            "fontFamily": {
-              "expr": {
-                "Literal": {
-                  "Value": "'Calibri'"
-                }
-              }
-            },
-            "fontSize": {
-              "expr": {
-                "Literal": {
-                  "Value": "9D"
-                }
-              }
-            },
-            "bold": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
-                }
-              }
-            }
-          }
-        }
-      ],
-      "valueAxis": [
-        {
-          "properties": {
-            "gridlineShow": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
-                }
-              }
-            },
-            "show": {
-              "expr": {
-                "Literal": {
-                  "Value": "false"
-                }
-              }
             }
           }
         }
@@ -161,7 +117,7 @@
             "innerPadding": {
               "expr": {
                 "Literal": {
-                  "Value": "65L"
+                  "Value": "50L"
                 }
               }
             },
@@ -199,45 +155,6 @@
       ]
     },
     "visualContainerObjects": {
-      "title": [
-        {
-          "properties": {
-            "text": {
-              "expr": {
-                "Literal": {
-                  "Value": "'Show Projects By'"
-                }
-              }
-            },
-            "fontSize": {
-              "expr": {
-                "Literal": {
-                  "Value": "12D"
-                }
-              }
-            },
-            "fontFamily": {
-              "expr": {
-                "Literal": {
-                  "Value": "'Calibri'"
-                }
-              }
-            },
-            "fontColor": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "ThemeDataColor": {
-                      "ColorId": 1,
-                      "Percent": 0
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      ],
       "background": [
         {
           "properties": {
@@ -271,6 +188,24 @@
               "expr": {
                 "Literal": {
                   "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "title": [
+        {
+          "properties": {
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 1,
+                      "Percent": 0
+                    }
+                  }
                 }
               }
             }
