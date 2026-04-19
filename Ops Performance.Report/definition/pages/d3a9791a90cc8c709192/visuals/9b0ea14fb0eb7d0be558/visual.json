@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.7.0/schema.json",
   "name": "9b0ea14fb0eb7d0be558",
   "position": {
-    "x": 937.77777777777771,
-    "y": 405.55555555555554,
+    "x": 927,
+    "y": 401,
     "z": 7000,
-    "height": 55.555555555555557,
-    "width": 334.44444444444446,
+    "height": 55,
+    "width": 326,
     "tabOrder": 7000
   },
   "visual": {
@@ -80,7 +80,7 @@
                           [
                             {
                               "Literal": {
-                                "Value": "'''dim_project''[Project Priority]'"
+                                "Value": "'''dim_team''[Team Name]'"
                               }
                             }
                           ]
@@ -108,7 +108,7 @@
                                 "0": [
                                   {
                                     "Literal": {
-                                      "Value": "'''dim_project''[Project Priority]'"
+                                      "Value": "'''dim_team''[Team Name]'"
                                     }
                                   }
                                 ]
@@ -132,7 +132,7 @@
                         },
                         "valueMap": [
                           {
-                            "0": "Project Priority"
+                            "0": "Teams Name"
                           }
                         ]
                       }

@@ -20,16 +20,16 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "dim_project"
+                      "Entity": "dim_team"
                     }
                   },
-                  "Property": "Project Priority"
+                  "Property": "Team Name"
                 }
               },
-              "queryRef": "dim_project.Project Priority",
-              "nativeQueryRef": "Project Priority",
+              "queryRef": "dim_team.Team Name",
+              "nativeQueryRef": "Teams Name",
               "active": true,
-              "displayName": "Project Priority"
+              "displayName": "Teams Name"
             }
           ],
           "fieldParameters": [
