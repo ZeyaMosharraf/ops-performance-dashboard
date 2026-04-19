@@ -19,7 +19,11 @@
 > - This repo contains a **structurally identical dummy version** where fake data mimics the real-world schema, volumes, and relationships.
 > - Dummy data is **auto-generated weekly** via a Google Apps Script scheduled trigger to simulate a live data pipeline.
 > - All real client credentials, API keys, tokens, and PII have been removed.
-> - <!-- TODO: Add screenshots after dummy setup is complete -->
+> - ![Home](Image/Home.jpg)
+![Guide View](Image/Guide%20View.jpg)
+![Workforce View](Image/Workforce%20%20View.jpg)
+![Project View](Image/Project%20View.jpg)
+![Task View](Image/Task%20View.jpg)
 
 ---
 
