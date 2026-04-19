@@ -208,6 +208,13 @@
                   }
                 }
               }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Time by Task Category'"
+                }
+              }
             }
           }
         }
