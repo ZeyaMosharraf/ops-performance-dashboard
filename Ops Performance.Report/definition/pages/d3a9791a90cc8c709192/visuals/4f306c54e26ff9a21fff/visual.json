@@ -20,16 +20,16 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "dim_team"
+                      "Entity": "dim_project"
                     }
                   },
-                  "Property": "Team Name"
+                  "Property": "Project Priority"
                 }
               },
-              "queryRef": "dim_team.Team Name",
-              "nativeQueryRef": "Teams Name",
+              "queryRef": "dim_project.Project Priority",
+              "nativeQueryRef": "Project Priority",
               "active": true,
-              "displayName": "Teams Name"
+              "displayName": "Project Priority"
             }
           ],
           "fieldParameters": [
@@ -205,7 +205,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Show Projects By'"
+                  "Value": "'Project Distribution by'"
                 }
               }
             },

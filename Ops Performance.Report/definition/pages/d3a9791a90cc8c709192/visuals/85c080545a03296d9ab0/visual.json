@@ -300,6 +300,13 @@
                   }
                 }
               }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Project Load Trend'"
+                }
+              }
             }
           }
         }

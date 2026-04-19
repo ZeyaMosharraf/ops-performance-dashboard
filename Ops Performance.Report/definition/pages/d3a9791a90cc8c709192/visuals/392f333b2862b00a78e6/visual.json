@@ -735,7 +735,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Employee Effort & Contribution Report'"
+                  "Value": "'Project Contribution by Employee'"
                 }
               }
             },
