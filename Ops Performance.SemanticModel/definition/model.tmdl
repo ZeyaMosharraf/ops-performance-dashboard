@@ -16,20 +16,16 @@ queryGroup Load
 
 annotation PBI_QueryOrder = ["StartDate","dim_refresh_date","Measure","EndDate","RangeStart","RangeEnd","Web_app_url_factactivity","Web_app_url_dimproject","web_app_url_dimtask","Web_app_url_dimteam","Web_app_url_dimusers","Web_app_url_holiday","Web_app_url_metrics","Auth_Token","dim_date","fact_ActivityLog","dim_project","dim_task","dim_team","dim_users","Holiday","dim_metrics"]
 
-annotation __PBI_TimeIntelligenceEnabled = 1
+annotation __PBI_TimeIntelligenceEnabled = 0
 
 annotation __TEdtr = 1
 
 annotation PBI_ProTooling = ["DevMode"]
 
-ref table DateTableTemplate_4ac88534-cc9b-4208-bfbb-ac0a78613829
 ref table dim_refresh_date
-ref table LocalDateTable_c42d3fa4-c605-4571-b796-f31b7f6be701
 ref table Measure
 ref table EndDate
-ref table LocalDateTable_37bd5a7e-25ba-480f-be7c-45562ccc9092
 ref table dim_date
-ref table LocalDateTable_e47f835f-83a5-4daa-bf05-6d7051c72da8
 ref table '# Hours'
 ref table '# Month/Week'
 ref table '# F Items'
@@ -39,16 +35,11 @@ ref table '# Project Axis Parameter'
 ref table '# Payment / Teams'
 ref table '# Param'
 ref table dim_project
-ref table LocalDateTable_c40f3fba-e72e-428e-bca5-4ce629aa85cf
-ref table LocalDateTable_3d95bc57-84fc-4245-8eff-0d3731e97d2f
 ref table fact_ActivityLog
 ref table dim_team
 ref table dim_task
 ref table dim_users
-ref table LocalDateTable_a72eb5e6-165b-4842-bd71-850c5d6f9778
-ref table LocalDateTable_e063cf03-89e0-46f8-afad-e89578b31b87
 ref table Holiday
-ref table LocalDateTable_42f348f6-46f1-4381-9bc8-449375b1ca83
 ref table dim_metrics
 
 ref cultureInfo en-US

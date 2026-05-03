@@ -8,11 +8,6 @@ table dim_date
 		summarizeBy: none
 		sourceColumn: Date
 
-		variation Variation
-			isDefault
-			relationship: 2692bbb9-8809-42e4-a155-c533071374f2
-			defaultHierarchy: LocalDateTable_e47f835f-83a5-4daa-bf05-6d7051c72da8.'Date Hierarchy'
-
 		changedProperty = SortByColumn
 
 		annotation SummarizationSetBy = Automatic
@@ -55,7 +50,7 @@ table dim_date
 		dataType: int64
 		formatString: 0
 		lineageTag: b1d45775-c727-4698-861c-67bb4966f967
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: Year
 
 		annotation SummarizationSetBy = Automatic
@@ -64,7 +59,7 @@ table dim_date
 		dataType: int64
 		formatString: 0
 		lineageTag: 8e92c7fc-c749-45d1-9d47-0f8a89aee76c
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: Month
 
 		annotation SummarizationSetBy = Automatic
@@ -73,7 +68,7 @@ table dim_date
 		dataType: int64
 		formatString: 0
 		lineageTag: f6ffc3e8-305f-4b6d-8d8b-a14cfc858ec3
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: Day
 
 		annotation SummarizationSetBy = Automatic
@@ -90,7 +85,7 @@ table dim_date
 		dataType: int64
 		formatString: 0
 		lineageTag: 17ccbbdb-328a-474d-b585-4d49b0589be9
-		summarizeBy: sum
+		summarizeBy: none
 		sourceColumn: YearWeekIndex
 
 		annotation SummarizationSetBy = Automatic

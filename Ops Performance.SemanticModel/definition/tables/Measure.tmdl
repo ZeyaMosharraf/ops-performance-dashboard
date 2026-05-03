@@ -102,43 +102,10 @@ table Measure
 		displayFolder: # Grand Totals\# Project
 		lineageTag: 0b5cfe43-b074-4237-812a-b77957eed787
 
-	measure 'Rank Team Utilization Billabel' =
-			
-			RANKX(ALL('dim_team'[Team Name]), [Overall Utilization])
-		formatString: 0
-		displayFolder: # Rank
-		lineageTag: cb6dd2fe-06b9-467a-b646-509fc2736ead
-
 	measure Zero = 0
 		formatString: 0
 		displayFolder: # Dummy
 		lineageTag: 117a52fe-0e80-4fda-aef0-635f04f5dfa8
-
-	measure 'Project By Billabel Hour' = ```
-			
-			VAR _Page = [# Pages Value]
-			VAR _Items = [# Items Value]
-			VAR _Item_Rank = [Rank Project Billabel Hour]
-			VAR _Filter =
-			FILTER(ALLSELECTED(dim_project[Project Name]),
-			        _Item_Rank > (_Page - 1) * _Items
-			        && _Item_Rank <= (_Page) * _Items
-			)
-			VAR _itemshow = 
-			IF( SELECTEDVALUE(dim_project[Project Name]) IN _Filter, 1,0)
-			RETURN
-			_itemshow
-			```
-		formatString: 0
-		displayFolder: # Pagination
-		lineageTag: 63435277-6398-49f7-a6f2-48b6407d2068
-
-	measure 'Rank Project Billabel Hour' =
-			
-			RANKX(ALL(dim_project[Project Name]), [Total Billable Hours],,DESC)
-		formatString: 0
-		displayFolder: # Rank
-		lineageTag: c554cdba-8da4-4dd6-a3b9-3a2d6796501e
 
 	measure 'MoM Billable Hours (%)' =
 			
@@ -283,25 +250,6 @@ table Measure
 			IF([MoM Billable Hours (%)] >= 0, "Green", "Red")
 		displayFolder: # Visual Labels\Color
 		lineageTag: d619b16b-5f73-4587-9175-7d5264dd3bd8
-
-	measure 'MOM Non Billabel Hours % Color' =
-			
-			IF([MoM Non Billabel Hours (%)] >= 0, "Red", "Green")
-		displayFolder: # Visual Labels\Color
-		lineageTag: d41f18f4-3a5b-4633-915f-281c5e2bb40e
-
-	measure 'Non Billabel Hours % MoM Arrow Label' =
-			
-			VAR ArrowUp = UNICHAR(9650)
-			VAR ArrowDown = UNICHAR(9660)
-			VAR Change = [MoM Non Billabel Hours (%)]
-			RETURN
-			IF(Change > 0,
-			     FORMAT(Change, "0.00%") & " " & ArrowDown,
-			     FORMAT(Change, "0.00%") & " " & ArrowUp
-			)
-		displayFolder: # Visual Labels\Arrow
-		lineageTag: 3c492771-a572-4dbf-a8f6-984d95a16b9f
 
 	measure 'Total Leave' =
 			
@@ -586,52 +534,6 @@ table Measure
 		displayFolder: # Visual Labels\Color
 		lineageTag: 40b04ed9-48c9-4b00-901a-d5871920933d
 
-	measure 'Budget Hours (Retainers)' =
-			
-			VAR RetainerHourly =
-			    CALCULATE(SUMX (
-			        SUMMARIZE (
-			            FILTER (
-			                ADDCOLUMNS (
-			                    fact_ActivityLog,
-			                    "PaymentType", RELATED ( dim_project[Payment Type]),
-			                    "churndate", RELATED (dim_project[Churn Date]),
-			                    "startdate", RELATED(dim_date[Date])
-			                ),
-			                [PaymentType] IN { "Retainer" } &&
-			                (
-			                            ISBLANK([ChurnDate])
-			                            || [startdate] <= [ChurnDate]
-			                        )
-			            ),
-			            dim_project[Project Id],
-			            dim_date[YearMonth],
-			            "MonthlyBudget", MAX ( dim_project[Budget Hours])
-			        ),
-			        [MonthlyBudget]
-			    ), REMOVEFILTERS(dim_users))
-			
-			VAR Fixed =
-			    CALCULATE(SUMX (
-			        SUMMARIZE (
-			            FILTER (
-			                ADDCOLUMNS (
-			                    fact_ActivityLog,
-			                    "PaymentType", RELATED ( dim_project[Payment Type] )
-			                ),
-			                [PaymentType] IN { "Fixed", "Hourly" }
-			            ),
-			            dim_project[Project Id],
-			            "ProjectBudget", MAX ( dim_project[Budget Hours] )
-			        ),
-			        [ProjectBudget]
-			    ), REMOVEFILTERS(dim_users))
-			
-			RETURN
-			RetainerHourly + Fixed
-		formatString: 0
-		lineageTag: 86e300e5-3be0-41f3-8813-c7a3b3e26799
-
 	measure 'Project Budget Status' = ```
 			
 			VAR _budgetedHours = [Budget Hours]
@@ -764,13 +666,6 @@ table Measure
 		lineageTag: eae1108e-3ae7-4480-a9ba-3d295d8d5390
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
-
-	measure 'Label LM PM Total Leave' =
-			
-			VAR _LM = [Total Leave]
-			RETURN
-			"Vs " & FORMAT(_LM, "#,##") & " LM"
-		lineageTag: bc423b9e-ad22-4593-b414-952c42122bd0
 
 	measure 'Label Project' =
 			

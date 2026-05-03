@@ -10,11 +10,6 @@ table EndDate
 		summarizeBy: none
 		sourceColumn: EndDate
 
-		variation Variation
-			isDefault
-			relationship: cf02ed12-5d2f-46e2-ab59-23dd6faac40f
-			defaultHierarchy: LocalDateTable_37bd5a7e-25ba-480f-be7c-45562ccc9092.'Date Hierarchy'
-
 		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic

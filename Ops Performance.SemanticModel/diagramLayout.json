@@ -4,14 +4,14 @@
     {
       "ordinal": 0,
       "scrollPosition": {
-        "x": 1034.8688717652583,
-        "y": 115.40355664066428
+        "x": 173.105338549825,
+        "y": 349.97383663334188
       },
       "nodes": [
         {
           "location": {
             "x": 2048,
-            "y": 182.62499999999994
+            "y": 273.93749999999994
           },
           "nodeIndex": "Measure",
           "nodeLineageTag": "a33b6d6d-d00a-4a46-af88-bcea64f24cb9",
@@ -24,7 +24,7 @@
         {
           "location": {
             "x": 2715,
-            "y": 188.62499999999994
+            "y": 279.93749999999994
           },
           "nodeIndex": "EndDate",
           "nodeLineageTag": "1a5e68ff-57d5-4ef1-9678-b04f3cc6f7ac",
@@ -37,7 +37,7 @@
         {
           "location": {
             "x": 622.69286117346974,
-            "y": 732.50657976684579
+            "y": 823.81907976684579
           },
           "nodeIndex": "dim_date",
           "nodeLineageTag": "8c71f9eb-bc5e-4dde-a14f-b65e9df5a9fb",
@@ -50,7 +50,7 @@
         {
           "location": {
             "x": 2336.6666666666665,
-            "y": 797.62499999999989
+            "y": 888.93749999999989
           },
           "nodeIndex": "# Hours",
           "nodeLineageTag": "5324fb9f-a218-4742-85b6-d88c2a56e1c8",
@@ -63,7 +63,7 @@
         {
           "location": {
             "x": 2336.6666666666665,
-            "y": 629.62499999999989
+            "y": 720.93749999999989
           },
           "nodeIndex": "# Month/Week",
           "nodeLineageTag": "725657e6-0e31-4a7d-bc7b-a5df507648c7",
@@ -76,7 +76,7 @@
         {
           "location": {
             "x": 2046.6666666666665,
-            "y": 308.95833333333326
+            "y": 400.27083333333326
           },
           "nodeIndex": "# F Items",
           "nodeLineageTag": "daa28659-a794-4e9e-a28d-ba2f04da48c8",
@@ -89,7 +89,7 @@
         {
           "location": {
             "x": 2718.6666666666665,
-            "y": 308.95833333333326
+            "y": 400.27083333333326
           },
           "nodeIndex": "# F Pages",
           "nodeLineageTag": "4e520d88-3685-4e05-b1c5-a4234f5a46e8",
@@ -102,7 +102,7 @@
         {
           "location": {
             "x": 2050.6666666666665,
-            "y": 642.95833333333326
+            "y": 734.27083333333326
           },
           "nodeIndex": "# Project",
           "nodeLineageTag": "ff0f9231-a267-4991-bbd9-a9a0430818c2",
@@ -115,7 +115,7 @@
         {
           "location": {
             "x": 2660.1666666666665,
-            "y": 725.95833333333326
+            "y": 817.27083333333326
           },
           "nodeIndex": "# Project Axis Parameter",
           "nodeLineageTag": "1ba32f79-8f2b-482a-915d-d72c3feb87de",
@@ -128,7 +128,7 @@
         {
           "location": {
             "x": 3142.833333333333,
-            "y": 309.95833333333326
+            "y": 401.27083333333326
           },
           "nodeIndex": "# Payment / Teams",
           "nodeLineageTag": "f2619d71-94cf-4c66-b9d1-45f04092e195",
@@ -141,7 +141,7 @@
         {
           "location": {
             "x": 2980.333333333333,
-            "y": 660.45833333333326
+            "y": 751.77083333333326
           },
           "nodeIndex": "# Param",
           "nodeLineageTag": "13415d72-7134-41ce-8e31-03ab177f3695",
@@ -154,7 +154,7 @@
         {
           "location": {
             "x": 433.80268484498481,
-            "y": 301.2955888859488
+            "y": 392.6080888859488
           },
           "nodeIndex": "dim_team",
           "nodeLineageTag": "3efdc9fa-9ff6-4773-8aae-8495f3c39bc1",
@@ -167,7 +167,7 @@
         {
           "location": {
             "x": 1053.1161920087984,
-            "y": 675.7470156483239
+            "y": 767.0595156483239
           },
           "nodeIndex": "dim_task",
           "nodeLineageTag": "cf57a6fe-23e3-44c9-9030-a4cd84d460c1",
@@ -180,7 +180,7 @@
         {
           "location": {
             "x": 315.448651256769,
-            "y": 594.15990681510118
+            "y": 685.47240681510118
           },
           "nodeIndex": "dim_users",
           "nodeLineageTag": "043df6ba-cdc1-4e5e-9817-8fb208ef6d72",
@@ -193,7 +193,7 @@
         {
           "location": {
             "x": 1157.8331464924624,
-            "y": 225.89662264352174
+            "y": 317.20912264352171
           },
           "nodeIndex": "dim_project",
           "nodeLineageTag": "54176677-5a28-4c7d-8975-9482aab6d65f",
@@ -206,7 +206,7 @@
         {
           "location": {
             "x": 785.21918024085323,
-            "y": 308.650998774704
+            "y": 399.963498774704
           },
           "nodeIndex": "fact_ActivityLog",
           "nodeLineageTag": "e56864f1-d690-4fc1-8bfd-0fa4f8e54f00",
@@ -219,7 +219,7 @@
         {
           "location": {
             "x": 2621.5,
-            "y": 536.45833333333326
+            "y": 627.77083333333326
           },
           "nodeIndex": "dim_refresh_date",
           "size": {
@@ -231,7 +231,7 @@
         {
           "location": {
             "x": 3115.333333333333,
-            "y": 372.7565797668459
+            "y": 464.0690797668459
           },
           "nodeIndex": "Holiday",
           "nodeLineageTag": "59dd3ece-2209-49b1-8819-a7a87e784cc6",
@@ -240,6 +240,19 @@
             "width": 234
           },
           "zIndex": 1
+        },
+        {
+          "location": {
+            "x": 3111.3846820765639,
+            "y": 390.25328988342289
+          },
+          "nodeIndex": "dim_metrics",
+          "nodeLineageTag": "4b02ff8a-5e41-41df-a875-af59909bdaa9",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 0
         }
       ],
       "name": "All tables",

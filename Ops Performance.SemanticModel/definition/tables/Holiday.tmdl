@@ -8,11 +8,6 @@ table Holiday
 		summarizeBy: none
 		sourceColumn: Date
 
-		variation Variation
-			isDefault
-			relationship: 4842d1e3-aeaf-409b-ad1c-4b9d97d05e61
-			defaultHierarchy: LocalDateTable_42f348f6-46f1-4381-9bc8-449375b1ca83.'Date Hierarchy'
-
 		annotation SummarizationSetBy = Automatic
 
 		annotation UnderlyingDateTimeDataType = Date

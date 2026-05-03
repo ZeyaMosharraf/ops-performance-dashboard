@@ -10,11 +10,6 @@ table dim_refresh_date
 		summarizeBy: none
 		sourceColumn: RefreshDate
 
-		variation Variation
-			isDefault
-			relationship: 48678e0c-5888-4948-a388-504839ae341a
-			defaultHierarchy: LocalDateTable_c42d3fa4-c605-4571-b796-f31b7f6be701.'Date Hierarchy'
-
 		changedProperty = IsHidden
 
 		annotation SummarizationSetBy = Automatic

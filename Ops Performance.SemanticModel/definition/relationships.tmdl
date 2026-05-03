@@ -1,30 +1,4 @@
-relationship 48678e0c-5888-4948-a388-504839ae341a
-	joinOnDateBehavior: datePartOnly
-	fromColumn: dim_refresh_date.RefreshDate
-	toColumn: LocalDateTable_c42d3fa4-c605-4571-b796-f31b7f6be701.Date
-
-relationship cf02ed12-5d2f-46e2-ab59-23dd6faac40f
-	joinOnDateBehavior: datePartOnly
-	fromColumn: EndDate.EndDate
-	toColumn: LocalDateTable_37bd5a7e-25ba-480f-be7c-45562ccc9092.Date
-
-relationship 2692bbb9-8809-42e4-a155-c533071374f2
-	joinOnDateBehavior: datePartOnly
-	fromColumn: dim_date.Date
-	toColumn: LocalDateTable_e47f835f-83a5-4daa-bf05-6d7051c72da8.Date
-
-relationship 70e7c4ab-9fbb-4cc0-bbad-60f0b0b428ff
-	joinOnDateBehavior: datePartOnly
-	fromColumn: dim_project.'Project Start Date'
-	toColumn: LocalDateTable_c40f3fba-e72e-428e-bca5-4ce629aa85cf.Date
-
-relationship 9c3f4939-346b-449a-9fc3-e8e2aa71e083
-	joinOnDateBehavior: datePartOnly
-	fromColumn: dim_project.'Churn Date'
-	toColumn: LocalDateTable_3d95bc57-84fc-4245-8eff-0d3731e97d2f.Date
-
 relationship AutoDetected_05436554-230d-4e57-b3b1-039a55ed65e6
-	crossFilteringBehavior: bothDirections
 	fromColumn: fact_ActivityLog.'Project ID'
 	toColumn: dim_project.'Project Id'
 
@@ -37,27 +11,10 @@ relationship AutoDetected_83761bf2-dd11-416e-9010-18bd023c6a1b
 	toColumn: dim_task.'Task Id'
 
 relationship f87294c9-dd7d-9cbe-d400-fa13538a0a8f
-	crossFilteringBehavior: bothDirections
 	fromColumn: fact_ActivityLog.Date
 	toColumn: dim_date.Date
 
-relationship 3379c7e4-8674-4b99-acab-b385da2d24fc
-	joinOnDateBehavior: datePartOnly
-	fromColumn: dim_users.Join_Date
-	toColumn: LocalDateTable_a72eb5e6-165b-4842-bd71-850c5d6f9778.Date
-
-relationship eb26d429-50b5-47b5-8bbd-b29cdb603163
-	joinOnDateBehavior: datePartOnly
-	fromColumn: dim_users.Resign_Date
-	toColumn: LocalDateTable_e063cf03-89e0-46f8-afad-e89578b31b87.Date
-
 relationship AutoDetected_42a049f7-f684-4230-8bf7-c16531713f89
-	crossFilteringBehavior: bothDirections
 	fromColumn: fact_ActivityLog.'User Id'
 	toColumn: dim_users.User_ID
-
-relationship 4842d1e3-aeaf-409b-ad1c-4b9d97d05e61
-	joinOnDateBehavior: datePartOnly
-	fromColumn: Holiday.Date
-	toColumn: LocalDateTable_42f348f6-46f1-4381-9bc8-449375b1ca83.Date
 
