@@ -43,12 +43,12 @@
                       "Entity": "Measure"
                     }
                   },
-                  "Property": "Projects Inactive"
+                  "Property": "Projects Active"
                 }
               },
-              "queryRef": "Measure.Projects Inactive",
-              "nativeQueryRef": "Project Lost",
-              "displayName": "Project Lost"
+              "queryRef": "Measure.Projects Active",
+              "nativeQueryRef": "Projects Active",
+              "displayName": "Projects Active"
             }
           ],
           "fieldParameters": [
@@ -347,20 +347,6 @@
           }
         },
         "type": "Categorical"
-      },
-      {
-        "name": "5ec627cd449560573287",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Measure"
-              }
-            },
-            "Property": "Projects Inactive"
-          }
-        },
-        "type": "Advanced"
       }
     ]
   }

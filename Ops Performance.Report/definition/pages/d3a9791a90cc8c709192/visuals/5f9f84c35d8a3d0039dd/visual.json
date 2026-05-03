@@ -67,7 +67,7 @@
                           [
                             {
                               "Literal": {
-                                "Value": "'''Measure''[Projects Inactive]'"
+                                "Value": "'''Measure''[Projects Active]'"
                               }
                             }
                           ]
@@ -95,7 +95,7 @@
                                 "0": [
                                   {
                                     "Literal": {
-                                      "Value": "'''Measure''[Projects Inactive]'"
+                                      "Value": "'''Measure''[Projects Active]'"
                                     }
                                   }
                                 ]
@@ -119,7 +119,7 @@
                         },
                         "valueMap": [
                           {
-                            "0": "Project Lost"
+                            "0": "Projects Active"
                           }
                         ]
                       }

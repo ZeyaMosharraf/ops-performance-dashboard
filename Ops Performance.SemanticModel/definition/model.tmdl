@@ -20,7 +20,7 @@ annotation __PBI_TimeIntelligenceEnabled = 0
 
 annotation __TEdtr = 1
 
-annotation PBI_ProTooling = ["DevMode"]
+annotation PBI_ProTooling = ["DevMode","DaxQueryView_Desktop"]
 
 ref table dim_refresh_date
 ref table Measure
