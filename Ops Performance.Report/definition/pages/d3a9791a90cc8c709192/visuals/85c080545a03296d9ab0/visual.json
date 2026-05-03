@@ -43,12 +43,12 @@
                       "Entity": "Measure"
                     }
                   },
-                  "Property": "Projects Active"
+                  "Property": "Projects Inactive"
                 }
               },
-              "queryRef": "Measure.Projects Active",
-              "nativeQueryRef": "Projects Active",
-              "displayName": "Projects Active"
+              "queryRef": "Measure.Projects Inactive",
+              "nativeQueryRef": "Project Lost",
+              "displayName": "Project Lost"
             }
           ],
           "fieldParameters": [
@@ -206,7 +206,7 @@
                 "color": {
                   "expr": {
                     "Literal": {
-                      "Value": "'#9A6EEA'"
+                      "Value": "'#4FB0C3'"
                     }
                   }
                 }
@@ -215,6 +215,24 @@
           },
           "selector": {
             "metadata": "Measure.Projects Inactive"
+          }
+        },
+        {
+          "properties": {
+            "fill": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#4FB0C3'"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Measure.Projects Lost"
           }
         }
       ],
@@ -313,5 +331,37 @@
       ]
     },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "2da0d139dcaa1dc29510",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "dim_date"
+              }
+            },
+            "Property": "MonthShortName"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "5ec627cd449560573287",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Measure"
+              }
+            },
+            "Property": "Projects Inactive"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
   }
 }

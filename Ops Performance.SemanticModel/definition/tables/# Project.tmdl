@@ -41,7 +41,7 @@ table '# Project'
 		source =
 				{
 				    ("Projects Active", NAMEOF('Measure'[Projects Active]), 0),
-				    ("Project Lost", NAMEOF('Measure'[Project Lost]), 1)
+				    ("Project Lost", NAMEOF('Measure'[Projects Inactive]), 1)
 				}
 
 	annotation PBI_Id = 661439406514430b944528a80f212542

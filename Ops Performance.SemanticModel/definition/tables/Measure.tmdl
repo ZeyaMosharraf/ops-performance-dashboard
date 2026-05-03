@@ -24,46 +24,29 @@ table Measure
 		displayFolder: # Grand Totals\# Project
 		lineageTag: 2a8ec4ee-b9c0-46e2-96bc-4bb3e399ff5b
 
-	measure 'Project Age(Months)' = DATEDIFF(MIN(dim_project[Project Start Date]), TODAY(),MONTH)
-		formatString: 0
-		displayFolder: # Grand Totals\# Project
-		lineageTag: 8c5e2924-8b86-46d5-a14f-f391897ec00c
-
-	measure 'Project Lost' =
-			
-			VAR _project = CALCULATE(DISTINCTCOUNT(dim_project[Project Name]), dim_project[Project Status]= TRUE())
-			RETURN
-			COALESCE(_project, 0)
-		formatString: 0
-		displayFolder: # Grand Totals\# Project
-		lineageTag: 2fa69e1e-c078-40f1-8e55-27d66b70f1a0
-
 	measure 'Available Capacity' = ```
 			
-			VAR _totalusers = 
-			    CALCULATE(
-			        DISTINCTCOUNT(dim_users[User_ID])
-			    )
-			VAR _workingdays =
-			    (CALCULATE(
-			        DISTINCTCOUNT('dim_date'[Date]),
-			        'dim_date'[Holiday Type] <> "Fixed Leave",
-			        dim_date[IsWeekday] = TRUE()
-			    ))
-			RETURN _totalusers * _workingdays * 9
+			SUMX(
+			    dim_users,
+			    VAR _JoinDate = dim_users[Join_Date]
+			    VAR _ResignDate = dim_users[Resign_Date]
+			    
+			    VAR _workingdays =
+			        CALCULATE(
+			            COUNTROWS('dim_date'),
+			            'dim_date'[Holiday Type] <> "Fixed Leave",
+			            'dim_date'[IsWeekday] = TRUE(),
+			            'dim_date'[Date] >= _JoinDate,
+			            ISBLANK(_ResignDate) || 'dim_date'[Date] <= _ResignDate
+			        )
+			        
+			    RETURN _workingdays * 9
+			)
+			
 			```
 		formatString: #,0
 		displayFolder: # Grand Totals
 		lineageTag: 53ce363f-31d8-4c59-b97f-e4dece5c7298
-
-	measure 'Projects Inactive' =
-			
-			VAR _inactiveproject = CALCULATE(DISTINCTCOUNT(dim_project[Project Id]), dim_project[Project Status] = TRUE)
-			RETURN
-			IF(ISBLANK(_inactiveproject), 0, _inactiveproject)
-		formatString: 0
-		displayFolder: # Grand Totals\# Project
-		lineageTag: 093f164a-f300-4bd3-b6a3-e6cc9a59a3be
 
 	measure 'Active User' = CALCULATE(DISTINCTCOUNT(dim_users[User_ID]), dim_users[Archived] = FALSE())
 		formatString: 0
@@ -97,7 +80,20 @@ table Measure
 		displayFolder: # Label\Billabel Hour
 		lineageTag: ad04d2e7-706f-4963-bd6a-5db3e5c0a1e5
 
-	measure 'Projects Active' = CALCULATE(DISTINCTCOUNT(dim_project[Project Id]), dim_project[Project Status] = FALSE)
+	measure 'Projects Active' =
+			
+			VAR _SelectedStart = MIN('dim_date'[Date])
+			VAR _SelectedEnd = MAX('dim_date'[Date])
+			
+			RETURN
+			CALCULATE(
+			    DISTINCTCOUNT(dim_project[Project Id]),
+			    FILTER(
+			        dim_project,
+			        dim_project[Project Start Date] <= _SelectedEnd &&
+			        (ISBLANK(dim_project[Churn Date]) || dim_project[Churn Date] >= _SelectedStart)
+			    )
+			)
 		formatString: 0
 		displayFolder: # Grand Totals\# Project
 		lineageTag: 0b5cfe43-b074-4237-812a-b77957eed787
@@ -683,6 +679,23 @@ table Measure
 	measure 'Internal Load %' = DIVIDE([Total Non Billable Hours], [Available Capacity])
 		formatString: 0.00%;-0.00%;0.00%
 		lineageTag: c00dd868-c7e3-42e0-9276-cc1066b8eacb
+
+	measure 'Projects Inactive' = ```
+			
+			VAR _SelectedStart = MIN('dim_date'[Date])
+			VAR _SelectedEnd = MAX('dim_date'[Date])
+			
+			RETURN
+			CALCULATE(
+			    DISTINCTCOUNT(dim_project[Project Id]),
+			    dim_project[Project Status] = TRUE,
+			    dim_project[Churn Date] >= _SelectedStart,
+			    dim_project[Churn Date] <= _SelectedEnd
+			)
+			
+			```
+		formatString: 0
+		lineageTag: 460a3add-8b62-485a-ad6b-d3677d346dd6
 
 	partition Measure = m
 		mode: import
