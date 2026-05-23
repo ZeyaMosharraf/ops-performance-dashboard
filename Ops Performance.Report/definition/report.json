@@ -1,5 +1,5 @@
 {
-  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/report/3.2.0/schema.json",
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/report/3.3.0/schema.json",
   "themeCollection": {
     "baseTheme": {
       "name": "CY23SU04",
@@ -51,6 +51,9 @@
       }
     ]
   },
+  "publicCustomVisuals": [
+    "textFilter25A4896A83E0487089E2B90C9AE57C8A"
+  ],
   "resourcePackages": [
     {
       "name": "RegisteredResources",
@@ -62,8 +65,23 @@
           "type": "Image"
         },
         {
+          "name": "Back_Button765571526749087.png",
+          "path": "Back_Button765571526749087.png",
+          "type": "Image"
+        },
+        {
+          "name": "Guide_Button8442237719102582.png",
+          "path": "Guide_Button8442237719102582.png",
+          "type": "Image"
+        },
+        {
           "name": "Guide_View14338383001089372.png",
           "path": "Guide_View14338383001089372.png",
+          "type": "Image"
+        },
+        {
+          "name": "Home_Button6883314041311054.png",
+          "path": "Home_Button6883314041311054.png",
           "type": "Image"
         },
         {
@@ -72,13 +90,28 @@
           "type": "Image"
         },
         {
+          "name": "Project_Button8221551104352559.png",
+          "path": "Project_Button8221551104352559.png",
+          "type": "Image"
+        },
+        {
           "name": "Project_View3450179921309475.png",
           "path": "Project_View3450179921309475.png",
           "type": "Image"
         },
         {
+          "name": "Task_Button9446085139030708.png",
+          "path": "Task_Button9446085139030708.png",
+          "type": "Image"
+        },
+        {
           "name": "Task_View9445117543833087.png",
           "path": "Task_View9445117543833087.png",
+          "type": "Image"
+        },
+        {
+          "name": "User_Button6779501183295387.png",
+          "path": "User_Button6779501183295387.png",
           "type": "Image"
         },
         {

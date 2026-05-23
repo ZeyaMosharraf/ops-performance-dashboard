@@ -77,7 +77,7 @@ table Measure
 			VAR _Label = _Item & " | " & _Value
 			RETURN
 			_Label
-		displayFolder: # Label\Billabel Hour
+		displayFolder: # Label\Billable Hour
 		lineageTag: ad04d2e7-706f-4963-bd6a-5db3e5c0a1e5
 
 	measure 'Projects Active' =
@@ -105,7 +105,7 @@ table Measure
 
 	measure 'MoM Billable Hours (%)' =
 			
-			VAR _CurrentMonth = [CM Billabel Hours]
+			VAR _CurrentMonth = [CM Billable Hours]
 			VAR _PreviousMonth = [PM Billable Hours]
 			RETURN
 			IF(
@@ -116,9 +116,9 @@ table Measure
 		displayFolder: # Growth
 		lineageTag: 1b91bf83-9b67-4c9a-8e83-d0c0e7a9092f
 
-	measure 'MoM Non Billabel Hours (%)' =
+	measure 'MoM Non Billable Hours (%)' =
 			
-			VAR _CurrentMonth = [CM Non Billabel Hours]
+			VAR _CurrentMonth = [CM Non Billable Hours]
 			VAR _PreviousMonth = [PM Non Billable Hours]
 			RETURN
 			IF(
@@ -228,7 +228,7 @@ table Measure
 
 		annotation PBI_FormatHint = {"isDecimal":true}
 
-	measure 'Billabel Hours % MoM Arrow Label' =
+	measure 'Billable Hours % MoM Arrow Label' =
 			
 			VAR ArrowUp = UNICHAR(9650)
 			VAR ArrowDown = UNICHAR(9660)
@@ -241,7 +241,7 @@ table Measure
 		displayFolder: # Visual Labels\Arrow
 		lineageTag: a9ae8a40-8256-4af2-a4e4-eae097c34d95
 
-	measure 'MOM Billabel Hours % Color' =
+	measure 'MoM Billable Hours % Color' =
 			
 			IF([MoM Billable Hours (%)] >= 0, "Green", "Red")
 		displayFolder: # Visual Labels\Color
@@ -410,7 +410,7 @@ table Measure
 		displayFolder: # Current Month
 		lineageTag: 2d68797a-214e-4209-b92c-b58220a71361
 
-	measure 'CM Billabel Hours' =
+	measure 'CM Billable Hours' =
 			
 			VAR SelectedDate = MAX('dim_date'[Date])
 			VAR FirstDayThisMonth = DATE(YEAR(SelectedDate), MONTH(SelectedDate), 1)
@@ -433,7 +433,7 @@ table Measure
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
-	measure 'CM Non Billabel Hours' =
+	measure 'CM Non Billable Hours' =
 			
 			VAR SelectedDate = MAX('dim_date'[Date])
 			VAR FirstDayThisMonth = DATE(YEAR(SelectedDate), MONTH(SelectedDate), 1)
@@ -628,7 +628,7 @@ table Measure
 		displayFolder: # Visual Labels\Color
 		lineageTag: 68690d92-5d82-4483-916a-2da9011fa97e
 
-	measure 'Label LM PM Billabel Hours' =
+	measure 'Label LM PM Billable Hours' =
 			
 			VAR _LM = [PM Billable Hours]
 			RETURN
