@@ -198,7 +198,7 @@
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "true"
+                  "Value": "false"
                 }
               }
             },
@@ -213,6 +213,13 @@
               "expr": {
                 "Literal": {
                   "Value": "'fe849aa22cc80ad2a99d'"
+                }
+              }
+            },
+            "showDefaultTooltip": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
                 }
               }
             }

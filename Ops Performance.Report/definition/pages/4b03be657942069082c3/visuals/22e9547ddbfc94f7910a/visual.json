@@ -215,6 +215,13 @@
                   "Value": "'a32ac135b40700fd5e4c'"
                 }
               }
+            },
+            "showDefaultTooltip": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
             }
           }
         }

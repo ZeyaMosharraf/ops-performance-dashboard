@@ -215,6 +215,13 @@
                   "Value": "'def7eb9b3aef2a37a821'"
                 }
               }
+            },
+            "showDefaultTooltip": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
             }
           }
         }
